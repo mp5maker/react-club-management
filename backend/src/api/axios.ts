@@ -1,8 +1,8 @@
 import defaultAxios from 'axios'
-import { BACKEND } from '../constants/settings'
+import { DATABASE } from '../constants/settings'
 
 const axios = defaultAxios.create({
-  baseURL: BACKEND.URI,
+  baseURL: DATABASE.URI,
 })
 
 export default axios
