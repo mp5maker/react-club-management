@@ -26,7 +26,9 @@
   "lint-staged": {
     "frontend/src/*.{js,jsx,ts,tsx}": [
       "yarn --cwd ./frontend run prettier:fix",
-      "yarn --cwd ./frontend run lint"
+      "yarn --cwd ./frontend run lint",
+      "yarn --cwd ./backend run prettier:fix",
+      "yarn --cwd ./backend run lint"
     ]
   }
 }
