@@ -1,10 +1,20 @@
 import { Request, Response } from 'express'
-import apiHelper from '../api/apiHelper'
 import get from 'lodash/get'
+import apiHelper from '../api/apiHelper'
+
+interface IMembers {
+  id: number
+  name: string
+  username: string
+  email: string
+  address: string
+  phone: string
+  website: string
+}
 
 const getMembers = async (_req: Request, res: Response) => {
   const members = await apiHelper.members.getAll()
-  const data = get(members, 'data', [])
+  const data: Array<IMembers> = get(members, 'data', [])
   return res.status(200).json(data)
 }
 
