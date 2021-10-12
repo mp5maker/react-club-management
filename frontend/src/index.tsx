@@ -1,11 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
-import './index.css'
+import './index.scss'
+import MembersContextProvider from './redux/members/context'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <MembersContextProvider>
+      <App />
+    </MembersContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )
