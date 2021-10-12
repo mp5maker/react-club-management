@@ -1,5 +1,2 @@
-function sum(num1: number, num2: number) {
-  return num1 + num2
-}
+import express from 'express'
 
-console.log(sum(8, 4))
