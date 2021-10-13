@@ -24,7 +24,7 @@ const useMembers = () => {
     getAllMembers()
   }, [getAllMembers])
 
-  return { members, getAllMembers }
+  return { members, getAllMembers, state, dispatch }
 }
 
 export default useMembers

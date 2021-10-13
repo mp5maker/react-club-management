@@ -1,6 +1,63 @@
-html, body {
+:root {
+  --primaryLight: '#9C27B0';
+  --secondaryLight: '#00BCD4';
+  --infoLight: '#2196F3';
+  --successLight: '#4CAF50';
+  --warningLight: '#FFEB3B';
+  --errorLight: '#F44336';
+  --background1Light: '#F5F5F5';
+  --background2Light: '#EEEEEE';
+  --text1Light: '#424242';
+  --text2Light: '#9E9E9E';
+
+  --primaryDark: '#9C27B0';
+  --secondaryDark: '#00BCD4';
+  --infoDark: '#2196F3';
+  --successDark: '#4CAF50';
+  --warningDark: '#FFEB3B';
+  --errorDark: '#F44336';
+  --background1Dark: '#424242';
+  --background2Dark: '#9E9E9E';
+  --text1Dark: '#F5F5F5';
+  --text2Dark: '#EEEEEE';
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --primary: var(--primaryLight);
+    --secondary: var(--secondaryLight);
+    --info: var(--infoLight);
+    --success: var(--successLight);
+    --warning: var(--warningLight);
+    --error: var(--errorLight);
+    --background1: var(--background1Light);
+    --background2: var(--background2Light);
+    --text1: var(--text1Light);
+    --text2: var(--text2Light);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: var(--primaryDark);
+    --secondary: var(--secondaryDark);
+    --info: var(--infoDark);
+    --success: var(--successDark);
+    --warning: var(--warningDark);
+    --error: var(--errorDark);
+    --background1: var(--background1Dark);
+    --background2: var(--background2Dark);
+    --text1: var(--text1Dark);
+    --text2: var(--text2Dark);
+  }
+}
+
+html,
+body {
   margin: 0;
   padding: 0;
+  background-color: var(--background1);
+  height: '100%';
 }
 
 body {
