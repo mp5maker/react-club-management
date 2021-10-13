@@ -27,7 +27,7 @@ const Box: React.FC<IBoxProps> = ({
             backgroundColor: color,
           }
         : {}),
-      ...(style ? { style } : {}),
+      ...(style ? style : {}),
     },
   }
 

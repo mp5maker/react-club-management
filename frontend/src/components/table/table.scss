@@ -1,0 +1,28 @@
+.table-container {
+  position: relative;
+  width: 100%;
+  max-height: calc(100vh - 300px);
+  overflow-y: auto;
+  table {
+    width: inherit;
+    border-collapse: collapse;
+    thead {
+      position: sticky;
+      top: 0;
+      background-color: var(--background2);
+    }
+    thead, tbody {
+      tr {
+        th, td {
+          text-align: left;
+          &:first-child {
+            padding-left: var(--medium);
+          }
+          &:last-child {
+            padding-right: var(--medium);
+          }
+        }
+      }
+    }
+  }
+}

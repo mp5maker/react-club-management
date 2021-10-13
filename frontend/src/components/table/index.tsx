@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { v4 } from 'uuid'
 import Box from '../box'
+import './table.scss'
 
 interface ITableProps<T> {
   properties: Array<keyof T>
