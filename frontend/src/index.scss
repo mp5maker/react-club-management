@@ -121,6 +121,9 @@ code {
   height: 100%;
 }
 
-[class^='-page-container'] {
+[class$="-page-container"] {
   height: 100%;
+  @media only screen and (min-width: 768px) {
+    padding-left: 250px;
+  }
 }

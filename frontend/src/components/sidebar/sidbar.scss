@@ -20,6 +20,7 @@
         padding: var(--medium) var(--medium);
         text-decoration: none;
         display: flex;
+        align-items: center;
         height: 100%;
         color: var(--text1);
         transition: all linear 0.25s;
@@ -36,6 +37,13 @@
           margin: 0;
           width: 100%;
           padding: var(--small);
+        }
+        .sidebar-icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: var(--large);
+          margin-right: var(--small);
         }
       }
     }

@@ -21,3 +21,8 @@ npm run frontend
 npm run backend
 npm run all
 ```
+
+## Some Considerations [Due to time limitations]
+
+> Avoided using Material-UI or styled components (styling has been done using scss)
+> Avoided using raw webpack, instead create-react-app was used
