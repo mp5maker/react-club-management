@@ -1,6 +1,7 @@
 import * as React from 'react'
+import Box, { IBoxProps } from '../box'
 
-interface IBodyProps extends React.HTMLProps<HTMLDivElement> {}
+interface IBodyProps extends IBoxProps {}
 
 const Body: React.FC<IBodyProps> = ({ children, ...otherProps }) => {
   const props = {
@@ -8,9 +9,9 @@ const Body: React.FC<IBodyProps> = ({ children, ...otherProps }) => {
   }
 
   return (
-    <div className={'body-container'} {...props}>
+    <Box className={'body-container'} {...props}>
       {children}
-    </div>
+    </Box>
   )
 }
 

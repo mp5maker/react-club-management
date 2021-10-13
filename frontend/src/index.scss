@@ -9,6 +9,7 @@
   --background2Light: #eeeeee;
   --text1Light: #424242;
   --text2Light: #9e9e9e;
+  --boxShadowLight: 0 1px 15px 0 rgba(0, 0, 0, 0.12);
 
   --primaryDark: #9c27b0;
   --secondaryDark: #00bcd4;
@@ -16,10 +17,11 @@
   --successDark: #4caf50;
   --warningDark: #ffeb3b;
   --errorDark: #f44336;
-  --background1Dark: #424242;
-  --background2Dark: #9e9e9e;
+  --background1Dark: #0a1929;
+  --background2Dark: #061f3c;
   --text1Dark: #f5f5f5;
   --text2Dark: #eeeeee;
+  --boxShadowDark: 0 1px 15px 0 #495d67;
 }
 
 @media (prefers-color-scheme: light) {
@@ -34,6 +36,7 @@
     --background2: var(--background2Light);
     --text1: var(--text1Light);
     --text2: var(--text2Light);
+    --boxShadow: var(--boxShadowLight);
   }
 }
 
@@ -49,6 +52,7 @@
     --background2: var(--background2Dark);
     --text1: var(--text1Dark);
     --text2: var(--text2Dark);
+    --boxShadow: var(--boxShadowDark);
   }
 }
 
@@ -63,6 +67,7 @@
   --background2: var(--background2Light);
   --text1: var(--text1Light);
   --text2: var(--text2Light);
+  --boxShadow: var(--boxShadowLight);
 }
 
 [color-scheme='dark'] {
@@ -76,6 +81,7 @@
   --background2: var(--background2Dark);
   --text1: var(--text1Dark);
   --text2: var(--text2Dark);
+  --boxShadow: var(--boxShadowDark);
 }
 
 html,

@@ -2,6 +2,7 @@ import { createBrowserHistory } from 'history'
 import React from 'react'
 import { Route, Router, Switch } from 'react-router-dom'
 import Body from './components/body'
+import Sidebar from './components/sidebar'
 import routes from './constants/routes'
 import useLanguage from './hooks/useLanguage'
 import useTheme from './hooks/useTheme'
@@ -16,6 +17,7 @@ const App = () => {
 
   return (
     <Body>
+      <Sidebar />
       <Router history={history}>
         <Switch>
           <Route path={routes.root.path} component={Home} exact={true} />

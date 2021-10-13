@@ -1,0 +1,12 @@
+.sidebar-container {
+  width: 250px;
+  position: fixed;
+  left: -99999px;
+  transition: left linear 0.25s;
+  height: 100%;
+  box-shadow: var(--boxShadow);
+  &.open {
+    left: 0;
+    transition: left ease-in-out 0.25s;
+  }
+}
