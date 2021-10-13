@@ -7,7 +7,7 @@ import {
   selectLanguage,
 } from '../redux/persist/languageReducer'
 
-const useTheme = () => {
+const useLanguage = () => {
   const { t, i18n } = useTranslation()
   const language = useSelector(selectLanguage)
   const dispatch = useDispatch()
@@ -26,4 +26,4 @@ const useTheme = () => {
   return { t, i18n, language, changeLanguage }
 }
 
-export default useTheme
+export default useLanguage

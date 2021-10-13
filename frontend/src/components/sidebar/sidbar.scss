@@ -1,3 +1,7 @@
+@mixin sidebar-item() {
+  padding: var(--medium) var(--medium);
+}
+
 .sidebar-container {
   width: 250px;
   position: fixed;
@@ -17,7 +21,7 @@
   .sidebar-content {
     .sidebar-item {
       a {
-        padding: var(--medium) var(--medium);
+        @include sidebar-item();
         text-decoration: none;
         display: flex;
         align-items: center;
@@ -44,6 +48,14 @@
           align-items: center;
           width: var(--large);
           margin-right: var(--small);
+        }
+      }
+      > div {
+        @include sidebar-item();
+      }
+      .sidebar-item-option {
+        & > button {
+          margin-left: var(--small);
         }
       }
     }

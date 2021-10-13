@@ -36,6 +36,11 @@ export enum BOX_VARIANT {
   CONTAINED = 'contained',
 }
 
+export enum BUTTON_VARIANT {
+  OUTLINED = 'outlined',
+  CONTAINED = 'contained',
+}
+
 export enum TYPOGRAPHY_VARIANT {
   H1 = '3rem',
   H2 = '2rem',

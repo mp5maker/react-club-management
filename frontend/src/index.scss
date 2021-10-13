@@ -1,3 +1,29 @@
+$spacings: (
+  'space-between': space-between,
+  'flex-start': flex-start,
+  'flex-end': flex-end,
+  'center': center,
+);
+@each $name, $justifyContent in $spacings {
+  .#{$name} {
+    display: flex;
+    align-items: center;
+    justify-content: $justifyContent;
+  }
+}
+
+$radius: ("extra-small": 10px, "small": 20px, "medium": 40px, "large": 80px, "extra-large": 160px);
+@each $name, $size in $radius {
+  .circle-#{$name} {
+    display: block;
+    height: $size;
+    width: $size;
+    border-radius: $size /  2;
+    padding: 0;
+    @extend .center;
+  }
+}
+
 :root {
   --primaryLight: #9c27b0;
   --secondaryLight: #00bcd4;
@@ -11,7 +37,7 @@
   --text2Light: #9e9e9e;
   --boxShadowLight: 0 1px 15px 0 rgba(0, 0, 0, 0.12);
 
-  --primaryDark: #CE93D8;
+  --primaryDark: #ce93d8;
   --secondaryDark: #00bcd4;
   --infoDark: #2196f3;
   --successDark: #4caf50;
@@ -120,7 +146,7 @@ code {
   height: 100%;
 }
 
-[class$="-page-container"] {
+[class$='-page-container'] {
   height: calc(100vh - 60px);
   padding-top: var(--extraSmall);
   @media only screen and (min-width: 768px) {

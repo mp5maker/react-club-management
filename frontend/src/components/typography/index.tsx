@@ -43,13 +43,13 @@ const Typography: React.FC<ITypographProps> = ({
     case TYPOGRAPHY_COMPONENT.H6:
       return <h6 {...props}>{children}</h6>
     case TYPOGRAPHY_COMPONENT.CITE:
-      return <cite {...props} />
+      return <cite {...props}>{children}</cite>
     case TYPOGRAPHY_COMPONENT.BLOCK_QUOTE:
-      return <blockquote {...props} />
+      return <blockquote {...props}>{children}</blockquote>
     case TYPOGRAPHY_COMPONENT.P:
-      return <p {...props} />
+      return <p {...props}>{children}</p>
     default:
-      return <p {...props} />
+      return <p {...props}>{children}</p>
   }
 }
 
