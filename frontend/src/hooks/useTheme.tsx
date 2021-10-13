@@ -19,7 +19,9 @@ const useTheme = () => {
 
   React.useEffect(() => {
     const root = document.querySelector(':root')
-    if (root) root.setAttribute('color-scheme', theme)
+    if (root) {
+      root.setAttribute('color-scheme', `${theme}`)
+    }
   }, [theme])
 
   return { theme, changeTheme }

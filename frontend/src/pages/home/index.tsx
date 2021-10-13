@@ -8,7 +8,7 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
   console.log(members)
 
   return (
-    <div className={'home-container'}>
+    <div className={'home-page-container'}>
       home page
     </div>
   )
