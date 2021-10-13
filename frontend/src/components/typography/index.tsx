@@ -17,6 +17,7 @@ const Typography: React.FC<ITypographProps> = ({
   color = COLORS.TEXT_1,
   style,
   component = TYPOGRAPHY_COMPONENT.P,
+  children,
   ...otherProps
 }): JSX.Element => {
   const props = {
@@ -30,17 +31,17 @@ const Typography: React.FC<ITypographProps> = ({
 
   switch (component) {
     case TYPOGRAPHY_COMPONENT.H1:
-      return <h1 {...props} />
+      return <h1 {...props}>{children}</h1>
     case TYPOGRAPHY_COMPONENT.H2:
-      return <h2 {...props} />
+      return <h2 {...props}>{children}</h2>
     case TYPOGRAPHY_COMPONENT.H3:
-      return <h3 {...props} />
+      return <h3 {...props}>{children}</h3>
     case TYPOGRAPHY_COMPONENT.H4:
-      return <h4 {...props} />
+      return <h4 {...props}>{children}</h4>
     case TYPOGRAPHY_COMPONENT.H5:
-      return <h5 {...props} />
+      return <h5 {...props}>{children} </h5>
     case TYPOGRAPHY_COMPONENT.H6:
-      return <h6 {...props} />
+      return <h6 {...props}>{children}</h6>
     case TYPOGRAPHY_COMPONENT.CITE:
       return <cite {...props} />
     case TYPOGRAPHY_COMPONENT.BLOCK_QUOTE:

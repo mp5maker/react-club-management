@@ -1,13 +1,17 @@
+import { faClock, faCoffee, faUsers } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as React from 'react'
 import { NavLink } from 'react-router-dom'
 import routes from '../../constants/routes'
-import { COLORS, TYPOGRAPHY_VARIANT } from '../../constants/settings'
+import {
+  COLORS,
+  TYPOGRAPHY_COMPONENT,
+  TYPOGRAPHY_VARIANT,
+} from '../../constants/settings'
 import useLanguage from '../../hooks/useLanguage'
 import Box from '../box'
 import Typography from '../typography'
 import './sidbar.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee, faUsers, faClock } from '@fortawesome/free-solid-svg-icons'
 
 interface ISidebarProps {}
 
@@ -18,7 +22,10 @@ const Sidebar: React.FC<ISidebarProps> = (): JSX.Element => {
     <>
       <Box className={'sidebar-container open'} color={COLORS.BACKGROUND_2}>
         <Box className="sidebar-header">
-          <Typography variant={TYPOGRAPHY_VARIANT.H4}>
+          <Typography
+            variant={TYPOGRAPHY_VARIANT.H4}
+            component={TYPOGRAPHY_COMPONENT.H2}
+          >
             <FontAwesomeIcon icon={faCoffee} /> &nbsp;
             {t('WORK_SOBER')}
           </Typography>
