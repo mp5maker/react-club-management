@@ -12,15 +12,31 @@ $spacings: (
   }
 }
 
-$radius: ("extra-small": 10px, "small": 20px, "medium": 40px, "large": 80px, "extra-large": 160px);
+$radius: (
+  'extra-small': 10px,
+  'small': 20px,
+  'medium': 40px,
+  'large': 80px,
+  'extra-large': 160px,
+);
 @each $name, $size in $radius {
   .circle-#{$name} {
     display: block;
     height: $size;
     width: $size;
-    border-radius: $size /  2;
+    border-radius: $size / 2;
     padding: 0;
     @extend .center;
+  }
+}
+
+$zIndexes: (
+  'sidebar': 10,
+  'header': 5,
+);
+@each $name, $zIndex in $zIndexes {
+  .zindex-#{$name} {
+    z-index: $zIndex;
   }
 }
 
@@ -151,5 +167,12 @@ code {
   padding-top: var(--extraSmall);
   @media only screen and (min-width: 768px) {
     padding-left: 250px;
+  }
+}
+
+.selective-visible {
+  display: none;
+  @media only screen and (max-width: 767px) {
+    display: block;
   }
 }

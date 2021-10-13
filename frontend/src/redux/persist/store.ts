@@ -6,10 +6,12 @@ import { persistReducer } from "redux-persist";
 import thunk from 'redux-thunk'
 import themeReducer from "./themeReducer";
 import languageReducer from "./languageReducer";
+import sidebarReducer from "./sidebarReducer";
 
 const reducers = combineReducers({
   theme: themeReducer,
-  language: languageReducer
+  language: languageReducer,
+  sidebar: sidebarReducer
 })
 
 const persistConfiguration = {

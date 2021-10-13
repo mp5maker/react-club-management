@@ -7,21 +7,24 @@
   justify-content: center;
   align-items: center;
   width: var(--large);
- margin-right: var(--small);
+  margin-right: var(--small);
 }
 
 .sidebar-container {
   width: 250px;
   position: fixed;
-  left: -99999px;
-  transition: left linear 0.25s;
   height: 100%;
   box-shadow: var(--boxShadow);
   display: flex;
   flex-direction: column;
-  &.open {
-    left: 0;
-    transition: left ease-in-out 0.25s;
+  left: 0;
+  @media only screen and (max-width: 767px) {
+    left: -99999px;
+    transition: left linear 0.25s;
+    &.open {
+      left: 0;
+      transition: left ease-in-out 0.25s;
+    }
   }
   .sidebar-header {
     padding: 0 var(--medium);

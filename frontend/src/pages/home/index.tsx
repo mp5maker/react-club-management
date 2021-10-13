@@ -11,9 +11,9 @@ interface IHomeProps {}
 const Home: React.FC<IHomeProps> = (): JSX.Element => {
   const { members } = useMembers()
   const { t } = useLanguage()
-  console.log(members)
 
   const memberHeaders = {
+    id: t('ID'),
     name: t('NAME'),
     username: t('USERNAME'),
     email: t('EMAIL'),
@@ -28,8 +28,10 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
       <Box>
         <Header title={t('MEMBERS')} />
         <Table
+          autoSerial={false}
           list={members}
           properties={[
+            'id',
             'name',
             'username',
             'email',

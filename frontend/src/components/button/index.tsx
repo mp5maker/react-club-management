@@ -26,7 +26,7 @@ const Button: React.FC<IButtonProps> = ({
         border: `1px solid ${color}`,
         color: `var(--text1)`
       }: {}),
-      ...(style ? { style }: {})
+      ...(style ? style: {})
     },
     ...otherProps
   }

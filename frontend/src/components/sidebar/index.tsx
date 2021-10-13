@@ -1,6 +1,6 @@
 import {
   faClock,
-  faCoffee,
+  faSignOutAlt,
   faLightbulb,
   faMoon,
   faUsers,
@@ -14,11 +14,13 @@ import {
   BUTTON_VARIANT,
   COLORS,
   LANGUAGE,
+  SIDEBAR,
   THEME,
   TYPOGRAPHY_COMPONENT,
   TYPOGRAPHY_VARIANT,
 } from '../../constants/settings'
 import useLanguage from '../../hooks/useLanguage'
+import useSidebar from '../../hooks/useSidebar'
 import useTheme from '../../hooks/useTheme'
 import Box from '../box'
 import Button from '../button'
@@ -30,6 +32,7 @@ interface ISidebarProps {}
 const Sidebar: React.FC<ISidebarProps> = (): JSX.Element => {
   const { t, language, changeLanguage } = useLanguage()
   const { theme, changeTheme } = useTheme()
+  const { sidebar, changeSidebar } = useSidebar()
 
   const handleLanguage = (event: React.MouseEvent<HTMLButtonElement>) =>
     changeLanguage(get(event, 'target.value', LANGUAGE.ENGLISH))
@@ -37,17 +40,27 @@ const Sidebar: React.FC<ISidebarProps> = (): JSX.Element => {
   const handleTheme = (event: React.MouseEvent<HTMLButtonElement>) =>
     changeTheme(get(event, 'target.value', THEME.DARK))
 
+  const closeSidebar = () => changeSidebar(SIDEBAR.CLOSE)
+
   return (
     <>
-      <Box className={'sidebar-container open'} color={COLORS.BACKGROUND_2}>
-        <Box className="sidebar-header">
+      <Box
+        className={`sidebar-container zindex-sidebar ${sidebar}`}
+        color={COLORS.BACKGROUND_2}
+      >
+        <Box className="sidebar-header space-between">
           <Typography
             variant={TYPOGRAPHY_VARIANT.H4}
             component={TYPOGRAPHY_COMPONENT.H2}
           >
-            <FontAwesomeIcon icon={faCoffee} /> &nbsp;
             {t('WORK_SOBER')}
           </Typography>
+          <Button onClick={closeSidebar} className={'circle-small'}>
+            <FontAwesomeIcon
+              icon={faSignOutAlt}
+              style={{ transform: 'scale(-1)' }}
+            />
+          </Button>
         </Box>
         <Box className="sidebar-content">
           <Box className="sidebar-item">

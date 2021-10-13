@@ -1,8 +1,10 @@
 .table-container {
   position: relative;
   width: 100%;
-  max-height: calc(100vh - 300px);
-  overflow-y: auto;
+  @media only screen and (min: 768px) {
+    max-height: calc(100vh - 300px);
+    overflow-y: auto;
+  }
   table {
     width: inherit;
     border-collapse: collapse;
@@ -15,6 +17,7 @@
       tr {
         th, td {
           text-align: left;
+          word-wrap: break-word;
           &:first-child {
             padding-left: var(--medium);
           }

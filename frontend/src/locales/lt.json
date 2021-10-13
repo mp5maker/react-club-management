@@ -6,5 +6,12 @@
   "THEME": "spalvų tema",
   "ENGLISH": "English",
   "LITHUANIAN": "lietuvis",
-  "LANGUAGE": "kalba"
+  "LANGUAGE": "kalba",
+  "NAME": "vardas",
+  "USERNAME": "Vartotojo vardas",
+  "EMAIL": "Paštu",
+  "ADDRESS": "Adresas",
+  "PHONE": "Telefonas",
+  "WEBSITE": "Interneto svetainė",
+  "OCCUPATION": "Okupacija"
 }

@@ -5,6 +5,7 @@ export enum BACKEND {
 export enum PERSIST {
   THEME = 'theme',
   LANGUAGE = 'language',
+  SIDEBAR = 'sidebar'
 }
 
 export enum THEME {
@@ -15,6 +16,11 @@ export enum THEME {
 export enum LANGUAGE {
   ENGLISH = 'en',
   LITHUANIAN = 'lt',
+}
+
+export enum SIDEBAR {
+  OPEN = 'open',
+  CLOSE = 'close'
 }
 
 export enum COLORS {

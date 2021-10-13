@@ -6,5 +6,12 @@
   "THEME": "Theme",
   "ENGLISH": "English",
   "LITHUANIAN": "lietuvis",
-  "LANGUAGE": "Language"
+  "LANGUAGE": "Language",
+  "NAME": "Name",
+  "USERNAME": "Username",
+  "EMAIL": "Email",
+  "ADDRESS": "Address",
+  "PHONE": "Phone",
+  "WEBSITE": "Website",
+  "OCCUPATION": "Occupation"
 }
