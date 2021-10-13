@@ -8,10 +8,16 @@ interface ITypographProps extends Partial<React.HTMLProps<HTMLParagraphElement>>
 
 const Typography: React.FC<ITypographProps> = ({
   variant = TYPOGRAPHY_VARIANT.BODY,
-  color = COLORS.TEXT_1
+  color = COLORS.TEXT_1,
+  style,
   ...otherProps
 }): JSX.Element => {
   const props = {
+    style: {
+      color,
+      fontSize: variant,
+      ...(style ? { style }: {})
+    },
     ...otherProps
   }
 
