@@ -2,6 +2,14 @@
   padding: var(--medium) var(--medium);
 }
 
+@mixin sidebar-icon() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--large);
+ margin-right: var(--small);
+}
+
 .sidebar-container {
   width: 250px;
   position: fixed;
@@ -43,24 +51,23 @@
           padding: var(--small);
         }
         .sidebar-icon {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: var(--large);
-          margin-right: var(--small);
-        }
-      }
-      > div {
-        @include sidebar-item();
-      }
-      .sidebar-item-option {
-        & > button {
-          margin-left: var(--small);
+          @include sidebar-icon();
         }
       }
     }
   }
-  .sidebar-footer {
-    margin-top: auto;
+}
+.sidebar-footer {
+  border-top: 1px solid var(--secondary);
+  margin-top: auto;
+  .sidebar-item {
+    > div {
+      @include sidebar-item();
+    }
+    .sidebar-item-option {
+      & > button {
+        margin-left: var(--small);
+      }
+    }
   }
 }

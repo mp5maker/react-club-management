@@ -68,6 +68,8 @@ const Sidebar: React.FC<ISidebarProps> = (): JSX.Element => {
               {t('SCHEDULE')}
             </NavLink>
           </Box>
+        </Box>
+        <Box className="sidebar-footer">
           <Box className="sidebar-item space-between">
             <Box>
               <Typography>{t('THEME')}</Typography>
@@ -143,7 +145,6 @@ const Sidebar: React.FC<ISidebarProps> = (): JSX.Element => {
             </Box>
           </Box>
         </Box>
-        <Box className="sidebar-footer"></Box>
       </Box>
     </>
   )
