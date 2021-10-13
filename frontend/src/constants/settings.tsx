@@ -28,7 +28,7 @@ export enum COLORS {
   BACKGROUND_2 = 'var(--background2)',
   TEXT_1 = 'var(--text1)',
   TEXT_2 = 'var(--text2)',
-  INHERIT = 'inherit'
+  INHERIT = 'inherit',
 }
 
 export enum BOX_VARIANT {
@@ -45,5 +45,28 @@ export enum TYPOGRAPHY_VARIANT {
   H6 = '1.125rem',
   SUBTITLE_1 = '0.75rem',
   SUBTITLE_2 = '0.875rem',
-  BODY = '1rem'
+  BODY = '1rem',
+}
+
+export enum BOX_COMPONENTS {
+  DIV = 'div',
+  SPAN = 'span',
+  HEADER = 'header',
+  FOOTER = 'footer',
+  ASIDE = 'aside',
+  ARTICLE = 'article',
+  SECTION = 'section',
+}
+
+export enum TYPOGRAPHY_COMPONENT {
+  H1 = 'h1',
+  H2 = 'h2',
+  H3 = 'h3',
+  H4 = 'h4',
+  H5 = 'h5',
+  H6 = 'h6',
+  CITE = 'cite',
+  BLOCK_QUOTE = 'blockquote',
+  P = 'p',
+  TIME = 'time',
 }

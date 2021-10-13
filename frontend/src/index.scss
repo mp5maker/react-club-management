@@ -104,7 +104,6 @@ body {
 }
 
 body {
-  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -122,7 +121,8 @@ code {
 }
 
 [class$="-page-container"] {
-  height: 100%;
+  height: calc(100vh - 60px);
+  padding-top: var(--extraSmall);
   @media only screen and (min-width: 768px) {
     padding-left: 250px;
   }

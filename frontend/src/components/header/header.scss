@@ -1,0 +1,9 @@
+.header-container {
+  padding: var(--medium) var(--medium);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h2 {
+    margin: 0;
+  }
+}
