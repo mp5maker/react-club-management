@@ -17,8 +17,8 @@ const App = () => {
 
   return (
     <Body>
-      <Sidebar />
       <Router history={history}>
+        <Sidebar />
         <Switch>
           <Route path={routes.root.path} component={Home} exact={true} />
           <Route path={routes.home.path} component={Home} exact={true} />

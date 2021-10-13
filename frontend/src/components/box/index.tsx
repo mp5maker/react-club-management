@@ -15,12 +15,12 @@ const Box: React.FC<IBoxProps> = ({
   const props = {
     ...otherProps,
     style: {
-      ...(variant == BOX_VARIANT.OUTLINED
+      ...(variant === BOX_VARIANT.OUTLINED
         ? {
             border: `1px solid ${color}`,
           }
         : {}),
-      ...(variant == BOX_VARIANT.CONTAINED
+      ...(variant === BOX_VARIANT.CONTAINED
         ? {
             backgroundColor: color,
           }

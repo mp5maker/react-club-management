@@ -5,8 +5,42 @@
   transition: left linear 0.25s;
   height: 100%;
   box-shadow: var(--boxShadow);
+  display: flex;
+  flex-direction: column;
   &.open {
     left: 0;
     transition: left ease-in-out 0.25s;
+  }
+  .sidebar-header {
+    padding: 0 var(--medium);
+  }
+  .sidebar-content {
+    .sidebar-item {
+      a {
+        padding: var(--medium) var(--medium);
+        text-decoration: none;
+        display: flex;
+        height: 100%;
+        color: var(--text1);
+        transition: all linear 0.25s;
+        border: 1px solid transparent;
+        &:hover {
+          border: 1px solid var(--primary);
+        }
+        &.active {
+          color: var(--secondary);
+          background-color: var(--background1);
+          transition: all linear 0.25s;
+        }
+        p {
+          margin: 0;
+          width: 100%;
+          padding: var(--small);
+        }
+      }
+    }
+  }
+  .sidebar-footer {
+    margin-top: auto;
   }
 }
