@@ -14,13 +14,14 @@ import {
   COLORS,
   FORM_MODE,
   TYPOGRAPHY_COMPONENT,
-  TYPOGRAPHY_VARIANT,
+  TYPOGRAPHY_VARIANT
 } from '../../constants/settings'
 import useAlert from '../../hooks/useAlert'
 import useLanguage from '../../hooks/useLanguage'
 import prepareFormData from '../../utilties/prepareFormData'
 import prepareValidationSchema from '../../utilties/prepareValidationSchema'
 import { INITIAL_DATA, schema } from './common'
+import omit from 'lodash/omit'
 
 interface IMemberForm {
   buttonLabel: string
@@ -98,14 +99,19 @@ const MemberForm: React.FC<IMemberForm> = ({
         if (afterError) afterError()
       }
 
-      if (isAddMode)
+      if (isAddMode) {
         api({ body: prepareFormData({ form }) })
           .then(onSuccess)
           .catch(onError)
-      if (isEditMode)
-        api({ id: get(setValue, 'id', ''), body: prepareFormData({ form }) })
+      }
+      if (isEditMode) {
+        api({ id: get(setValue, 'id', ''), body: prepareFormData({ form: {
+          ...omit(setValue, ['profile_photo']),
+          ...form,
+        } }) })
           .then(onSuccess)
           .catch(onError)
+      }
     }
 
     const onValidationError = (validationObj: any) => {

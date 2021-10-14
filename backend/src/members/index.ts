@@ -39,12 +39,16 @@ const deleteMember = async (req: Request, res: Response) => {
 
 const createMember = async (req: Request, res: Response) => {
   const body = get(req, 'body', {})
-  const file = get(req, 'file', {})
+  const file = get(req, 'file', '')
 
   await apiHelper.members.create({
     body: {
       ...body,
-      profile_photo: file,
+      ...(file
+        ? {
+            profile_photo: file,
+          }
+        : {}),
     },
   })
 
@@ -53,4 +57,29 @@ const createMember = async (req: Request, res: Response) => {
   })
 }
 
-export { getMembers, getMember, createMember, deleteMember }
+const updateMember = async (req: Request, res: Response) => {
+  const body = get(req, 'body', {})
+  const file = get(req, 'file', '')
+  const id = get(body, 'id', '')
+
+  const previousData = await apiHelper.members.get({ id })
+  await apiHelper.members.update({
+    id,
+    body: {
+      ...body,
+      ...(file
+        ? {
+            profile_photo: file,
+          }
+        : {
+            profile_photo: get(previousData, 'data.profile_photo', {}),
+          }),
+    },
+  })
+
+  return res.status(201).json({
+    mesasge: 'DATE_UPDATED_SUCCESSFULLY',
+  })
+}
+
+export { getMembers, getMember, createMember, deleteMember, updateMember }

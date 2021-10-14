@@ -75,7 +75,7 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
 
     if (deleteObj) {
       apiHelper.members
-        .remove({ id: get(deleteObj, 'id', '') as number })
+        .remove({ id: get(deleteObj, 'id', '') as string })
         .then(onSuccess)
         .catch(onError)
     }
