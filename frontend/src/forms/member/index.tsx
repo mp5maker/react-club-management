@@ -12,8 +12,9 @@ import {
   COLORS,
   FORM_MODE,
   TYPOGRAPHY_COMPONENT,
-  TYPOGRAPHY_VARIANT
+  TYPOGRAPHY_VARIANT,
 } from '../../constants/settings'
+import useAlert from '../../hooks/useAlert'
 import useLanguage from '../../hooks/useLanguage'
 import prepareValidationSchema from '../../utilties/prepareValidationSchema'
 import { INITIAL_DATA, schema } from './common'
@@ -23,6 +24,8 @@ interface IMemberForm {
   setValue?: IMembers
   mode: FORM_MODE
   api: ({ id, body }: any) => Promise<AxiosResponse<unknown, any>>
+  afterSuccess?: () => any|void
+  afterError?: () => any|void
 }
 
 const MemberForm: React.FC<IMemberForm> = ({
@@ -30,22 +33,62 @@ const MemberForm: React.FC<IMemberForm> = ({
   setValue,
   mode,
   api,
+  afterSuccess,
+  afterError
 }): JSX.Element => {
+  const { setAlert } = useAlert()
   const { t } = useLanguage()
   const [form, setForm] =
     React.useState<Omit<IMembers, 'profile_photo' | 'id'>>(INITIAL_DATA)
   const [error, setError] =
     React.useState<Omit<IMembers, 'profile_photo' | 'id'>>(INITIAL_DATA)
+  const isAddMode = FORM_MODE.ADD === mode
+  const isEditMode = FORM_MODE.EDIT === mode
 
   const handleSubmit = (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault()
     const onValidationSuccess = () => {
-      const onSuccess = () => {}
-      const onError = () => {}
+      const onSuccess = () => {
+        setAlert({
+          color: COLORS.SUCCESS,
+          ...(isAddMode
+            ? {
+                message: t('MEMBER_SUCCESSFULLY_CREATED'),
+              }
+            : {}),
+          ...(isEditMode
+            ? {
+                message: t('MEMBER_SUCCESSFULLY_UPDATED'),
+              }
+            : {}),
+          show: true,
+        })
+        if (isAddMode) {
+          setForm(INITIAL_DATA)
+          setError(INITIAL_DATA)
+        }
+        if (afterSuccess) afterSuccess()
+      }
+      const onError = () => {
+        setAlert({
+          color: COLORS.ERROR,
+          ...(isAddMode
+            ? {
+                message: t('MEMBER_CREATION_WAS_DENIED'),
+              }
+            : {}),
+          ...(isEditMode
+            ? {
+                message: t('MEMBER_UPDATE_WAS_DENIED'),
+              }
+            : {}),
+          show: true,
+        })
+        if (afterError) afterError()
+      }
 
-      if (mode === FORM_MODE.ADD)
-        api({ body: form }).then(onSuccess).catch(onError)
-      if (mode === FORM_MODE.EDIT)
+      if (isAddMode) api({ body: form }).then(onSuccess).catch(onError)
+      if (isEditMode)
         api({ id: get(setValue, 'id', ''), body: form })
           .then(onSuccess)
           .catch(onError)

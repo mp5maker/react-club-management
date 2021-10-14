@@ -8,6 +8,7 @@ import apiHelper from '../../api/apiHelper'
 import Box from '../../components/box'
 import Button from '../../components/button'
 import Header from '../../components/header'
+import routes from '../../constants/routes'
 import { FORM_MODE } from '../../constants/settings'
 import MemberForm from '../../forms/member'
 import useLanguage from '../../hooks/useLanguage'
@@ -20,6 +21,10 @@ const EditMember: React.FC<IEditMemberProps> = (): JSX.Element => {
   const params = useParams()
   const id = get(params, 'id', '')
   const [editData, setEditData] = React.useState<IMembers | null>(null)
+
+  const afterMemberUpdate = () => {
+    history.push(routes.root.path)
+  }
 
   React.useEffect(() => {
     const getMember = () => {
@@ -55,6 +60,7 @@ const EditMember: React.FC<IEditMemberProps> = (): JSX.Element => {
         <Box style={{ width: 500, padding: 'var(--medium)' }}>
           {editData ? (
             <MemberForm
+              afterSuccess={afterMemberUpdate}
               buttonLabel={t('UPDATE_MEMBER')}
               setValue={editData}
               mode={FORM_MODE.EDIT}

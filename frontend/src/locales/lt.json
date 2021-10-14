@@ -23,5 +23,9 @@
   "UPDATE_MEMBER": "atnaujinti narį",
   "THIS_FIELD_IS_REQUIRED": "Šį lauką būtina užpildyti",
   "INVALID_EMAIL_ADDRESS": "Neteisingas el. pašto adresas",
-  "INVALID_URL": "neteisingas URL"
+  "INVALID_URL": "neteisingas URL",
+  "MEMBER_SUCCESSFULLY_CREATED": "narys sėkmingai sukurtas",
+  "MEMBER_CREATION_WAS_DENIED": "narių sukūrimas buvo paneigtas",
+  "MEMBER_SUCCESSFULLY_UPDATED": "narys sėkmingai atnaujintas",
+  "MEMBER_UPDATE_WAS_DENIED": "nario atnaujinimas buvo atmestas"
 }
