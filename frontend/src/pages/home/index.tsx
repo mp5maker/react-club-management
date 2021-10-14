@@ -6,8 +6,11 @@ import {
   faTrash,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { AxiosError, AxiosResponse } from 'axios'
+import get from 'lodash/get'
 import * as React from 'react'
 import { v4 } from 'uuid'
+import apiHelper from '../../api/apiHelper'
 import Box from '../../components/box'
 import Button from '../../components/button'
 import Card from '../../components/card'
@@ -50,7 +53,16 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
   }
 
   const removeMember = ({ row }: { row: IMembers }) => {
-    console.log(row)
+    const id = get(row, 'id', 0)
+    const onSuccess = (response: AxiosResponse) => {
+      console.debug(response)
+    }
+
+    const onError = (error: AxiosError) => {
+      console.debug(error)
+    }
+
+    apiHelper.members.remove({ id }).then(onSuccess).catch(onError)
   }
 
   const memberHeaders = {
@@ -169,7 +181,7 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
   const CardContent = (
     <Box className={'card-collection-container'}>
       {members.map((item: IMembers, index: number) => {
-        return <Card item={item} key={`${generatedID}-${index}`}/>
+        return <Card item={item} key={`${generatedID}-${index}`} />
       })}
     </Box>
   )

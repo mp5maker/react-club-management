@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express'
 import multer from 'multer'
 import path from 'path'
-import { getMembers, createMember } from './members'
+import { getMembers, createMember, deleteMember } from './members'
 
 const storage = multer.diskStorage({
   destination: function(_req, _file, cb) {
@@ -28,5 +28,6 @@ router.get('/', (_req: Request, res: Response) => {
 
 router.get('/members', getMembers)
 router.post('/members', upload.single('profile_photo'), createMember)
+router.delete('/members/:id', deleteMember)
 
 export default router
