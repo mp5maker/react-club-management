@@ -7,6 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as React from 'react'
+import { v4 } from 'uuid'
 import Box from '../../components/box'
 import Button from '../../components/button'
 import Card from '../../components/card'
@@ -20,6 +21,7 @@ import useLanguage from '../../hooks/useLanguage'
 import useMembers from '../../hooks/useMembers'
 
 interface IHomeProps {}
+const generatedID = v4()
 
 enum HOME_VIEW_MODE {
   TABLE = 'TABLE',
@@ -166,8 +168,8 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
 
   const CardContent = (
     <Box className={'card-collection-container'}>
-      {members.map((item: IMembers) => {
-        return <Card item={item} />
+      {members.map((item: IMembers, index: number) => {
+        return <Card item={item} key={`${generatedID}-${index}`}/>
       })}
     </Box>
   )

@@ -170,7 +170,7 @@ code {
 }
 
 [class$='-page-container'] {
-  height: calc(100vh - 60px);
+  min-height: calc(100vh - 60px);
   padding-top: var(--extraSmall);
   @media only screen and (min-width: 768px) {
     padding-left: 250px;
