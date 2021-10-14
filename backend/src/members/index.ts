@@ -21,6 +21,13 @@ const getMembers = async (_req: Request, res: Response) => {
   return res.status(200).json(data)
 }
 
+const getMember = async (req: Request, res: Response) => {
+  const id = get(req, 'params.id', '')
+  const members = await apiHelper.members.get({ id })
+  const data = get(members, 'data', {})
+  return res.status(200).json(data)
+}
+
 const deleteMember = async (req: Request, res: Response) => {
   const id = get(req, 'params.id', '')
   if (id) {
@@ -50,4 +57,4 @@ const createMember = async (req: Request, res: Response) => {
   }
 }
 
-export { getMembers, createMember, deleteMember }
+export { getMembers, getMember, createMember, deleteMember }

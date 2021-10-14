@@ -1,18 +1,18 @@
 import express, { Request, Response } from 'express'
 import multer from 'multer'
 import path from 'path'
-import { getMembers, createMember, deleteMember } from './members'
+import { createMember, deleteMember, getMember, getMembers } from './members'
 
 const storage = multer.diskStorage({
-  destination: function(_req, _file, cb) {
+  destination: function (_req, _file, cb) {
     cb(null, path.join('..', '..', 'public/members'))
   },
-  filename: function(_req, file, cb) {
+  filename: function (_req, file, cb) {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9)
     cb(null, file.fieldname + '-' + uniqueSuffix)
-  }
+  },
 })
-const upload = multer({ storage  })
+const upload = multer({ storage })
 
 const router = express.Router()
 
@@ -27,6 +27,7 @@ router.get('/', (_req: Request, res: Response) => {
 })
 
 router.get('/members', getMembers)
+router.get('/members/:id', getMember)
 router.post('/members', upload.single('profile_photo'), createMember)
 router.delete('/members/:id', deleteMember)
 
