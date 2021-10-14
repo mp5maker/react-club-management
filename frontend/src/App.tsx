@@ -1,6 +1,7 @@
 import { createBrowserHistory } from 'history'
 import React from 'react'
 import { Route, Router, Switch } from 'react-router-dom'
+import Alert from './components/alert'
 import Body from './components/body'
 import Sidebar from './components/sidebar'
 import routes from './constants/routes'
@@ -17,6 +18,7 @@ const App = () => {
 
   return (
     <Body>
+      <Alert />
       <Router history={history}>
         <Sidebar />
         <Switch>

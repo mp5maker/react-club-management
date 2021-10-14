@@ -20,6 +20,7 @@ import Table from '../../components/table'
 import Typography from '../../components/typography'
 import { BUTTON_VARIANT, COLORS } from '../../constants/settings'
 import MemberForm from '../../forms/member'
+import useAlert from '../../hooks/useAlert'
 import useLanguage from '../../hooks/useLanguage'
 import useMembers from '../../hooks/useMembers'
 
@@ -32,8 +33,9 @@ enum HOME_VIEW_MODE {
 }
 
 const Home: React.FC<IHomeProps> = (): JSX.Element => {
-  const { members } = useMembers()
+  const { members, getAllMembers } = useMembers()
   const { t } = useLanguage()
+  const { setAlert } = useAlert()
   const [showAddModal, setShowAddModal] = React.useState<boolean>(false)
   const [viewType, setViewType] = React.useState<HOME_VIEW_MODE>(
     HOME_VIEW_MODE.TABLE
@@ -56,10 +58,21 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
     const id = get(row, 'id', 0)
     const onSuccess = (response: AxiosResponse) => {
       console.debug(response)
+      setAlert({
+        message: t('MEMBER_SUCCESSFULLY_DELETED'),
+        color: COLORS.SUCCESS,
+        show: true,
+      })
+      getAllMembers()
     }
 
     const onError = (error: AxiosError) => {
       console.debug(error)
+      setAlert({
+        message: t('MEMBER_CANNOT_BE_DELETED'),
+        color: COLORS.ERROR,
+        show: true,
+      })
     }
 
     apiHelper.members.remove({ id }).then(onSuccess).catch(onError)

@@ -36,6 +36,7 @@ $zIndexes: (
   'sidebar': 10,
   'header': 5,
   'modal': 20,
+  'alert': 30
 );
 @each $name, $zIndex in $zIndexes {
   .zindex-#{$name} {
@@ -137,6 +138,13 @@ $zIndexes: (
   --text1: var(--text1Dark);
   --text2: var(--text2Dark);
   --boxShadow: var(--boxShadowDark);
+}
+
+$colors: ("primary": var(--primary), "secondary": var(--secondary), "info": var(--info), "success": var(--success), "error": var(--error));
+@each $name, $color in $colors {
+  .background-#{$name} {
+    background-color: $color;
+  }
 }
 
 html,

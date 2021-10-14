@@ -15,5 +15,6 @@
   "WEBSITE": "Interneto svetainė",
   "OCCUPATION": "Okupacija",
   "ADD_MEMBER": "pridėti narį",
-  "PLEASE_ENTER_YOUR_NAME": "įveskite savo vardą"
+  "PLEASE_ENTER_YOUR_NAME": "įveskite savo vardą",
+  "MEMBER_SUCCESSFULLY_DELETED": "narys sėkmingai ištrintas"
 }

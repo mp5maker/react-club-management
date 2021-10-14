@@ -1,0 +1,12 @@
+.alert-container {
+  top: -9999px;
+  left: 0;
+  position: fixed;
+  transition: all linear 0.25s;
+  width: 100%;
+  padding: var(--medium);
+  &.open {
+    top: 0;
+    transition: all ease-in-out 0.25s;
+  }
+}
