@@ -11,12 +11,15 @@ interface IModalProps {
   isVisible: boolean
   title: string
   onClose: () => any | void
+  footer?: React.ReactNode
 }
 
 const Modal: React.FC<IModalProps> = ({
   isVisible,
   title,
   onClose,
+  children,
+  footer,
 }): JSX.Element => {
   return (
     <Box
@@ -34,8 +37,8 @@ const Modal: React.FC<IModalProps> = ({
             </Button>
           </Box>
         </Box>
-        <Box className="modal-content"></Box>
-        <Box className="modal-footer"></Box>
+        <Box className="modal-content">{children}</Box>
+        {footer ? <Box className="modal-footer">{footer}</Box> : <></>}
       </Box>
     </Box>
   )

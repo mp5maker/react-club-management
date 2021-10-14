@@ -27,6 +27,7 @@ interface ITableProps<T> {
     column: keyof T
     columnIndex: number
   }) => React.ReactNode
+  rowOptions?: ({ row }: { row: T }) => React.ReactNode
 }
 
 const generatedID = v4()
@@ -38,6 +39,7 @@ const Table = <T,>({
   customBody,
   list,
   autoSerial = true,
+  rowOptions,
 }: ITableProps<T>): JSX.Element => {
   return (
     <Box className={'table-container'}>
@@ -82,6 +84,11 @@ const Table = <T,>({
                     >
                       {customBody ? (
                         customBody({ row, column, columnIndex, rowIndex })
+                      ) : (
+                        <></>
+                      )}
+                      {rowOptions && columnIndex === properties.length - 1 ? (
+                        <Box className={'row-options'}>{rowOptions({row})}</Box>
                       ) : (
                         <></>
                       )}

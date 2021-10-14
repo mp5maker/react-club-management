@@ -13,9 +13,11 @@
       top: 0;
       background-color: var(--background2);
     }
-    thead, tbody {
+    thead,
+    tbody {
       tr {
-        th, td {
+        th,
+        td {
           text-align: left;
           word-wrap: break-word;
           &:first-child {
@@ -23,6 +25,41 @@
           }
           &:last-child {
             padding-right: var(--medium);
+          }
+        }
+      }
+    }
+    tbody {
+      tr {
+        td {
+          position: relative;
+          .row-options {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+          }
+          &:first-child {
+            border-left: 1px solid transparent;
+          }
+          &:last-child {
+            border-right: 2px solid transparent;
+          }
+        }
+        &:hover {
+          td {
+            border-top: 1px solid var(--secondary);
+            border-bottom: 1px solid var(--secondary);
+            &:first-child {
+              border-left: 1px solid var(--secondary);
+            }
+            &:last-child {
+              border-right: 2px solid var(--secondary);
+            }
+            .row-options {
+              display: block;
+            }
           }
         }
       }
