@@ -7,4 +7,5 @@ interface IMembers {
   phone: string
   website: string
   occupation: string
+  profile_photo?: string
 }

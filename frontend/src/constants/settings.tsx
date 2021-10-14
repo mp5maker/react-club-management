@@ -82,3 +82,10 @@ export enum TYPOGRAPHY_COMPONENT {
   TIME = 'time',
   SMALL = 'small',
 }
+
+
+export enum IMAGE_AVATAR_SIZE {
+  SMALL = 30,
+  MEDIUM = 60,
+  LARGE = 180
+}

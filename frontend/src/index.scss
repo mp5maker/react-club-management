@@ -183,3 +183,12 @@ code {
     display: block;
   }
 }
+
+.card-collection-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .card-container {
+    margin: var(--small);
+  }
+}

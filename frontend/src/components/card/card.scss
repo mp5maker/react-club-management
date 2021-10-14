@@ -1,0 +1,20 @@
+.card-container {
+  height: 400px;
+  width: 250px;
+  box-shadow: var(--boxShadow);
+  border-radius: var(--commonBorderRadius);
+  transform: scale(0.99);
+  transition: all linear 0.25s;
+  .card-avatar {
+    height: 200px;
+    width: 250px;
+  }
+  .card-info {
+    padding: var(--medium);
+    font-weight: bold;
+  }
+  &:hover {
+    transform: scale(1);
+    transition: all ease-in-out 0.25s;
+  }
+}

@@ -6,10 +6,10 @@ import {
   faTrash,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import get from 'lodash/get'
 import * as React from 'react'
 import Box from '../../components/box'
 import Button from '../../components/button'
+import Card from '../../components/card'
 import Header from '../../components/header'
 import Modal from '../../components/modal'
 import Table from '../../components/table'
@@ -39,9 +39,8 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
   const openAddMember = () => setShowAddModal(true)
   const closeAddMember = () => setShowAddModal(false)
 
-  const changeViewMode = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const value = get(event, 'target.value', '')
-    setViewType(value)
+  const changeViewMode = (mode: HOME_VIEW_MODE) => {
+    setViewType(mode)
   }
 
   const editMember = ({ row }: { row: IMembers }) => {
@@ -83,9 +82,8 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
           </Button>
           {isCard ? (
             <Button
-              onClick={changeViewMode}
+              onClick={() => changeViewMode(HOME_VIEW_MODE.TABLE)}
               className={'circle-medium'}
-              value={HOME_VIEW_MODE.TABLE}
               style={{ marginLeft: 'var(--small)' }}
             >
               <FontAwesomeIcon icon={faTable} />
@@ -95,9 +93,8 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
           )}
           {isTable ? (
             <Button
-              onClick={changeViewMode}
+              onClick={() => changeViewMode(HOME_VIEW_MODE.CARD)}
               className={'circle-medium'}
-              value={HOME_VIEW_MODE.CARD}
               style={{ marginLeft: 'var(--small)' }}
             >
               <FontAwesomeIcon icon={faIdCard} />
@@ -167,6 +164,14 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
     />
   )
 
+  const CardContent = (
+    <Box className={'card-collection-container'}>
+      {members.map((item: IMembers) => {
+        return <Card item={item} />
+      })}
+    </Box>
+  )
+
   return (
     <>
       {AddMemberModalContent}
@@ -174,6 +179,7 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
         <Box>
           {HeaderContent}
           {isTable ? TableContent : <></>}
+          {isCard ? CardContent : <></>}
         </Box>
       </Box>
     </>
