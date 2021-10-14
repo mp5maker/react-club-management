@@ -8,7 +8,8 @@
       "address": "Kulas Light",
       "phone": "1-770-736-8031 x56442",
       "website": "hildegard.org",
-      "occupation": "Accountant"
+      "occupation": "Accountant",
+      "profile_photo": "https://picsum.photos/300/400"
     },
     {
       "id": 2,
@@ -18,7 +19,8 @@
       "address": "Victor Plains",
       "phone": "010-692-6593 x09125",
       "website": "anastasia.net",
-      "occupation": "Receptionist"
+      "occupation": "Receptionist",
+      "profile_photo": "https://picsum.photos/400/500"
     },
     {
       "id": 3,
@@ -28,7 +30,8 @@
       "address": "Douglas Extension",
       "phone": "1-463-123-4447",
       "website": "ramiro.info",
-      "occupation": "Software Developer"
+      "occupation": "Software Developer",
+      "profile_photo": "https://picsum.photos/500/600"
     },
     {
       "id": 4,
@@ -38,7 +41,8 @@
       "address": "Hoeger Mall",
       "phone": "493-170-9623 x156",
       "website": "kale.biz",
-      "occupation": "Plumber"
+      "occupation": "Plumber",
+      "profile_photo": "https://picsum.photos/600/700"
     },
     {
       "id": 5,
@@ -48,7 +52,8 @@
       "address": "Skiles Walks",
       "phone": "(254)954-1289",
       "website": "demarco.info",
-      "occupation": "Lawyer"
+      "occupation": "Lawyer",
+      "profile_photo": "https://picsum.photos/700/800"
     },
     {
       "id": 6,
@@ -58,7 +63,8 @@
       "address": "Norberto Crossing",
       "phone": "1-477-935-8478 x6430",
       "website": "ola.org",
-      "occupation": "Surgeon"
+      "occupation": "Surgeon",
+      "profile_photo": "https://picsum.photos/800/900"
     },
     {
       "id": 7,
@@ -68,7 +74,8 @@
       "address": "Rex Trail",
       "phone": "210.067.6132",
       "website": "elvis.io",
-      "occupation": "Musician"
+      "occupation": "Musician",
+      "profile_photo": "https://picsum.photos/900/1000"
     },
     {
       "id": 8,
@@ -78,7 +85,8 @@
       "address": "Ellsworth Summit",
       "phone": "586.493.6943 x140",
       "website": "jacynthe.com",
-      "occupation": "Sales Person"
+      "occupation": "Sales Person",
+      "profile_photo": "https://picsum.photos/1000/1100"
     },
     {
       "id": 9,
@@ -88,7 +96,8 @@
       "address": "Dayna Park",
       "phone": "(775)976-6794 x41206",
       "website": "conrad.com",
-      "occupation": "Marketing"
+      "occupation": "Marketing",
+      "profile_photo": "https://picsum.photos/1100/1200"
     },
     {
       "id": 10,
@@ -98,7 +107,8 @@
       "address": "Kattie Turnpike",
       "phone": "024-648-3804",
       "website": "ambrose.net",
-      "occupation": "Driver"
+      "occupation": "Driver",
+      "profile_photo": "https://picsum.photos/1200/1300"
     }
   ]
 }

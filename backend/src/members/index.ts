@@ -1,6 +1,8 @@
 import { Request, Response } from 'express'
 import get from 'lodash/get'
 import apiHelper from '../api/apiHelper'
+import path from 'path'
+import fs from 'fs'
 
 interface IMembers {
   id: number
@@ -19,4 +21,23 @@ const getMembers = async(_req: Request, res: Response) => {
   return res.status(200).json(data)
 }
 
-export { getMembers }
+const createMember = async(req: Request, res: Response) => {
+  const handleError = (error: any, res: any) =>  res.status(500).json({ data: 'Image could not be uploaded properly '})
+
+  //  Uploading Imaging
+  const temporaryPath = get(req, 'profile_photo.path', '')
+  const fileName = get(req, 'profile_photo.name', '')
+  const targetPath = path.join('..', '..', `public/members/${fileName}`)
+  const originalName = get(req, 'profile_photo.originalname').toLowerCase()
+  if (['.png', '.jpg', '.jpeg'].includes(path.extname(originalName))) {
+    fs.rename(temporaryPath, targetPath, (error) => {
+      if (error) return handleError(error, res)
+      return res.status(201)
+        .json({
+          data: "Data created successfull"
+        })
+    })
+  }
+}
+
+export { getMembers, createMember }
