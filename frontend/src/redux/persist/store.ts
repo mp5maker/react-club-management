@@ -7,11 +7,13 @@ import thunk from 'redux-thunk'
 import themeReducer from "./themeReducer";
 import languageReducer from "./languageReducer";
 import sidebarReducer from "./sidebarReducer";
+import pageReducer from "./pageReducer";
 
 const reducers = combineReducers({
   theme: themeReducer,
   language: languageReducer,
-  sidebar: sidebarReducer
+  sidebar: sidebarReducer,
+  viewMode: pageReducer
 })
 
 const persistConfiguration = {

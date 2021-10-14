@@ -19,36 +19,31 @@ import Header from '../../components/header'
 import Table from '../../components/table'
 import Typography from '../../components/typography'
 import routes from '../../constants/routes'
-import { BUTTON_VARIANT, COLORS } from '../../constants/settings'
+import { BUTTON_VARIANT, COLORS, VIEW_MODE } from '../../constants/settings'
 import useAlert from '../../hooks/useAlert'
 import useLanguage from '../../hooks/useLanguage'
 import useMembers from '../../hooks/useMembers'
+import useViewMode from '../../hooks/useViewMode'
 
 interface IHomeProps {}
 const generatedID = v4()
-
-enum HOME_VIEW_MODE {
-  TABLE = 'TABLE',
-  CARD = 'CARD',
-}
 
 const Home: React.FC<IHomeProps> = (): JSX.Element => {
   const { members, getAllMembers } = useMembers()
   const { t } = useLanguage()
   const { setAlert } = useAlert()
   const history = useHistory()
-  const [viewType, setViewType] = React.useState<HOME_VIEW_MODE>(
-    HOME_VIEW_MODE.CARD
-  )
-  const isTable = viewType === HOME_VIEW_MODE.TABLE
-  const isCard = viewType === HOME_VIEW_MODE.CARD
+  const { viewMode, changeViewMode } = useViewMode()
+  console.log('viewMode', viewMode)
+  const isTable = viewMode === VIEW_MODE.TABLE
+  const isCard = viewMode === VIEW_MODE.CARD
 
   const goToAddMember = () => {
     history.push(routes.addMember.path)
   }
 
-  const changeViewMode = (mode: HOME_VIEW_MODE) => {
-    setViewType(mode)
+  const handleViewMode = (mode: VIEW_MODE) => {
+    changeViewMode(mode)
   }
 
   const editMember = ({ row }: { row: IMembers }) => {
@@ -101,7 +96,7 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
           </Button>
           {isCard ? (
             <Button
-              onClick={() => changeViewMode(HOME_VIEW_MODE.TABLE)}
+              onClick={() => handleViewMode(VIEW_MODE.TABLE)}
               className={'circle-medium'}
               style={{ marginLeft: 'var(--small)' }}
             >
@@ -112,7 +107,7 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
           )}
           {isTable ? (
             <Button
-              onClick={() => changeViewMode(HOME_VIEW_MODE.CARD)}
+              onClick={() => handleViewMode(VIEW_MODE.CARD)}
               className={'circle-medium'}
               style={{ marginLeft: 'var(--small)' }}
             >

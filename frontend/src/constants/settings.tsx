@@ -6,6 +6,7 @@ export enum PERSIST {
   THEME = 'theme',
   LANGUAGE = 'language',
   SIDEBAR = 'sidebar',
+  VIEW_MODE = 'viewMode'
 }
 
 export enum THEME {
@@ -92,4 +93,9 @@ export enum IMAGE_AVATAR_SIZE {
 export enum FORM_MODE {
   ADD = 'add',
   EDIT = 'edit',
+}
+
+export enum VIEW_MODE {
+  TABLE = 'TABLE',
+  CARD = 'CARD',
 }
