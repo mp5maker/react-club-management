@@ -16,6 +16,7 @@ import Box from '../../components/box'
 import Button from '../../components/button'
 import Card from '../../components/card'
 import Header from '../../components/header'
+import Modal from '../../components/modal'
 import Table from '../../components/table'
 import Typography from '../../components/typography'
 import routes from '../../constants/routes'
@@ -34,7 +35,7 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
   const { setAlert } = useAlert()
   const history = useHistory()
   const { viewMode, changeViewMode } = useViewMode()
-  console.log('viewMode', viewMode)
+  const [deleteObj, setDeleteObj] = React.useState<IMembers | null>(null)
   const isTable = viewMode === VIEW_MODE.TABLE
   const isCard = viewMode === VIEW_MODE.CARD
 
@@ -51,8 +52,7 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
     history.push(`${routes.editMember.rawPath}/${id}`)
   }
 
-  const removeMember = ({ row }: { row: IMembers }) => {
-    const id = get(row, 'id', 0)
+  const removeMember = () => {
     const onSuccess = (response: AxiosResponse) => {
       console.debug(response)
       setAlert({
@@ -60,6 +60,7 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
         color: COLORS.SUCCESS,
         show: true,
       })
+      setDeleteObj(null)
       getAllMembers()
     }
 
@@ -72,7 +73,16 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
       })
     }
 
-    apiHelper.members.remove({ id }).then(onSuccess).catch(onError)
+    if (deleteObj) {
+      apiHelper.members
+        .remove({ id: get(deleteObj, 'id', '') as number })
+        .then(onSuccess)
+        .catch(onError)
+    }
+  }
+  const closeDeleteConfirmation = () => setDeleteObj(null)
+  const openDeleteConfirmation = ({ row }: { row: IMembers }) => {
+    setDeleteObj(row)
   }
 
   const memberHeaders = {
@@ -85,6 +95,29 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
     website: t('WEBSITE'),
     occupation: t('OCCUPATION'),
   }
+
+  const DeleteModalContent = (
+    <Modal
+      title={t('REMOVE_MEMBER')}
+      isVisible={deleteObj ? true : false}
+      onClose={closeDeleteConfirmation}
+      footer={
+        <Box className={'grid-two'} style={{ rowGap: '20px' }}>
+          <Button color={COLORS.SUCCESS} onClick={removeMember}>
+            <Typography style={{ margin: 0 }}>{t('CONFIRM')}</Typography>
+          </Button>
+          <Button color={COLORS.ERROR} onClick={closeDeleteConfirmation}>
+            <Typography style={{ margin: 0 }}>{t('CANCEL')}</Typography>
+          </Button>
+        </Box>
+      }
+    >
+      <Typography className={'center'}>{t('ARE_YOU_SURE')}</Typography>
+      <Typography className={'center'}>
+        {t('YOU_WANT_TO_REMOVE')} {get(deleteObj, 'name', '')} ?
+      </Typography>
+    </Modal>
+  )
 
   const HeaderContent = (
     <Header
@@ -138,7 +171,7 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
                 <FontAwesomeIcon icon={faPencilAlt} />
               </Button>
               <Button
-                onClick={() => removeMember({ row })}
+                onClick={() => openDeleteConfirmation({ row })}
                 className={'circle-medium'}
                 variant={BUTTON_VARIANT.CONTAINED}
                 color={COLORS.SECONDARY}
@@ -188,6 +221,7 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
 
   return (
     <>
+      {DeleteModalContent}
       <Box className={'home-page-container'}>
         <Box>
           {HeaderContent}

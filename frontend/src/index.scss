@@ -44,11 +44,23 @@ $zIndexes: (
   'sidebar': 10,
   'header': 5,
   'modal': 20,
-  'alert': 30
+  'alert': 30,
 );
 @each $name, $zIndex in $zIndexes {
   .zindex-#{$name} {
     z-index: $zIndex;
+  }
+}
+
+$columns: (
+  'two': 2,
+  'three': 3,
+);
+@each $name, $column in $columns {
+  .grid-#{$name} {
+    display: grid;
+    gap: var(--small);
+    grid-template-columns: repeat($column, 1fr);
   }
 }
 
@@ -148,7 +160,13 @@ $zIndexes: (
   --boxShadow: var(--boxShadowDark);
 }
 
-$colors: ("primary": var(--primary), "secondary": var(--secondary), "info": var(--info), "success": var(--success), "error": var(--error));
+$colors: (
+  'primary': var(--primary),
+  'secondary': var(--secondary),
+  'info': var(--info),
+  'success': var(--success),
+  'error': var(--error),
+);
 @each $name, $color in $colors {
   .background-#{$name} {
     background-color: $color;

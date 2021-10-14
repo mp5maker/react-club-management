@@ -11,12 +11,22 @@
     height: 100%;
     opacity: 1;
     .modal-main {
+      display: flex;
+      flex-direction: column;
+      min-height: 250px;
       box-shadow: var(--boxShadow);
-      margin: 50px auto;
+      margin: 10% auto;
       padding: 20px;
       width: 500px;
       @media only screen and (max-width: 767px) {
         width: 80%;
+      }
+      .modal-content {
+        height: 100%;
+        flex: 1;
+      }
+      .modal-footer {
+        margin-top: 'auto';
       }
     }
   }

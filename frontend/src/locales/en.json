@@ -27,5 +27,8 @@
   "MEMBER_SUCCESSFULLY_CREATED": "Member successfully created",
   "MEMBER_CREATION_WAS_DENIED": "Member creation was denied",
   "MEMBER_SUCCESSFULLY_UPDATED": "Member successfully updated",
-  "MEMBER_UPDATE_WAS_DENIED": "Member update was denied"
+  "MEMBER_UPDATE_WAS_DENIED": "Member update was denied",
+  "REMOVE_MEMBER": "Remove Member",
+  "ARE_YOU_SURE": "Are you sure",
+  "YOU_WANT_TO_REMOVE": "You want to remove"
 }

@@ -1,17 +1,6 @@
 {
   "members": [
     {
-      "id": 1,
-      "name": "Leanne Graham",
-      "username": "Bret",
-      "email": "Sincere@april.biz",
-      "address": "Kulas Light",
-      "phone": "1-770-736-8031 x56442",
-      "website": "hildegard.org",
-      "occupation": "Accountant",
-      "profile_photo": "https://picsum.photos/300/400"
-    },
-    {
       "id": 2,
       "name": "Ervin Howell",
       "username": "Antonette",
