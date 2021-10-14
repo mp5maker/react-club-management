@@ -1,7 +1,10 @@
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { AxiosError, AxiosResponse } from 'axios'
+import get from 'lodash/get'
 import * as React from 'react'
-import { useHistory } from 'react-router'
+import { useHistory, useParams } from 'react-router'
+import apiHelper from '../../api/apiHelper'
 import Box from '../../components/box'
 import Button from '../../components/button'
 import Header from '../../components/header'
@@ -13,6 +16,24 @@ interface IEditMemberProps {}
 const EditMember: React.FC<IEditMemberProps> = (): JSX.Element => {
   const { t } = useLanguage()
   const history = useHistory()
+  const params = useParams()
+  const id = get(params, 'id', '')
+
+  React.useEffect(() => {
+    const getMember = () => {
+      if (id) {
+        const onSuccess = (response: AxiosResponse) => {
+          const data = get(response, 'data', '')
+          console.log(data)
+        }
+
+        const onError = (error: AxiosError) => console.debug(error)
+
+        apiHelper.members.get({ id }).then(onSuccess).catch(onError)
+      }
+    }
+    getMember()
+  }, [id])
 
   const goBack = () => history.goBack()
 
