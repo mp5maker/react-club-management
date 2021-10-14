@@ -8,6 +8,7 @@ import Modal from '../../components/modal'
 import Table from '../../components/table'
 import Typography from '../../components/typography'
 import { BUTTON_VARIANT, COLORS } from '../../constants/settings'
+import MemberForm from '../../forms/member'
 import useLanguage from '../../hooks/useLanguage'
 import useMembers from '../../hooks/useMembers'
 
@@ -46,7 +47,9 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
         isVisible={showAddModal}
         onClose={closeAddMember}
         title={t('ADD_MEMBER')}
-      />
+      >
+        <MemberForm />
+      </Modal>
       <Box className={'home-page-container'}>
         <Box>
           <Header

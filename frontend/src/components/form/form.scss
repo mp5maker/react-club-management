@@ -1,0 +1,10 @@
+form {
+  fieldset {
+    border-radius: var(--commonBorderRadius);
+    border-color: var(--text2);
+    padding: var(--medium);
+  }
+  .form-control {
+    margin-bottom: var(--medium);
+  }
+}

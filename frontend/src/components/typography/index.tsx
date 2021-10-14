@@ -48,6 +48,8 @@ const Typography: React.FC<ITypographProps> = ({
       return <blockquote {...props}>{children}</blockquote>
     case TYPOGRAPHY_COMPONENT.P:
       return <p {...props}>{children}</p>
+    case TYPOGRAPHY_COMPONENT.SMALL:
+      return <small {...props}>{children}</small>
     default:
       return <p {...props}>{children}</p>
   }

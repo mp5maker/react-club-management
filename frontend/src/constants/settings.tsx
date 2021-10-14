@@ -5,7 +5,7 @@ export enum BACKEND {
 export enum PERSIST {
   THEME = 'theme',
   LANGUAGE = 'language',
-  SIDEBAR = 'sidebar'
+  SIDEBAR = 'sidebar',
 }
 
 export enum THEME {
@@ -20,7 +20,7 @@ export enum LANGUAGE {
 
 export enum SIDEBAR {
   OPEN = 'open',
-  CLOSE = 'close'
+  CLOSE = 'close',
 }
 
 export enum COLORS {
@@ -54,8 +54,8 @@ export enum TYPOGRAPHY_VARIANT {
   H4 = '1.5rem',
   H5 = '1.25rem',
   H6 = '1.125rem',
-  SUBTITLE_1 = '0.75rem',
-  SUBTITLE_2 = '0.875rem',
+  SUBTITLE_1 = '0.875rem',
+  SUBTITLE_2 = '0.75rem',
   BODY = '1rem',
 }
 
@@ -80,4 +80,5 @@ export enum TYPOGRAPHY_COMPONENT {
   BLOCK_QUOTE = 'blockquote',
   P = 'p',
   TIME = 'time',
+  SMALL = 'small',
 }

@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 $spacings: (
   'space-between': space-between,
   'flex-start': flex-start,
@@ -13,18 +15,18 @@ $spacings: (
 }
 
 $radius: (
-  'extra-small': 10px,
-  'small': 20px,
-  'medium': 40px,
-  'large': 80px,
-  'extra-large': 160px,
+  'extra-small': 10,
+  'small': 20,
+  'medium': 40,
+  'large': 80,
+  'extra-large': 160,
 );
 @each $name, $size in $radius {
   .circle-#{$name} {
     display: block;
-    height: $size;
-    width: $size;
-    border-radius: $size / 2;
+    height: #{$size}px;
+    width: #{$size}px;
+    border-radius: #{math.div($size, 2)}px;
     padding: 0;
     @extend .center;
   }
@@ -33,7 +35,7 @@ $radius: (
 $zIndexes: (
   'sidebar': 10,
   'header': 5,
-  'modal': 20
+  'modal': 20,
 );
 @each $name, $zIndex in $zIndexes {
   .zindex-#{$name} {
@@ -63,7 +65,7 @@ $zIndexes: (
   --background1Dark: #0a1929;
   --background2Dark: #061f3c;
   --text1Dark: #f5f5f5;
-  --text2Dark: #eeeeee;
+  --text2Dark: #6e6c6c;
   --boxShadowDark: 0 1px 15px 0 #495d67;
 
   --modalBackground: rgba(0, 0, 0, 0.4);
@@ -73,6 +75,8 @@ $zIndexes: (
   --medium: 1rem;
   --large: 1.5rem;
   --extraLarge: 2rem;
+
+  --commonBorderRadius: 3px;
 }
 
 @media (prefers-color-scheme: light) {
