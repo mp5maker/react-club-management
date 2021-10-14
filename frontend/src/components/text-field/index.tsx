@@ -5,9 +5,9 @@ import FieldError from '../field-error'
 import Typography from '../typography'
 import './text-field.scss'
 
-interface ITextFieldProps extends Partial<React.HTMLProps<HTMLInputElement>> {
+export interface ITextFieldProps extends Partial<React.HTMLProps<HTMLInputElement>> {
   error?: string
-  label?: string
+  label?: any
 }
 
 const TextField: React.FC<ITextFieldProps> = ({

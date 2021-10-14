@@ -9,17 +9,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { AxiosError, AxiosResponse } from 'axios'
 import get from 'lodash/get'
 import * as React from 'react'
+import { useHistory } from 'react-router'
 import { v4 } from 'uuid'
 import apiHelper from '../../api/apiHelper'
 import Box from '../../components/box'
 import Button from '../../components/button'
 import Card from '../../components/card'
 import Header from '../../components/header'
-import Modal from '../../components/modal'
 import Table from '../../components/table'
 import Typography from '../../components/typography'
+import routes from '../../constants/routes'
 import { BUTTON_VARIANT, COLORS } from '../../constants/settings'
-import MemberForm from '../../forms/member'
 import useAlert from '../../hooks/useAlert'
 import useLanguage from '../../hooks/useLanguage'
 import useMembers from '../../hooks/useMembers'
@@ -36,15 +36,16 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
   const { members, getAllMembers } = useMembers()
   const { t } = useLanguage()
   const { setAlert } = useAlert()
-  const [showAddModal, setShowAddModal] = React.useState<boolean>(false)
+  const history = useHistory()
   const [viewType, setViewType] = React.useState<HOME_VIEW_MODE>(
-    HOME_VIEW_MODE.TABLE
+    HOME_VIEW_MODE.CARD
   )
   const isTable = viewType === HOME_VIEW_MODE.TABLE
   const isCard = viewType === HOME_VIEW_MODE.CARD
 
-  const openAddMember = () => setShowAddModal(true)
-  const closeAddMember = () => setShowAddModal(false)
+  const goToAddMember = () => {
+    history.push(routes.addMember.path)
+  }
 
   const changeViewMode = (mode: HOME_VIEW_MODE) => {
     setViewType(mode)
@@ -89,22 +90,12 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
     occupation: t('OCCUPATION'),
   }
 
-  const AddMemberModalContent = (
-    <Modal
-      isVisible={showAddModal}
-      onClose={closeAddMember}
-      title={t('ADD_MEMBER')}
-    >
-      <MemberForm />
-    </Modal>
-  )
-
   const HeaderContent = (
     <Header
       title={t('MEMBERS')}
       right={
         <Box className={'space-between'}>
-          <Button onClick={openAddMember} className={'circle-medium'}>
+          <Button onClick={goToAddMember} className={'circle-medium'}>
             <FontAwesomeIcon icon={faPlus} />
           </Button>
           {isCard ? (
@@ -201,7 +192,6 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
 
   return (
     <>
-      {AddMemberModalContent}
       <Box className={'home-page-container'}>
         <Box>
           {HeaderContent}

@@ -30,6 +30,14 @@ $radius: (
     padding: 0;
     @extend .center;
   }
+  .circle-flex-#{$name} {
+    display: flex;
+    height: #{$size}px;
+    width: #{$size}px;
+    border-radius: #{math.div($size, 2)}px;
+    padding: 0;
+    @extend .center;
+  }
 }
 
 $zIndexes: (
@@ -144,6 +152,9 @@ $colors: ("primary": var(--primary), "secondary": var(--secondary), "info": var(
 @each $name, $color in $colors {
   .background-#{$name} {
     background-color: $color;
+  }
+  .border-#{$name} {
+    border: 1px solid $color;
   }
 }
 

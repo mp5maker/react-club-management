@@ -7,6 +7,7 @@ import Sidebar from './components/sidebar'
 import routes from './constants/routes'
 import useLanguage from './hooks/useLanguage'
 import useTheme from './hooks/useTheme'
+import AddMember from './pages/add-member'
 import Home from './pages/home'
 import Schedule from './pages/schedule'
 
@@ -27,6 +28,11 @@ const App = () => {
           <Route
             path={routes.schedule.path}
             component={Schedule}
+            exact={true}
+          />
+          <Route
+            path={routes.addMember.path}
+            component={AddMember}
             exact={true}
           />
         </Switch>

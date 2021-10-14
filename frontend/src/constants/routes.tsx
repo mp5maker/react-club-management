@@ -1,16 +1,20 @@
 const routes = {
   root: {
     path: '/',
-    label: "ROOT"
+    label: 'ROOT',
   },
   home: {
-    path: "/home",
-    label: "HOME"
+    path: '/home',
+    label: 'HOME',
   },
   schedule: {
-    path: "/schedule",
-    label: "SCHEDULE"
-  }
+    path: '/schedule',
+    label: 'SCHEDULE',
+  },
+  addMember: {
+    path: '/add-member',
+    label: 'ADD_MEMBER',
+  },
 }
 
 export default routes

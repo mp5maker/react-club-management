@@ -2,6 +2,7 @@ import * as React from 'react'
 import Box from '../../components/box'
 import Form from '../../components/form'
 import TextField from '../../components/text-field'
+import Upload from '../../components/upload'
 import useLanguage from '../../hooks/useLanguage'
 
 interface IMemberForm {
@@ -13,6 +14,12 @@ const MemberForm: React.FC<IMemberForm> = (): JSX.Element => {
 
   return (
     <Form fieldset={true}>
+      <Box className={'form-control'}>
+        <Upload
+          name={'profile_photo'}
+          id={'member-form-profile-photo'}
+        />
+      </Box>
       <Box className={'form-control'}>
         <TextField
           id={'member-form-name'}
