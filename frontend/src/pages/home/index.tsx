@@ -52,7 +52,8 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
   }
 
   const editMember = ({ row }: { row: IMembers }) => {
-    console.log(row)
+    const id = get(row, 'id', '')
+    history.push(`${routes.editMember.rawPath}/${id}`)
   }
 
   const removeMember = ({ row }: { row: IMembers }) => {

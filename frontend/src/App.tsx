@@ -8,6 +8,7 @@ import routes from './constants/routes'
 import useLanguage from './hooks/useLanguage'
 import useTheme from './hooks/useTheme'
 import AddMember from './pages/add-member'
+import EditMember from './pages/edit-member'
 import Home from './pages/home'
 import Schedule from './pages/schedule'
 
@@ -33,6 +34,11 @@ const App = () => {
           <Route
             path={routes.addMember.path}
             component={AddMember}
+            exact={true}
+          />
+          <Route
+            path={routes.editMember.path}
+            component={EditMember}
             exact={true}
           />
         </Switch>

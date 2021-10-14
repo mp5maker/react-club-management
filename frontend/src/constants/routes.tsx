@@ -15,6 +15,11 @@ const routes = {
     path: '/add-member',
     label: 'ADD_MEMBER',
   },
+  editMember: {
+    rawPath: '/edit-member',
+    path: '/edit-member/:id',
+    label: 'EDIT_MEMBER'
+  }
 }
 
 export default routes
