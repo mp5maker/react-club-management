@@ -1,5 +1,12 @@
-import { faPencilAlt, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
+import {
+  faIdCard,
+  faPencilAlt,
+  faPlus,
+  faTable,
+  faTrash,
+} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import get from 'lodash/get'
 import * as React from 'react'
 import Box from '../../components/box'
 import Button from '../../components/button'
@@ -14,13 +21,28 @@ import useMembers from '../../hooks/useMembers'
 
 interface IHomeProps {}
 
+enum HOME_VIEW_MODE {
+  TABLE = 'TABLE',
+  CARD = 'CARD',
+}
+
 const Home: React.FC<IHomeProps> = (): JSX.Element => {
   const { members } = useMembers()
   const { t } = useLanguage()
   const [showAddModal, setShowAddModal] = React.useState<boolean>(false)
+  const [viewType, setViewType] = React.useState<HOME_VIEW_MODE>(
+    HOME_VIEW_MODE.TABLE
+  )
+  const isTable = viewType === HOME_VIEW_MODE.TABLE
+  const isCard = viewType === HOME_VIEW_MODE.CARD
 
   const openAddMember = () => setShowAddModal(true)
   const closeAddMember = () => setShowAddModal(false)
+
+  const changeViewMode = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const value = get(event, 'target.value', '')
+    setViewType(value)
+  }
 
   const editMember = ({ row }: { row: IMembers }) => {
     console.log(row)
@@ -41,81 +63,117 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
     occupation: t('OCCUPATION'),
   }
 
+  const AddMemberModalContent = (
+    <Modal
+      isVisible={showAddModal}
+      onClose={closeAddMember}
+      title={t('ADD_MEMBER')}
+    >
+      <MemberForm />
+    </Modal>
+  )
+
+  const HeaderContent = (
+    <Header
+      title={t('MEMBERS')}
+      right={
+        <Box className={'space-between'}>
+          <Button onClick={openAddMember} className={'circle-medium'}>
+            <FontAwesomeIcon icon={faPlus} />
+          </Button>
+          {isCard ? (
+            <Button
+              onClick={changeViewMode}
+              className={'circle-medium'}
+              value={HOME_VIEW_MODE.TABLE}
+              style={{ marginLeft: 'var(--small)' }}
+            >
+              <FontAwesomeIcon icon={faTable} />
+            </Button>
+          ) : (
+            <></>
+          )}
+          {isTable ? (
+            <Button
+              onClick={changeViewMode}
+              className={'circle-medium'}
+              value={HOME_VIEW_MODE.CARD}
+              style={{ marginLeft: 'var(--small)' }}
+            >
+              <FontAwesomeIcon icon={faIdCard} />
+            </Button>
+          ) : (
+            <></>
+          )}
+        </Box>
+      }
+    />
+  )
+
+  const TableContent = (
+    <Table
+      autoSerial={false}
+      rowOptions={({ row }) => {
+        return (
+          <Box className={'center'} style={{ height: '100%' }}>
+            <Box className={'space-between'}>
+              <Button
+                onClick={() => editMember({ row })}
+                className={'circle-medium'}
+                variant={BUTTON_VARIANT.CONTAINED}
+                color={COLORS.SECONDARY}
+                style={{ marginRight: 'var(--small)' }}
+              >
+                <FontAwesomeIcon icon={faPencilAlt} />
+              </Button>
+              <Button
+                onClick={() => removeMember({ row })}
+                className={'circle-medium'}
+                variant={BUTTON_VARIANT.CONTAINED}
+                color={COLORS.SECONDARY}
+                style={{ marginRight: 'var(--small)' }}
+              >
+                <FontAwesomeIcon icon={faTrash} />
+              </Button>
+            </Box>
+          </Box>
+        )
+      }}
+      list={members}
+      properties={[
+        'id',
+        'name',
+        'username',
+        'email',
+        'address',
+        'phone',
+        'website',
+        'occupation',
+      ]}
+      customHeader={({ row }) => {
+        return (
+          <Box>
+            <Typography>{memberHeaders[row]}</Typography>
+          </Box>
+        )
+      }}
+      customBody={({ row, column }) => {
+        return (
+          <Box>
+            <Typography>{row[column]}</Typography>
+          </Box>
+        )
+      }}
+    />
+  )
+
   return (
     <>
-      <Modal
-        isVisible={showAddModal}
-        onClose={closeAddMember}
-        title={t('ADD_MEMBER')}
-      >
-        <MemberForm />
-      </Modal>
+      {AddMemberModalContent}
       <Box className={'home-page-container'}>
         <Box>
-          <Header
-            title={t('MEMBERS')}
-            right={
-              <Box className={'space-between'}>
-                <Button onClick={openAddMember} className={'circle-medium'}>
-                  <FontAwesomeIcon icon={faPlus} />
-                </Button>
-              </Box>
-            }
-          />
-          <Table
-            autoSerial={false}
-            rowOptions={({ row }) => {
-              return (
-                <Box className={'center'} style={{ height: '100%' }}>
-                  <Box className={'space-between'}>
-                    <Button
-                      onClick={() => editMember({ row })}
-                      className={'circle-medium'}
-                      variant={BUTTON_VARIANT.CONTAINED}
-                      color={COLORS.SECONDARY}
-                      style={{ marginRight: 'var(--small)' }}
-                    >
-                      <FontAwesomeIcon icon={faPencilAlt} />
-                    </Button>
-                    <Button
-                      onClick={() => removeMember({ row })}
-                      className={'circle-medium'}
-                      variant={BUTTON_VARIANT.CONTAINED}
-                      color={COLORS.SECONDARY}
-                      style={{ marginRight: 'var(--small)' }}
-                    >
-                      <FontAwesomeIcon icon={faTrash} />
-                    </Button>
-                  </Box>
-                </Box>
-              )
-            }}
-            list={members}
-            properties={[
-              'id',
-              'name',
-              'username',
-              'email',
-              'address',
-              'phone',
-              'website',
-              'occupation',
-            ]}
-            customHeader={({ row }) => {
-              return (
-                <Box>
-                  <Typography>{memberHeaders[row]}</Typography>
-                </Box>
-              )
-            }}
-            customBody={({ row, column }) => {
-              return (
-                <Box>
-                  <Typography>{row[column]}</Typography>
-                </Box>
-              )
-            }}
-          />
+          {HeaderContent}
+          {isTable ? TableContent : <></>}
         </Box>
       </Box>
     </>
