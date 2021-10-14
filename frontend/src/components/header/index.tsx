@@ -24,7 +24,7 @@ const Header: React.FC<IHeaderProps> = ({
   right,
   title = '',
 }): JSX.Element => {
-  const { sidebar, changeSidebar } = useSidebar()
+  const { changeSidebar } = useSidebar()
 
   const openSidebar = () => changeSidebar(SIDEBAR.OPEN)
 
@@ -35,17 +35,13 @@ const Header: React.FC<IHeaderProps> = ({
       ) : (
         <Box className={'header-left-content'}>
           <Box className={'space-between'}>
-            {sidebar === SIDEBAR.CLOSE ? (
-              <Button
-                onClick={openSidebar}
-                className={'selective-visible'}
-                style={{ marginRight: 12 }}
-              >
-                <FontAwesomeIcon icon={faBars} />
-              </Button>
-            ) : (
-              <></>
-            )}
+            <Button
+              onClick={openSidebar}
+              className={'selective-visible'}
+              style={{ marginRight: 12 }}
+            >
+              <FontAwesomeIcon icon={faBars} />
+            </Button>
             <Typography
               component={TYPOGRAPHY_COMPONENT.H2}
               variant={TYPOGRAPHY_VARIANT.H2}
