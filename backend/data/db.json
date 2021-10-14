@@ -1,6 +1,19 @@
 {
   "members": [
     {
+      "id": 1,
+      "name": "Leanne Graham",
+      "username": "Bret",
+      "email": "Sincere@april.biz",
+      "address": "Kulas Light",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "occupation": "Accountant",
+      "profile_photo": {
+        "filename": "sample-1.jpeg"
+      }
+    },
+    {
       "id": 2,
       "name": "Ervin Howell",
       "username": "Antonette",
@@ -9,7 +22,9 @@
       "phone": "010-692-6593 x09125",
       "website": "anastasia.net",
       "occupation": "Receptionist",
-      "profile_photo": "https://picsum.photos/400/500"
+      "profile_photo": {
+        "filename": "sample-2.jpeg"
+      }
     },
     {
       "id": 3,
@@ -20,7 +35,9 @@
       "phone": "1-463-123-4447",
       "website": "ramiro.info",
       "occupation": "Software Developer",
-      "profile_photo": "https://picsum.photos/500/600"
+      "profile_photo": {
+        "filename": "sample-3.jpeg"
+      }
     },
     {
       "id": 4,
@@ -31,7 +48,9 @@
       "phone": "493-170-9623 x156",
       "website": "kale.biz",
       "occupation": "Plumber",
-      "profile_photo": "https://picsum.photos/600/700"
+      "profile_photo": {
+        "filename": "sample-4.jpeg"
+      }
     },
     {
       "id": 5,
@@ -42,7 +61,9 @@
       "phone": "(254)954-1289",
       "website": "demarco.info",
       "occupation": "Lawyer",
-      "profile_photo": "https://picsum.photos/700/800"
+      "profile_photo": {
+        "filename": "sample-5.jpeg"
+      }
     },
     {
       "id": 6,
@@ -53,7 +74,9 @@
       "phone": "1-477-935-8478 x6430",
       "website": "ola.org",
       "occupation": "Surgeon",
-      "profile_photo": "https://picsum.photos/800/900"
+      "profile_photo": {
+        "filename": "sample-6.jpeg"
+      }
     },
     {
       "id": 7,
@@ -64,7 +87,9 @@
       "phone": "210.067.6132",
       "website": "elvis.io",
       "occupation": "Musician",
-      "profile_photo": "https://picsum.photos/900/1000"
+      "profile_photo": {
+        "filename": "sample-7.jpeg"
+      }
     },
     {
       "id": 8,
@@ -75,7 +100,9 @@
       "phone": "586.493.6943 x140",
       "website": "jacynthe.com",
       "occupation": "Sales Person",
-      "profile_photo": "https://picsum.photos/1000/1100"
+      "profile_photo": {
+        "filename": "sample-8.jpeg"
+      }
     },
     {
       "id": 9,
@@ -86,7 +113,9 @@
       "phone": "(775)976-6794 x41206",
       "website": "conrad.com",
       "occupation": "Marketing",
-      "profile_photo": "https://picsum.photos/1100/1200"
+      "profile_photo": {
+        "filename": "sample-9.jpeg"
+      }
     },
     {
       "id": 10,
@@ -97,7 +126,9 @@
       "phone": "024-648-3804",
       "website": "ambrose.net",
       "occupation": "Driver",
-      "profile_photo": "https://picsum.photos/1200/1300"
+      "profile_photo": {
+        "filename": "sample-10.jpeg"
+      }
     }
   ]
 }

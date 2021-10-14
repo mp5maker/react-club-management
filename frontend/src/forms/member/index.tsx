@@ -9,6 +9,7 @@ import TextField from '../../components/text-field'
 import Typography from '../../components/typography'
 import Upload from '../../components/upload'
 import {
+  BACKEND,
   BUTTON_VARIANT,
   COLORS,
   FORM_MODE,
@@ -135,7 +136,7 @@ const MemberForm: React.FC<IMemberForm> = ({
     }
   }, [setValue])
 
-  const profile_photo = get(form, 'profile_photo', '')
+  const profile_photo = get(form, 'profile_photo.filename', get(form, 'profile_photo', ''))
 
   return (
     <Form fieldset={true} onSubmit={handleSubmit}>
@@ -147,7 +148,7 @@ const MemberForm: React.FC<IMemberForm> = ({
           src={
             profile_photo
               ? typeof profile_photo == 'string'
-                ? profile_photo
+                ? `${BACKEND.URI}/members/${profile_photo}`
                 : URL.createObjectURL(profile_photo)
               : ''
           }

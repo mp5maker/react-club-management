@@ -1,10 +1,8 @@
 import { Request, Response } from 'express'
-import fs from 'fs'
 import get from 'lodash/get'
-import path from 'path'
 import apiHelper from '../api/apiHelper'
 
-interface IMembers {
+export interface IMembers {
   id: number
   name: string
   username: string
@@ -13,6 +11,7 @@ interface IMembers {
   phone: string
   website: string
   occupation: string
+  profile_photo: { [x: string]: string }
 }
 
 const getMembers = async (_req: Request, res: Response) => {
@@ -39,22 +38,19 @@ const deleteMember = async (req: Request, res: Response) => {
 }
 
 const createMember = async (req: Request, res: Response) => {
-  const handleError = (error: any, res: any) =>
-    res.status(500).json({ message: 'IMAGE_COULD_NOT_BE_DELETED_PROPERLY' })
+  const body = get(req, 'body', {})
+  const file = get(req, 'file', {})
 
-  //  Uploading Imaging
-  const temporaryPath = get(req, 'profile_photo.path', '')
-  const fileName = get(req, 'profile_photo.name', '')
-  const targetPath = path.join('..', '..', `public/members/${fileName}`)
-  const originalName = get(req, 'profile_photo.originalname').toLowerCase()
-  if (['.png', '.jpg', '.jpeg'].includes(path.extname(originalName))) {
-    fs.rename(temporaryPath, targetPath, (error) => {
-      if (error) return handleError(error, res)
-      return res.status(201).json({
-        mesasge: 'DATA_CREATED_SUCCESSFULLY',
-      })
-    })
-  }
+  await apiHelper.members.create({
+    body: {
+      ...body,
+      profile_photo: file,
+    },
+  })
+
+  return res.status(201).json({
+    mesasge: 'DATA_CREATED_SUCCESSFULLY',
+  })
 }
 
 export { getMembers, getMember, createMember, deleteMember }

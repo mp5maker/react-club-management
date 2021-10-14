@@ -7,5 +7,5 @@ interface IMembers {
   phone: string
   website: string
   occupation: string
-  profile_photo?: string
+  profile_photo?: { [x: string]: string }
 }

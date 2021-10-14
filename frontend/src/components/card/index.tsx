@@ -1,6 +1,7 @@
 import get from 'lodash/get'
 import * as React from 'react'
 import {
+  BACKEND,
   IMAGE_AVATAR_SIZE,
   TYPOGRAPHY_COMPONENT,
   TYPOGRAPHY_VARIANT,
@@ -16,7 +17,7 @@ interface ICardProps {
 }
 
 const Card: React.FC<ICardProps> = ({ item, overlay }): JSX.Element => {
-  const profile_photo = get(item, 'profile_photo', '')
+  const profile_photo = get(item, 'profile_photo.filename', '')
   const name = get(item, 'name', '')
   const username = get(item, 'username', '')
   const email = get(item, 'email', '')
@@ -26,7 +27,7 @@ const Card: React.FC<ICardProps> = ({ item, overlay }): JSX.Element => {
   return (
     <Box className={'card-container'}>
       <Box className={'center card-avatar'}>
-        <Image src={profile_photo} avatar={IMAGE_AVATAR_SIZE.LARGE} />
+        <Image src={`${BACKEND.URI}/members/${profile_photo}`} avatar={IMAGE_AVATAR_SIZE.LARGE} />
       </Box>
       <Box className={'card-info'}>
         <Box>
