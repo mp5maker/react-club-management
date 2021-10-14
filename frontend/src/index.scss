@@ -33,6 +33,7 @@ $radius: (
 $zIndexes: (
   'sidebar': 10,
   'header': 5,
+  'modal': 20
 );
 @each $name, $zIndex in $zIndexes {
   .zindex-#{$name} {
@@ -64,6 +65,8 @@ $zIndexes: (
   --text1Dark: #f5f5f5;
   --text2Dark: #eeeeee;
   --boxShadowDark: 0 1px 15px 0 #495d67;
+
+  --modalBackground: rgba(0, 0, 0, 0.4);
 
   --extraSmall: 0.25rem;
   --small: 0.5rem;

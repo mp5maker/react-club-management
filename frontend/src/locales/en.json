@@ -13,5 +13,6 @@
   "ADDRESS": "Address",
   "PHONE": "Phone",
   "WEBSITE": "Website",
-  "OCCUPATION": "Occupation"
+  "OCCUPATION": "Occupation",
+  "ADD_MEMBER": "Add Member"
 }

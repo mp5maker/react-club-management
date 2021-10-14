@@ -55,7 +55,7 @@ const Sidebar: React.FC<ISidebarProps> = (): JSX.Element => {
           >
             {t('WORK_SOBER')}
           </Typography>
-          <Button onClick={closeSidebar} className={'circle-small'}>
+          <Button onClick={closeSidebar} className={'circle-small selective-visible'}>
             <FontAwesomeIcon
               icon={faSignOutAlt}
               style={{ transform: 'scale(-1)' }}
