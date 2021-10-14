@@ -30,5 +30,7 @@
   "MEMBER_UPDATE_WAS_DENIED": "nario atnaujinimas buvo atmestas",
   "REMOVE_MEMBER": "pašalinti narį",
   "ARE_YOU_SURE": "ar tu tuo tikras",
-  "YOU_WANT_TO_REMOVE": "norite pašalinti"
+  "YOU_WANT_TO_REMOVE": "norite pašalinti",
+  "CONFIRM": "patvirtinti",
+  "CANCEL": "atšaukti"
 }

@@ -5,6 +5,7 @@
   border-radius: var(--commonBorderRadius);
   transform: scale(0.99);
   transition: all linear 0.25s;
+  position: relative;
   .card-avatar {
     height: 200px;
     width: 250px;
@@ -16,5 +17,21 @@
   &:hover {
     transform: scale(1);
     transition: all ease-in-out 0.25s;
+  }
+  .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    transition: all linear 0.25s;
+  }
+  &:hover {
+    background-color: var(--background2);
+    .card-overlay {
+      transition: all ease-in-out 0.25s;
+      display: block;
+    }
   }
 }

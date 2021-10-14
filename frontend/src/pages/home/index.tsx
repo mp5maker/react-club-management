@@ -214,7 +214,36 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
   const CardContent = (
     <Box className={'card-collection-container'}>
       {members.map((item: IMembers, index: number) => {
-        return <Card item={item} key={`${generatedID}-${index}`} />
+        return (
+          <Card
+            item={item}
+            key={`${generatedID}-${index}`}
+            overlay={
+              <Box className={'center'} style={{ height: '100%', alignItems: 'flex-end', marginTop: 'var(--medium)'}}>
+                <Box className={'space-between'}>
+                  <Button
+                    onClick={() => editMember({ row: item })}
+                    className={'circle-medium'}
+                    variant={BUTTON_VARIANT.CONTAINED}
+                    color={COLORS.SECONDARY}
+                    style={{ marginRight: 'var(--small)' }}
+                  >
+                    <FontAwesomeIcon icon={faPencilAlt} />
+                  </Button>
+                  <Button
+                    onClick={() => openDeleteConfirmation({ row: item })}
+                    className={'circle-medium'}
+                    variant={BUTTON_VARIANT.CONTAINED}
+                    color={COLORS.SECONDARY}
+                    style={{ marginRight: 'var(--small)' }}
+                  >
+                    <FontAwesomeIcon icon={faTrash} />
+                  </Button>
+                </Box>
+              </Box>
+            }
+          />
+        )
       })}
     </Box>
   )
