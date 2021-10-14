@@ -8,6 +8,7 @@ import App from './App'
 import './index.scss'
 import i18n from './locales'
 import AlertContextProvider from './redux/alert/context'
+import BusyContextProvider from './redux/busy/context'
 import MembersContextProvider from './redux/members/context'
 import store from './redux/persist/store'
 
@@ -20,7 +21,9 @@ ReactDOM.render(
         <I18nextProvider i18n={i18n}>
           <MembersContextProvider>
             <AlertContextProvider>
-              <App />
+              <BusyContextProvider>
+                <App />
+              </BusyContextProvider>
             </AlertContextProvider>
           </MembersContextProvider>
         </I18nextProvider>

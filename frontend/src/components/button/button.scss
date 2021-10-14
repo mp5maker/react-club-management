@@ -9,4 +9,7 @@ button {
     opacity: 1;
     transition: all linear 0.25s;
   }
+  &:disabled {
+    color: var(--boxShadow) !important;
+  }
 }

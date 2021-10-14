@@ -22,6 +22,7 @@ import prepareFormData from '../../utilties/prepareFormData'
 import prepareValidationSchema from '../../utilties/prepareValidationSchema'
 import { INITIAL_DATA, schema } from './common'
 import omit from 'lodash/omit'
+import useBusy from '../../hooks/useBusy'
 
 interface IMemberForm {
   buttonLabel: string
@@ -41,6 +42,7 @@ const MemberForm: React.FC<IMemberForm> = ({
   afterError,
 }): JSX.Element => {
   const { setAlert } = useAlert()
+  const { setBusy } = useBusy()
   const { t } = useLanguage()
   const [form, setForm] =
     React.useState<Omit<IMembers, 'profile_photo' | 'id'>>(INITIAL_DATA)
@@ -61,6 +63,7 @@ const MemberForm: React.FC<IMemberForm> = ({
     event.preventDefault()
     const onValidationSuccess = () => {
       const onSuccess = () => {
+        setBusy(false)
         setAlert({
           color: COLORS.SUCCESS,
           ...(isAddMode
@@ -82,6 +85,7 @@ const MemberForm: React.FC<IMemberForm> = ({
         if (afterSuccess) afterSuccess()
       }
       const onError = () => {
+        setBusy(false)
         setAlert({
           color: COLORS.ERROR,
           ...(isAddMode
@@ -100,11 +104,13 @@ const MemberForm: React.FC<IMemberForm> = ({
       }
 
       if (isAddMode) {
+        setBusy(true)
         api({ body: prepareFormData({ form }) })
           .then(onSuccess)
           .catch(onError)
       }
       if (isEditMode) {
+        setBusy(true)
         api({ id: get(setValue, 'id', ''), body: prepareFormData({ form: {
           ...omit(setValue, ['profile_photo']),
           ...form,

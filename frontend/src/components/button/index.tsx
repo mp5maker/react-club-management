@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { BUTTON_VARIANT, COLORS } from '../../constants/settings'
+import useBusy from '../../hooks/useBusy'
 import './button.scss'
 
 interface IButtonProps extends Partial<React.HTMLProps<HTMLButtonElement>> {
@@ -13,9 +14,13 @@ const Button: React.FC<IButtonProps> = ({
   variant = BUTTON_VARIANT.OUTLINED,
   fullWidth,
   style,
+  disabled,
   ...otherProps
 }: any): JSX.Element => {
+  const { busy } = useBusy()
+
   const props = {
+    disabled: disabled || busy,
     style: {
       ...(variant === BUTTON_VARIANT.OUTLINED
         ? {
