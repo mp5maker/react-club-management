@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios'
 import get from 'lodash/get'
+import head from 'lodash/head'
 import * as React from 'react'
 import Box from '../../components/box'
 import Button from '../../components/button'
@@ -16,6 +17,7 @@ import {
 } from '../../constants/settings'
 import useAlert from '../../hooks/useAlert'
 import useLanguage from '../../hooks/useLanguage'
+import prepareFormData from '../../utilties/prepareFormData'
 import prepareValidationSchema from '../../utilties/prepareValidationSchema'
 import { INITIAL_DATA, schema } from './common'
 
@@ -44,6 +46,14 @@ const MemberForm: React.FC<IMemberForm> = ({
     React.useState<Omit<IMembers, 'profile_photo' | 'id'>>(INITIAL_DATA)
   const isAddMode = FORM_MODE.ADD === mode
   const isEditMode = FORM_MODE.EDIT === mode
+
+  const onChangeImage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const image = head(get(event, 'target.files', []))
+    setForm({
+      ...form,
+      [event.target.name]: image,
+    })
+  }
 
   const handleSubmit = (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -87,9 +97,12 @@ const MemberForm: React.FC<IMemberForm> = ({
         if (afterError) afterError()
       }
 
-      if (isAddMode) api({ body: form }).then(onSuccess).catch(onError)
+      if (isAddMode)
+        api({ body: prepareFormData({ form }) })
+          .then(onSuccess)
+          .catch(onError)
       if (isEditMode)
-        api({ id: get(setValue, 'id', ''), body: form })
+        api({ id: get(setValue, 'id', ''), body: prepareFormData({ form }) })
           .then(onSuccess)
           .catch(onError)
     }
@@ -122,13 +135,23 @@ const MemberForm: React.FC<IMemberForm> = ({
     }
   }, [setValue])
 
+  const profile_photo = get(form, 'profile_photo', '')
+
   return (
     <Form fieldset={true} onSubmit={handleSubmit}>
       <Box className={'form-control'}>
         <Upload
+          onChange={onChangeImage}
           name={'profile_photo'}
           id={'member-form-profile-photo'}
-          src={get(form, 'profile_photo', '')}
+          src={
+            profile_photo
+              ? typeof profile_photo == 'string'
+                ? profile_photo
+                : URL.createObjectURL(profile_photo)
+              : ''
+          }
+          error={t(error.name)}
         />
         <Box className={'center'}>
           <Typography
