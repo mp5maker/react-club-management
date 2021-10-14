@@ -24,7 +24,7 @@ const Typography: React.FC<ITypographProps> = ({
     style: {
       color,
       fontSize: variant,
-      ...(style ? { style } : {}),
+      ...(style ? style : {}),
     },
     ...otherProps,
   }

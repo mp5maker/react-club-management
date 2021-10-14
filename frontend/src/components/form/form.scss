@@ -1,7 +1,8 @@
 form {
   fieldset {
     border-radius: var(--commonBorderRadius);
-    border-color: var(--text2);
+    border-color: transparent;
+    box-shadow: var(--boxShadow);
     padding: var(--medium);
   }
   .form-control {

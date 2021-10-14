@@ -17,5 +17,8 @@
   "ADD_MEMBER": "Add Member",
   "EDIT_MEMBER": "Edit Member",
   "PLEASE_ENTER_YOU_NAME": "Please enter your name",
-  "MEMBER_SUCCESSFULLY_DELETED": "Member successfully deleted"
+  "MEMBER_SUCCESSFULLY_DELETED": "Member successfully deleted",
+  "PLEASE_CLICK_THE_AVATAR_TO_UPLOAD": "Please click the avatar to upload image",
+  "CREATE_MEMBER": "Create Member",
+  "UPDATE_MEMBER": "Update Member"
 }

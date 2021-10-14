@@ -4,6 +4,7 @@ button {
   cursor: pointer;
   opacity: 0.8;
   transition: all linear 0.25s;
+  border-radius: var(--commonBorderRadius);
   &:hover {
     opacity: 1;
     transition: all linear 0.25s;

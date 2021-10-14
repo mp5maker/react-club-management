@@ -51,7 +51,7 @@ const EditMember: React.FC<IEditMemberProps> = (): JSX.Element => {
       />
       <Box className={'center'}>
         <Box style={{ width: 500, padding: 'var(--medium)' }}>
-          <MemberForm />
+          <MemberForm buttonLabel={t('UPDATE_MEMBER')}/>
         </Box>
       </Box>
     </Box>

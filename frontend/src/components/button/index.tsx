@@ -5,35 +5,39 @@ import './button.scss'
 interface IButtonProps extends Partial<React.HTMLProps<HTMLButtonElement>> {
   color?: COLORS
   variant?: BUTTON_VARIANT
+  fullWidth?: boolean
 }
 
 const Button: React.FC<IButtonProps> = ({
   color = COLORS.PRIMARY,
   variant = BUTTON_VARIANT.OUTLINED,
+  fullWidth,
   style,
   ...otherProps
 }: any): JSX.Element => {
-
   const props = {
     style: {
-      ...(variant === BUTTON_VARIANT.OUTLINED ? {
-        backgroundColor: 'transparent',
-        border: `1px solid ${color}`,
-        color
-      }: {}),
-      ...(variant === BUTTON_VARIANT.CONTAINED ? {
-        backgroundColor: color,
-        border: `1px solid ${color}`,
-        color: `var(--text1)`
-      }: {}),
-      ...(style ? style: {})
+      ...(variant === BUTTON_VARIANT.OUTLINED
+        ? {
+            backgroundColor: 'transparent',
+            border: `1px solid ${color}`,
+            color,
+          }
+        : {}),
+      ...(variant === BUTTON_VARIANT.CONTAINED
+        ? {
+            backgroundColor: color,
+            border: `1px solid ${color}`,
+            color: `var(--text1)`,
+          }
+        : {}),
+      ...(fullWidth ? { width: '100%' } : {}),
+      ...(style ? style : {}),
     },
-    ...otherProps
+    ...otherProps,
   }
 
-  return (
-    <button {...props} />
-  )
+  return <button {...props} />
 }
 
 export default Button

@@ -17,5 +17,8 @@
   "ADD_MEMBER": "pridėti narį",
   "EDIT_MEMBER": "redaguoti narį",
   "PLEASE_ENTER_YOUR_NAME": "įveskite savo vardą",
-  "MEMBER_SUCCESSFULLY_DELETED": "narys sėkmingai ištrintas"
+  "MEMBER_SUCCESSFULLY_DELETED": "narys sėkmingai ištrintas",
+  "PLEASE_CLICK_THE_AVATAR_TO_UPLOAD": "Norėdami įkelti paveikslėlį, spustelėkite avatarą",
+  "CREATE_MEMBER": "sukurti narį",
+  "UPDATE_MEMBER": "atnaujinti narį"
 }

@@ -8,7 +8,7 @@
     "build": "rimraf ./dist && tsc",
     "build:start": "npm run build && node build/index.js",
     "json:server": "json-server --watch ./data/db.json --port 5000",
-    "lint": "eslint --fix",
+    "lint": "eslint . --ext .ts,.js,.json",
     "prettier:fix": "prettier --write"
   },
   "keywords": [],

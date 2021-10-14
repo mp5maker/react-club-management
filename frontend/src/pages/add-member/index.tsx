@@ -30,7 +30,7 @@ const AddMember: React.FC<IAddMemberProps> = (): JSX.Element => {
       />
       <Box className={'center'}>
         <Box style={{ width: 500, padding: 'var(--medium)' }}>
-          <MemberForm />
+          <MemberForm buttonLabel={t('CREATE_MEMBER')} />
         </Box>
       </Box>
     </Box>
