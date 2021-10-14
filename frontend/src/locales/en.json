@@ -20,5 +20,8 @@
   "MEMBER_SUCCESSFULLY_DELETED": "Member successfully deleted",
   "PLEASE_CLICK_THE_AVATAR_TO_UPLOAD": "Please click the avatar to upload image",
   "CREATE_MEMBER": "Create Member",
-  "UPDATE_MEMBER": "Update Member"
+  "UPDATE_MEMBER": "Update Member",
+  "THIS_FIELD_IS_REQUIRED": "This field is required",
+  "INVALID_EMAIL_ADDRESS": "Invalid email address",
+  "INVALID_URL": "Invalid URL"
 }

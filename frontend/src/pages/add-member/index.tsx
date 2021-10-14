@@ -2,9 +2,11 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as React from 'react'
 import { useHistory } from 'react-router'
+import apiHelper from '../../api/apiHelper'
 import Box from '../../components/box'
 import Button from '../../components/button'
 import Header from '../../components/header'
+import { FORM_MODE } from '../../constants/settings'
 import MemberForm from '../../forms/member'
 import useLanguage from '../../hooks/useLanguage'
 
@@ -30,7 +32,11 @@ const AddMember: React.FC<IAddMemberProps> = (): JSX.Element => {
       />
       <Box className={'center'}>
         <Box style={{ width: 500, padding: 'var(--medium)' }}>
-          <MemberForm buttonLabel={t('CREATE_MEMBER')} />
+          <MemberForm
+            buttonLabel={t('CREATE_MEMBER')}
+            api={apiHelper.members.create}
+            mode={FORM_MODE.ADD}
+          />
         </Box>
       </Box>
     </Box>

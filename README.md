@@ -26,3 +26,4 @@ npm run all
 
 > Avoided using Material-UI or styled components (styling has been done using scss)
 > Avoided using raw webpack, instead create-react-app was used
+> Apologize if there are any wrong translations for Lithuanian word

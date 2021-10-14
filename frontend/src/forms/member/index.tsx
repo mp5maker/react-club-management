@@ -1,3 +1,5 @@
+import { AxiosResponse } from 'axios'
+import get from 'lodash/get'
 import * as React from 'react'
 import Box from '../../components/box'
 import Button from '../../components/button'
@@ -8,17 +10,27 @@ import Upload from '../../components/upload'
 import {
   BUTTON_VARIANT,
   COLORS,
+  FORM_MODE,
   TYPOGRAPHY_COMPONENT,
-  TYPOGRAPHY_VARIANT,
+  TYPOGRAPHY_VARIANT
 } from '../../constants/settings'
 import useLanguage from '../../hooks/useLanguage'
-import { INITIAL_DATA } from './common'
+import prepareValidationSchema from '../../utilties/prepareValidationSchema'
+import { INITIAL_DATA, schema } from './common'
 
 interface IMemberForm {
   buttonLabel: string
+  setValue?: IMembers
+  mode: FORM_MODE
+  api: ({ id, body }: any) => Promise<AxiosResponse<unknown, any>>
 }
 
-const MemberForm: React.FC<IMemberForm> = ({ buttonLabel }): JSX.Element => {
+const MemberForm: React.FC<IMemberForm> = ({
+  buttonLabel,
+  setValue,
+  mode,
+  api,
+}): JSX.Element => {
   const { t } = useLanguage()
   const [form, setForm] =
     React.useState<Omit<IMembers, 'profile_photo' | 'id'>>(INITIAL_DATA)
@@ -27,7 +39,27 @@ const MemberForm: React.FC<IMemberForm> = ({ buttonLabel }): JSX.Element => {
 
   const handleSubmit = (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault()
-    console.log(form)
+    const onValidationSuccess = () => {
+      const onSuccess = () => {}
+      const onError = () => {}
+
+      if (mode === FORM_MODE.ADD)
+        api({ body: form }).then(onSuccess).catch(onError)
+      if (mode === FORM_MODE.EDIT)
+        api({ id: get(setValue, 'id', ''), body: form })
+          .then(onSuccess)
+          .catch(onError)
+    }
+
+    const onValidationError = (validationObj: any) => {
+      const errorObj = prepareValidationSchema(validationObj)
+      if (errorObj && Object.keys(errorObj)) setError({ ...error, ...errorObj })
+    }
+
+    schema({ t })
+      .validate(form, { abortEarly: false })
+      .then(onValidationSuccess)
+      .catch(onValidationError)
   }
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,6 +72,12 @@ const MemberForm: React.FC<IMemberForm> = ({ buttonLabel }): JSX.Element => {
       [event.target.name]: event.target.value,
     })
   }
+
+  React.useEffect(() => {
+    if (setValue && Object.keys(setValue).length) {
+      setForm(setValue)
+    }
+  }, [setValue])
 
   return (
     <Form fieldset={true} onSubmit={handleSubmit}>
@@ -61,7 +99,7 @@ const MemberForm: React.FC<IMemberForm> = ({ buttonLabel }): JSX.Element => {
           placeholder={t('eg: John Doe')}
           onChange={onChange}
           value={form.name}
-          error={error.name}
+          error={t(error.name)}
           name={'name'}
           required
         />
@@ -73,7 +111,7 @@ const MemberForm: React.FC<IMemberForm> = ({ buttonLabel }): JSX.Element => {
           placeholder={t('eg: riley55')}
           onChange={onChange}
           value={form.username}
-          error={error.username}
+          error={t(error.username)}
           name={'username'}
           required
         />
@@ -81,11 +119,12 @@ const MemberForm: React.FC<IMemberForm> = ({ buttonLabel }): JSX.Element => {
       <Box className={'form-control'}>
         <TextField
           id={'member-form-email'}
+          inputMode={'email'}
           label={t('EMAIL')}
           placeholder={t('ok@gmail.com, ok@hotmail.com, ok@yahoo.com etc...')}
           onChange={onChange}
           value={form.email}
-          error={error.email}
+          error={t(error.email)}
           name={'email'}
           required
         />
@@ -97,7 +136,7 @@ const MemberForm: React.FC<IMemberForm> = ({ buttonLabel }): JSX.Element => {
           placeholder={t('City, Zipcode...etc')}
           onChange={onChange}
           value={form.address}
-          error={error.address}
+          error={t(error.address)}
           name={'address'}
         />
       </Box>
@@ -108,18 +147,19 @@ const MemberForm: React.FC<IMemberForm> = ({ buttonLabel }): JSX.Element => {
           placeholder={t('eg: 444-444-4492')}
           onChange={onChange}
           value={form.phone}
-          error={error.phone}
+          error={t(error.phone)}
           name={'phone'}
           required
         />
       </Box>
       <Box className={'form-control'}>
         <TextField
+          inputMode={'url'}
           id={'member-form-website'}
           label={t('WEBSITE')}
           onChange={onChange}
           value={form.website}
-          error={error.website}
+          error={t(error.website)}
           name={'website'}
         />
       </Box>
@@ -129,7 +169,7 @@ const MemberForm: React.FC<IMemberForm> = ({ buttonLabel }): JSX.Element => {
           label={t('OCCUPATION')}
           onChange={onChange}
           value={form.occupation}
-          error={error.occupation}
+          error={t(error.occupation)}
           name={'occupation'}
         />
       </Box>

@@ -20,5 +20,8 @@
   "MEMBER_SUCCESSFULLY_DELETED": "narys sėkmingai ištrintas",
   "PLEASE_CLICK_THE_AVATAR_TO_UPLOAD": "Norėdami įkelti paveikslėlį, spustelėkite avatarą",
   "CREATE_MEMBER": "sukurti narį",
-  "UPDATE_MEMBER": "atnaujinti narį"
+  "UPDATE_MEMBER": "atnaujinti narį",
+  "THIS_FIELD_IS_REQUIRED": "Šį lauką būtina užpildyti",
+  "INVALID_EMAIL_ADDRESS": "Neteisingas el. pašto adresas",
+  "INVALID_URL": "neteisingas URL"
 }

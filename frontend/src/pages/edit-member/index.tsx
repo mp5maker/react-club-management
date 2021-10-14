@@ -8,6 +8,7 @@ import apiHelper from '../../api/apiHelper'
 import Box from '../../components/box'
 import Button from '../../components/button'
 import Header from '../../components/header'
+import { FORM_MODE } from '../../constants/settings'
 import MemberForm from '../../forms/member'
 import useLanguage from '../../hooks/useLanguage'
 
@@ -18,13 +19,14 @@ const EditMember: React.FC<IEditMemberProps> = (): JSX.Element => {
   const history = useHistory()
   const params = useParams()
   const id = get(params, 'id', '')
+  const [editData, setEditData] = React.useState<IMembers | null>(null)
 
   React.useEffect(() => {
     const getMember = () => {
       if (id) {
         const onSuccess = (response: AxiosResponse) => {
           const data = get(response, 'data', '')
-          console.log(data)
+          if (data) setEditData(data as IMembers)
         }
 
         const onError = (error: AxiosError) => console.debug(error)
@@ -51,7 +53,16 @@ const EditMember: React.FC<IEditMemberProps> = (): JSX.Element => {
       />
       <Box className={'center'}>
         <Box style={{ width: 500, padding: 'var(--medium)' }}>
-          <MemberForm buttonLabel={t('UPDATE_MEMBER')}/>
+          {editData ? (
+            <MemberForm
+              buttonLabel={t('UPDATE_MEMBER')}
+              setValue={editData}
+              mode={FORM_MODE.EDIT}
+              api={apiHelper.members.update}
+            />
+          ) : (
+            <></>
+          )}
         </Box>
       </Box>
     </Box>

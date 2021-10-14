@@ -83,9 +83,13 @@ export enum TYPOGRAPHY_COMPONENT {
   SMALL = 'small',
 }
 
-
 export enum IMAGE_AVATAR_SIZE {
   SMALL = 30,
   MEDIUM = 60,
-  LARGE = 180
+  LARGE = 180,
+}
+
+export enum FORM_MODE {
+  ADD = 'add',
+  EDIT = 'edit',
 }
