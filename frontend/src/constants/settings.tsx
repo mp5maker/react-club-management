@@ -85,8 +85,8 @@ export enum TYPOGRAPHY_COMPONENT {
 }
 
 export enum IMAGE_AVATAR_SIZE {
-  SMALL = 30,
-  MEDIUM = 60,
+  SMALL = 60,
+  MEDIUM = 120,
   LARGE = 180,
 }
 

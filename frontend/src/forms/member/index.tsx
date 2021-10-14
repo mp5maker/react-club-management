@@ -24,8 +24,8 @@ interface IMemberForm {
   setValue?: IMembers
   mode: FORM_MODE
   api: ({ id, body }: any) => Promise<AxiosResponse<unknown, any>>
-  afterSuccess?: () => any|void
-  afterError?: () => any|void
+  afterSuccess?: () => any | void
+  afterError?: () => any | void
 }
 
 const MemberForm: React.FC<IMemberForm> = ({
@@ -34,7 +34,7 @@ const MemberForm: React.FC<IMemberForm> = ({
   mode,
   api,
   afterSuccess,
-  afterError
+  afterError,
 }): JSX.Element => {
   const { setAlert } = useAlert()
   const { t } = useLanguage()
@@ -125,7 +125,11 @@ const MemberForm: React.FC<IMemberForm> = ({
   return (
     <Form fieldset={true} onSubmit={handleSubmit}>
       <Box className={'form-control'}>
-        <Upload name={'profile_photo'} id={'member-form-profile-photo'} />
+        <Upload
+          name={'profile_photo'}
+          id={'member-form-profile-photo'}
+          src={get(form, 'profile_photo', '')}
+        />
         <Box className={'center'}>
           <Typography
             component={TYPOGRAPHY_COMPONENT.SMALL}
