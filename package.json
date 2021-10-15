@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "frontend": "yarn --cwd ./frontend run start",
-    "backend": "yarn --cwd ./backend run start"
+    "start": "concurrently --kill-others \"yarn --cwd ./frontend run start\" \"yarn --cwd ./backend run start\" \"yarn --cwd ./backend run json:server\""
   },
   "repository": {
     "type": "git",
@@ -20,6 +19,7 @@
   "homepage": "https://github.com/mp5maker/react-club-management#readme",
   "dependencies": {},
   "devDependencies": {
+    "concurrently": "^6.3.0",
     "husky": "^7.0.2",
     "lint-staged": "^11.2.3"
   },

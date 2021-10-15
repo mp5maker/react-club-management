@@ -17,14 +17,14 @@
 > Database runs in PORT:5000 [Fake Database]
 
 ```shell
-npm run frontend
-npm run backend
-npm run all
+yarn start
 ```
 
 ## Some Considerations [Due to time limitations]
 
+> Please use yarn if possible instead of npm
 > Avoided using Material-UI or styled components (styling has been done using scss)
 > Avoided using raw webpack, instead create-react-app was used
 > Apologize if there are any wrong translations for Lithuanian word
 > External Libraries used for calendar, didn't had the time to make it
+> Supports for Internet Explorer 11 or prior Safari 14.1. (Please use the modern browsers)
