@@ -4,18 +4,21 @@ import * as React from 'react'
 import Box from '../../components/box'
 import Button from '../../components/button'
 import Form from '../../components/form'
+import Select from '../../components/select'
 import TextField from '../../components/text-field'
 import Typography from '../../components/typography'
 import { BUTTON_VARIANT, COLORS, FORM_MODE } from '../../constants/settings'
 import useAlert from '../../hooks/useAlert'
 import useBusy from '../../hooks/useBusy'
 import useLanguage from '../../hooks/useLanguage'
+import useMembers from '../../hooks/useMembers'
+import prepareMemberOptions from '../../utilties/prepareMemberOptions'
 import prepareValidationSchema from '../../utilties/prepareValidationSchema'
 import { INITIAL_DATA, schema } from './common'
 
 interface ISchedulesForm {
   buttonLabel: string
-  setValue?: ISchedules
+  setValue?: Partial<ISchedules>
   mode: FORM_MODE
   api: ({ id, body }: any) => Promise<AxiosResponse<unknown, any>>
   afterSuccess?: () => any | void
@@ -37,6 +40,8 @@ const SchedulesForm: React.FC<ISchedulesForm> = ({
   const [error, setError] = React.useState<Omit<ISchedules, 'id'>>(INITIAL_DATA)
   const isAddMode = FORM_MODE.ADD === mode
   const isEditMode = FORM_MODE.EDIT === mode
+  const { members } = useMembers()
+  const memberOptions = prepareMemberOptions(members)
 
   const handleSubmit = (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -108,7 +113,9 @@ const SchedulesForm: React.FC<ISchedulesForm> = ({
       .catch(onValidationError)
   }
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (
+    event: React.ChangeEvent<HTMLInputElement & HTMLSelectElement>
+  ) => {
     setError({
       ...error,
       [event.target.name]: '',
@@ -121,7 +128,10 @@ const SchedulesForm: React.FC<ISchedulesForm> = ({
 
   React.useEffect(() => {
     if (setValue && Object.keys(setValue).length) {
-      setForm(setValue)
+      setForm((prevForm) => ({
+        ...prevForm,
+        ...setValue,
+      }))
     }
   }, [setValue])
 
@@ -147,6 +157,40 @@ const SchedulesForm: React.FC<ISchedulesForm> = ({
           value={form.description}
           error={t(error.description as string)}
           name={'description'}
+        />
+      </Box>
+      <Box className={'form-control'}>
+        <TextField
+          type={'time'}
+          id={'schedules-form-start-time'}
+          label={t('START_TIME')}
+          onChange={onChange}
+          value={form.start_time}
+          error={t(error.start_time as string)}
+          name={'start_time'}
+        />
+      </Box>
+      <Box className={'form-control'}>
+        <TextField
+          type={'time'}
+          id={'schedules-form-end-time'}
+          label={t('END_TIME')}
+          onChange={onChange}
+          value={form.end_time}
+          error={t(error.end_time as string)}
+          name={'end_time'}
+        />
+      </Box>
+      <Box className={'form-control'}>
+        <Select
+          id={'schedules-form-member-id'}
+          label={t('MEMBERS')}
+          options={memberOptions}
+          onChange={onChange}
+          value={form.member_id}
+          placeholder={t('PLEASE_SELECT_AN_OPTION')}
+          error={t(error.member_id as string)}
+          name={'member_id'}
         />
       </Box>
       <Box className={'form-control'}>

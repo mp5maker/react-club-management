@@ -11,8 +11,7 @@ interface IScheduleProps {}
 
 const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
   const { t } = useLanguage()
-  const [value, setValue] = React.useState(new Date())
-  console.log(value)
+  const [chosenDate, setChosenDate] = React.useState(new Date())
 
   return (
     <Box className={'schedule-page-container'}>
@@ -21,7 +20,7 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
         <Box style={{ display: 'flex' }}>
           <Box></Box>
           <Box className={'padding-m margin-left-auto'}>
-            <Calendar onChange={setValue} value={value} />
+            <Calendar onChange={setChosenDate} value={chosenDate} />
             <Box className={'margin-top-m'}>
               <SchedulesForm
                 mode={FORM_MODE.ADD}

@@ -32,5 +32,9 @@
   "ARE_YOU_SURE": "ar tu tuo tikras",
   "YOU_WANT_TO_REMOVE": "norite pašalinti",
   "CONFIRM": "patvirtinti",
-  "CANCEL": "atšaukti"
+  "CANCEL": "atšaukti",
+  "TITLE": "titulas",
+  "DESCRIPTION": "apibūdinimas",
+  "TIME_RANGE": "laiko intervalas",
+  "PLEASE_SELECT_AN_OPTION": "pasirinkite parinktį"
 }

@@ -32,5 +32,11 @@
   "ARE_YOU_SURE": "Are you sure",
   "YOU_WANT_TO_REMOVE": "You want to remove",
   "CONFIRM": "Confirm",
-  "CANCEL": "Cancel"
+  "CANCEL": "Cancel",
+  "TITLE": "Title",
+  "DESCRIPTION": "Description",
+  "TIME_RANGE": "Time range",
+  "START_TIME": "Start time",
+  "END_TIME": "End time",
+  "PLEASE_SELECT_AN_OPTION": "Please select an option"
 }

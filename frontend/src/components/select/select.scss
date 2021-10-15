@@ -1,0 +1,14 @@
+.select-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  label {
+    margin-bottom: var(--small);
+  }
+  select {
+    width: inhert;
+    padding: var(--medium);
+    background-color: var(--background2);
+    color: var(--text1);
+  }
+}
