@@ -9,11 +9,12 @@ interface ITableProps<T> {
   properties: Array<keyof T>
   children?: React.ReactNode
   list: Array<T>
+  customDataHeader: ({ column }: { column: keyof T | 'serial' }) => string
   customHeader: ({
-    row,
+    column,
     index,
   }: {
-    row: keyof T
+    column: keyof T | 'serial'
     index: number
   }) => React.ReactNode
   customBody: ({
@@ -35,6 +36,7 @@ const anotherGeneratedID = v4()
 
 const Table = <T,>({
   properties,
+  customDataHeader,
   customHeader,
   customBody,
   list,
@@ -48,17 +50,19 @@ const Table = <T,>({
           <tr>
             {autoSerial ? (
               <th key={`${generatedID}-id`}>
-                <Box>
-                  <Typography>SERIAL</Typography>
-                </Box>
+                {customHeader ? (
+                  customHeader({ column: 'serial', index: 0 })
+                ) : (
+                  <></>
+                )}
               </th>
             ) : (
               <></>
             )}
-            {properties.map((row, index) => {
+            {properties.map((column, index) => {
               return (
                 <th key={`${generatedID}-${index}`}>
-                  {customHeader ? customHeader({ row, index }) : <></>}
+                  {customHeader ? customHeader({ column, index }) : <></>}
                 </th>
               )
             })}
@@ -69,7 +73,14 @@ const Table = <T,>({
             return (
               <tr key={`${anotherGeneratedID}-row-${rowIndex}`}>
                 {autoSerial ? (
-                  <td key={`${generatedID}-id`}>
+                  <td
+                    key={`${generatedID}-id`}
+                    data-header={
+                      customDataHeader
+                        ? customDataHeader({ column: 'serial' })
+                        : ''
+                    }
+                  >
                     <Box>
                       <Typography>{rowIndex + 1}</Typography>
                     </Box>
@@ -80,6 +91,9 @@ const Table = <T,>({
                 {properties.map((column, columnIndex) => {
                   return (
                     <td
+                      data-header={
+                        customDataHeader ? customDataHeader({ column }) : ''
+                      }
                       key={`${anotherGeneratedID}-row-${rowIndex}-column-${columnIndex}`}
                     >
                       {customBody ? (
@@ -88,7 +102,9 @@ const Table = <T,>({
                         <></>
                       )}
                       {rowOptions && columnIndex === properties.length - 1 ? (
-                        <Box className={'row-options'}>{rowOptions({row})}</Box>
+                        <Box className={'row-options'}>
+                          {rowOptions({ row })}
+                        </Box>
                       ) : (
                         <></>
                       )}

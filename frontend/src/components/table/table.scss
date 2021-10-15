@@ -64,5 +64,56 @@
         }
       }
     }
+    @media only screen and (max-width: 1440px) {
+      thead {
+        display: none;
+      }
+      tbody {
+        display: block;
+        padding: var(--medium);
+        tr {
+          padding: var(--medium);
+          margin-bottom: var(--medium);
+          border: 1px solid var(--secondary);
+          border-radius: var(--commonBorderRadius);
+          display: block;
+          td {
+            display: block;
+            text-align: right;
+            width: unset;
+            &:first-child {
+              padding-left: 0;
+            }
+            &:last-child {
+              padding-right: 0;
+            }
+            &::before {
+              content: attr(data-header);
+              float: left;
+              display: block;
+              margin-top: var(--medium);
+            }
+          }
+          &::before, &::after {
+            clear: both;
+          }
+          &:hover {
+            td {
+              border-top: 1px solid transparent;
+              border-bottom: 1px solid transparent;
+              &:first-child {
+                border-left: 1px solid transparent;
+              }
+              &:last-child {
+                border-right: 1px solid transparent;
+              }
+              .row-options {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

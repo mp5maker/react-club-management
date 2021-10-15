@@ -58,6 +58,7 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
   }
 
   const memberHeaders = {
+    serial: t('SERIAL'),
     id: t('ID'),
     name: t('NAME'),
     username: t('USERNAME'),
@@ -136,10 +137,11 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
         'website',
         'occupation',
       ]}
-      customHeader={({ row }) => {
+      customDataHeader={({ column }) => memberHeaders[column]}
+      customHeader={({ column }) => {
         return (
           <Box>
-            <Typography>{memberHeaders[row]}</Typography>
+            <Typography>{memberHeaders[column]}</Typography>
           </Box>
         )
       }}
