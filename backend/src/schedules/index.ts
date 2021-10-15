@@ -18,11 +18,18 @@ const getSchedules = async (_req: Request, res: Response) => {
   return res.status(200).json(data)
 }
 
-const createSchedule= async (req: Request, res: Response) => {
+const getSchedule = async (req: Request, res: Response) => {
+  const id = get(req, 'params.id', '')
+  const schedule = await apiHelper.schedules.get({ id })
+  const data = get(schedule, 'data', {})
+  return res.status(200).json(data)
+}
+
+const createSchedule = async (req: Request, res: Response) => {
   const body = get(req, 'body', {})
 
   await apiHelper.schedules.create({
-    body
+    body,
   })
 
   return res.status(201).json({
@@ -40,5 +47,25 @@ const deleteSchedule = async (req: Request, res: Response) => {
   }
 }
 
+const updateSchedule = async (req: Request, res: Response) => {
+  const body = get(req, 'body', {})
+  const id = get(body, 'id', '')
+  console.log('body', body)
 
-export { getSchedules, createSchedule, deleteSchedule }
+  await apiHelper.schedules.update({
+    id,
+    body,
+  })
+
+  return res.status(200).json({
+    mesasge: 'DATA_UPDATED_SUCCESSFULLY',
+  })
+}
+
+export {
+  getSchedules,
+  getSchedule,
+  createSchedule,
+  deleteSchedule,
+  updateSchedule,
+}

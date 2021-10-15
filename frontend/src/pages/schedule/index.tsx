@@ -42,11 +42,15 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
     errorMessage: t('SCHEDULE_CANNOT_BE_DELETED'),
     deleteApi: apiHelper.schedules.remove,
   })
+  const [editObj, setEditObj] = React.useState<ISchedules | null>(null)
   const dateParsed = Number(chosenDate)
 
-  const afterScheduleCreation = () => getAllSchedules()
+  const afterScheduleCreation = () => {
+    setEditObj(null)
+    getAllSchedules()
+  }
 
-  const editSchedule = () => {}
+  const editSchedule = ({ row }: { row: ISchedules }) => setEditObj(row)
   const handleChosenDate = (value: Date) => {
     changeChosenDate(
       String(Date.parse(format(value, DATE_TIME_FORMAT.DATE_ONLY)))
@@ -116,12 +120,13 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
 
   const ScheduleFormContent = (
     <SchedulesForm
-      mode={FORM_MODE.ADD}
-      buttonLabel={t('ADD')}
+      mode={editObj ? FORM_MODE.EDIT : FORM_MODE.ADD}
+      buttonLabel={editObj ? t('EDIT') : t('ADD')}
       afterSuccess={afterScheduleCreation}
-      api={apiHelper.schedules.create}
+      api={editObj ? apiHelper.schedules.update : apiHelper.schedules.create}
       setValue={{
         date: String(dateParsed),
+        ...(editObj ? editObj : {}),
       }}
     />
   )

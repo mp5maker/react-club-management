@@ -78,7 +78,7 @@ const updateMember = async (req: Request, res: Response) => {
   })
 
   return res.status(201).json({
-    mesasge: 'DATE_UPDATED_SUCCESSFULLY',
+    mesasge: 'DATA_UPDATED_SUCCESSFULLY',
   })
 }
 

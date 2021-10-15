@@ -37,5 +37,9 @@
   "DESCRIPTION": "apibūdinimas",
   "TIME_RANGE": "laiko intervalas",
   "PLEASE_SELECT_AN_OPTION": "pasirinkite parinktį",
-  "REMOVE_SCHEDULE": "pašalinti tvarkaraštį"
+  "REMOVE_SCHEDULE": "pašalinti tvarkaraštį",
+  "SCHEDULE_SUCCESSFULLY_DELETED": "tvarkaraštis sėkmingai ištrintas",
+  "SCHEDULE_CANNOT_BE_DELETED": "tvarkaraščio ištrinti negalima",
+  "EDIT": "Redaguoti",
+  "ADD": "papildyti"
 }

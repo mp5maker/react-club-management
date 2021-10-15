@@ -39,5 +39,9 @@
   "START_TIME": "Start time",
   "END_TIME": "End time",
   "PLEASE_SELECT_AN_OPTION": "Please select an option",
-  "REMOVE_SCHEDULE": "Remove Schedule"
+  "REMOVE_SCHEDULE": "Remove Schedule",
+  "SCHEDULE_SUCCESSFULLY_DELETED": "Schedule successfully deleted",
+  "SCHEDULE_CANNOT_BE_DELETED": "Schedule cannot be deleted",
+  "EDIT": "Edit",
+  "ADD": "Add"
 }
