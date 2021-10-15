@@ -24,9 +24,11 @@ const generatedID = v4()
 
 const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
   const { t } = useLanguage()
-  const { schedules } = useSchedules()
+  const { schedules, getAllSchedules } = useSchedules()
   const { chosenDate, changeChosenDate } = useChosenDate()
   const dateParsed = Number(chosenDate)
+
+  const afterScheduleCreation = () => getAllSchedules()
 
   const handleChosenDate = (value: Date) => {
     changeChosenDate(
@@ -75,6 +77,7 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
               <SchedulesForm
                 mode={FORM_MODE.ADD}
                 buttonLabel={t('ADD')}
+                afterSuccess={afterScheduleCreation}
                 api={apiHelper.schedules.create}
                 setValue={{
                   date: String(dateParsed),

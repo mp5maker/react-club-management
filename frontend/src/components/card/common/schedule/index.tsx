@@ -24,9 +24,6 @@ const ScheduleCard: React.FC<ISchedulesCard> = ({ item }) => {
   const startTime = prepareDateWithTime({ date, time: start_time })
   const endTime = prepareDateWithTime({ date, time: end_time })
 
-  console.log('startTime', startTime)
-  console.log('endTime', endTime)
-
   return (
     <>
       <Box className={'card-info'}>

@@ -18,7 +18,7 @@ const getSchedules = async (_req: Request, res: Response) => {
   return res.status(200).json(data)
 }
 
-const createSchedules= async (req: Request, res: Response) => {
+const createSchedule= async (req: Request, res: Response) => {
   const body = get(req, 'body', {})
 
   await apiHelper.schedules.create({
@@ -30,4 +30,4 @@ const createSchedules= async (req: Request, res: Response) => {
   })
 }
 
-export { getSchedules, createSchedules }
+export { getSchedules, createSchedule }
