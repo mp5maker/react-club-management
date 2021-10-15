@@ -36,5 +36,6 @@
   "TITLE": "titulas",
   "DESCRIPTION": "apibūdinimas",
   "TIME_RANGE": "laiko intervalas",
-  "PLEASE_SELECT_AN_OPTION": "pasirinkite parinktį"
+  "PLEASE_SELECT_AN_OPTION": "pasirinkite parinktį",
+  "REMOVE_SCHEDULE": "pašalinti tvarkaraštį"
 }

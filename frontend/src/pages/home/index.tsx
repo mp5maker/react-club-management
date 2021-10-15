@@ -13,7 +13,7 @@ import EditButton from '../../components/button/common/edit'
 import Card from '../../components/card'
 import MemberCard from '../../components/card/common/member'
 import Header from '../../components/header'
-import Modal from '../../components/modal'
+import DeleteModal from '../../components/modal/common/delete'
 import Table from '../../components/table'
 import Typography from '../../components/typography'
 import routes from '../../constants/routes'
@@ -94,26 +94,14 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
   }
 
   const DeleteModalContent = (
-    <Modal
+    <DeleteModal
       title={t('REMOVE_MEMBER')}
       isVisible={deleteObj ? true : false}
       onClose={closeDeleteConfirmation}
-      footer={
-        <Box className={'grid-two'} style={{ rowGap: '20px' }}>
-          <Button color={COLORS.SUCCESS} onClick={removeMember}>
-            <Typography className={'margin-none'}>{t('CONFIRM')}</Typography>
-          </Button>
-          <Button color={COLORS.ERROR} onClick={closeDeleteConfirmation}>
-            <Typography className={'margin-none'}>{t('CANCEL')}</Typography>
-          </Button>
-        </Box>
-      }
-    >
-      <Typography className={'center'}>{t('ARE_YOU_SURE')}</Typography>
-      <Typography className={'center'}>
-        {t('YOU_WANT_TO_REMOVE')} {get(deleteObj, 'name', '')} ?
-      </Typography>
-    </Modal>
+      onConfirm={removeMember}
+      onCancel={closeDeleteConfirmation}
+      deleteText={get(deleteObj, 'name', '')}
+    />
   )
 
   const HeaderContent = (

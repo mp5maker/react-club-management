@@ -38,5 +38,6 @@
   "TIME_RANGE": "Time range",
   "START_TIME": "Start time",
   "END_TIME": "End time",
-  "PLEASE_SELECT_AN_OPTION": "Please select an option"
+  "PLEASE_SELECT_AN_OPTION": "Please select an option",
+  "REMOVE_SCHEDULE": "Remove Schedule"
 }
