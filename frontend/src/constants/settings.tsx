@@ -6,7 +6,8 @@ export enum PERSIST {
   THEME = 'theme',
   LANGUAGE = 'language',
   SIDEBAR = 'sidebar',
-  VIEW_MODE = 'viewMode'
+  VIEW_MODE = 'viewMode',
+  CHOSEN_DATE = 'chosenDate'
 }
 
 export enum THEME {

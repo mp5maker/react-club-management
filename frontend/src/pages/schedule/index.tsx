@@ -9,6 +9,7 @@ import ScheduleCard from '../../components/card/common/schedule'
 import Header from '../../components/header'
 import { CARD_SIZE, FORM_MODE } from '../../constants/settings'
 import SchedulesForm from '../../forms/schedule'
+import useChosenDate from '../../hooks/useChosenDate'
 import useLanguage from '../../hooks/useLanguage'
 import useSchedules from '../../hooks/useSchedules'
 
@@ -19,8 +20,10 @@ const generatedID = v4()
 const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
   const { t } = useLanguage()
   const { schedules } = useSchedules()
-  const [chosenDate, setChosenDate] = React.useState<Date>(new Date())
+  const { chosenDate, changeChosenDate } = useChosenDate()
   const dateParsed = Date.parse(chosenDate.toDateString())
+
+  const handleChosenDate = (value: Date) => changeChosenDate(value)
 
   const dateWiseSchedules = [...schedules]
     .filter((schedule) => {
@@ -41,7 +44,10 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
               <>
                 {dateWiseSchedules.map((schedule, index) => {
                   return (
-                    <Card key={`${generatedID}-${index}`} size={CARD_SIZE.SMALL}>
+                    <Card
+                      key={`${generatedID}-${index}`}
+                      size={CARD_SIZE.SMALL}
+                    >
                       <ScheduleCard item={schedule} />
                     </Card>
                   )
@@ -52,7 +58,7 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
             )}
           </Box>
           <Box className={'padding-m margin-left-auto'}>
-            <Calendar onChange={setChosenDate} value={chosenDate} />
+            <Calendar onChange={handleChosenDate} value={chosenDate} />
             <Box className={'margin-top-m'}>
               <SchedulesForm
                 mode={FORM_MODE.ADD}

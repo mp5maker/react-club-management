@@ -4,7 +4,7 @@ import { VIEW_MODE } from '../constants/settings'
 import {
   changeViewMode as _changeViewMode,
   selectViewMode,
-} from '../redux/persist/pageReducer'
+} from '../redux/persist/viewModeReducer'
 
 const useViewMode = () => {
   const viewMode = useSelector(selectViewMode)
