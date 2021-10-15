@@ -5,7 +5,7 @@ import { PERSIST } from '../../constants/settings'
 export const chosenDateSlice = createSlice({
   name: PERSIST.CHOSEN_DATE,
   initialState: {
-    chosenDate: new Date(),
+    chosenDate: String(Date.now()),
   },
   reducers: {
     changeChosenDate: (state, action) => {

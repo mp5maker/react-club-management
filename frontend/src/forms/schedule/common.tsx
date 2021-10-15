@@ -11,7 +11,7 @@ export const INITIAL_DATA = {
 
 export const schema = ({ t }: { t: (val: string) => string }) =>
   yup.object().shape({
-    title: yup.string(),
+    title: yup.string().required('THIS_FIELD_IS_REQUIRED'),
     description: yup.string(),
     date: yup.string().required(t('THIS_FIELD_IS_REQUIRED')),
     start_time: yup.string().required(t('THIS_FIELD_IS_REQUIRED')),

@@ -10,7 +10,7 @@ const useChosenDate = () => {
   const dispatch = useDispatch()
 
   const changeChosenDate = React.useCallback(
-    (newChosenDate: Date) => {
+    (newChosenDate: string) => {
       return dispatch(_changeChosenDate(newChosenDate))
     },
     [dispatch]

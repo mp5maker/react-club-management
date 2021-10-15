@@ -18,4 +18,16 @@ const getSchedules = async (_req: Request, res: Response) => {
   return res.status(200).json(data)
 }
 
-export { getSchedules }
+const createSchedules= async (req: Request, res: Response) => {
+  const body = get(req, 'body', {})
+
+  await apiHelper.schedules.create({
+    body
+  })
+
+  return res.status(201).json({
+    mesasge: 'DATA_CREATED_SUCCESSFULLY',
+  })
+}
+
+export { getSchedules, createSchedules }

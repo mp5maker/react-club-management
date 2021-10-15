@@ -105,3 +105,7 @@ export enum CARD_SIZE {
   SMALL = 'small',
   MEDIUM = 'medium'
 }
+
+export enum DATE_TIME_FORMAT {
+  DATE_ONLY = 'yyyy/MM/dd'
+}

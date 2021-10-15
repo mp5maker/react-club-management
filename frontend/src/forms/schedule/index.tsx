@@ -135,6 +135,8 @@ const SchedulesForm: React.FC<ISchedulesForm> = ({
     }
   }, [setValue])
 
+  console.log('form', form)
+
   return (
     <Form fieldset={true} onSubmit={handleSubmit}>
       <Box className={'form-control'}>
@@ -146,6 +148,7 @@ const SchedulesForm: React.FC<ISchedulesForm> = ({
           value={form.title}
           error={t(error.title as string)}
           name={'title'}
+          required
         />
       </Box>
       <Box className={'form-control'}>
@@ -168,6 +171,7 @@ const SchedulesForm: React.FC<ISchedulesForm> = ({
           value={form.start_time}
           error={t(error.start_time as string)}
           name={'start_time'}
+          required
         />
       </Box>
       <Box className={'form-control'}>
@@ -179,6 +183,7 @@ const SchedulesForm: React.FC<ISchedulesForm> = ({
           value={form.end_time}
           error={t(error.end_time as string)}
           name={'end_time'}
+          required
         />
       </Box>
       <Box className={'form-control'}>
@@ -191,6 +196,7 @@ const SchedulesForm: React.FC<ISchedulesForm> = ({
           placeholder={t('PLEASE_SELECT_AN_OPTION')}
           error={t(error.member_id as string)}
           name={'member_id'}
+          required
         />
       </Box>
       <Box className={'form-control'}>

@@ -36,3 +36,4 @@ yarn start
 - Schedules can be added in the overlapping time of the same date
 - Code could have been optimized and refactored
 - Only one member can schedule for club management at a time
+- Some server status code might be missing
