@@ -11,7 +11,7 @@ const Calendar: React.FC<TCalendarProps> = ({ ...otherProps }: any): JSX.Element
   const { i18n } = useLanguage()
 
   const props = {
-    locale: i18n.languages,
+    locale: i18n.language,
     ...otherProps,
   }
 

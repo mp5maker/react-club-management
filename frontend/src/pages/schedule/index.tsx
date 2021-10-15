@@ -47,7 +47,7 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
     deleteApi: apiHelper.schedules.remove,
   })
   const [editObj, setEditObj] = React.useState<ISchedules | null>(null)
-  const scheduleFormRef = React.useRef<IScheduleFormForwardRef|null>(null)
+  const scheduleFormRef = React.useRef<IScheduleFormForwardRef | null>(null)
   const dateParsed = Number(chosenDate)
 
   const afterScheduleCreation = () => {
@@ -147,9 +147,13 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
       location={FAB_LOCATION.BOTTOM_CENTER}
       onClick={closeEdit}
     >
-      <Typography className={'margin-none'}>{t('CANCEL_EDIT_SCHEDULE')}</Typography>
+      <Typography className={'margin-none'}>
+        {t('CANCEL_EDIT_SCHEDULE')}
+      </Typography>
     </Fab>
-  ) : <></>
+  ) : (
+    <></>
+  )
 
   return (
     <>
@@ -158,9 +162,11 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
       <Box className={'schedule-page-container'}>
         <Box>
           <Box style={{ display: 'flex' }} className={'schedule-splitter'}>
-            <Box className={'padding-left-m padding-right-m'}>
+            <Box>
               {HeaderContent}
-              {ScheduleListContent}
+              <Box className={'padding-left-m padding-right-m'}>
+                {ScheduleListContent}
+              </Box>
             </Box>
             <Box className={'padding-m margin-left-auto'}>
               {CalendarContent}
