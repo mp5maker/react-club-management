@@ -62,11 +62,9 @@ const SchedulesForm: React.FC<ISchedulesForm> = ({
             : {}),
           show: true,
         })
-        if (isAddMode) {
-          setForm(INITIAL_DATA)
-          setError(INITIAL_DATA)
-        }
         if (afterSuccess) afterSuccess()
+        setForm(INITIAL_DATA)
+        setError(INITIAL_DATA)
       }
       const onError = () => {
         setBusy(false)
