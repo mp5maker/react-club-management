@@ -17,12 +17,13 @@
 > Database runs in PORT:5000 [Fake Database]
 
 ```shell
+yarn install
 yarn start
 ```
 
 ## Some Considerations [Due to time limitations]
 
-> Please use yarn if possible instead of npm
+> Please use yarn [instead of npm]
 > Avoided using Material-UI or styled components (styling has been done using scss)
 > Avoided using raw webpack, instead create-react-app was used
 > Apologize if there are any wrong translations for Lithuanian word
