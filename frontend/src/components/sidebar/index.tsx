@@ -51,6 +51,7 @@ const Sidebar: React.FC<ISidebarProps> = (): JSX.Element => {
             {t('WORK_SOBER')}
           </Typography>
           <Button
+            aria-label={'Closes sidebar for smaller device'}
             onClick={closeSidebar}
             className={'circle-small selective-visible'}
           >
@@ -87,6 +88,7 @@ const Sidebar: React.FC<ISidebarProps> = (): JSX.Element => {
             </Box>
             <Box className={'sidebar-item-option space-between'}>
               <Button
+                aria-label={'Changes the theme to light'}
                 onClick={() => handleTheme(THEME.LIGHT)}
                 className={'sidebar-icon circle-medium'}
                 variant={
@@ -99,6 +101,7 @@ const Sidebar: React.FC<ISidebarProps> = (): JSX.Element => {
                 <FontAwesomeIcon icon={faLightbulb} />
               </Button>
               <Button
+                aria-label={'Changes the theme to dark'}
                 onClick={() => handleTheme(THEME.DARK)}
                 className={'sidebar-icon circle-medium'}
                 variant={
@@ -118,6 +121,7 @@ const Sidebar: React.FC<ISidebarProps> = (): JSX.Element => {
             </Box>
             <Box className={'sidebar-item-option space-between'}>
               <Button
+                aria-label={'Changes the language to English'}
                 onClick={() => handleLanguage(LANGUAGE.ENGLISH)}
                 className={'sidebar-icon circle-medium'}
                 variant={
@@ -134,6 +138,7 @@ const Sidebar: React.FC<ISidebarProps> = (): JSX.Element => {
                 {t('ENGLISH').substring(0, 2)}
               </Button>
               <Button
+                aria-label={'Changes the language to Lithuanian'}
                 onClick={() => handleLanguage(LANGUAGE.LITHUANIAN)}
                 className={'sidebar-icon circle-medium'}
                 variant={

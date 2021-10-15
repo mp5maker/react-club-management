@@ -50,7 +50,11 @@ const EditMember: React.FC<IEditMemberProps> = (): JSX.Element => {
         title={t('EDIT_MEMBER')}
         right={
           <Box className={'space-between'}>
-            <Button onClick={goBack} className={'circle-medium'}>
+            <Button
+              onClick={goBack}
+              className={'circle-medium'}
+              aria-label={'Go back to the home page'}
+            >
               <FontAwesomeIcon icon={faChevronLeft} />
             </Button>
           </Box>

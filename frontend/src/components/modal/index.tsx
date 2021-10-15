@@ -1,11 +1,7 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as React from 'react'
-import {
-  COLORS,
-  TYPOGRAPHY_COMPONENT,
-  TYPOGRAPHY_VARIANT,
-} from '../../constants/settings'
+import { COLORS, TYPOGRAPHY_VARIANT } from '../../constants/settings'
 import Box from '../box'
 import Button from '../button'
 import Typography from '../typography'
@@ -34,14 +30,18 @@ const Modal: React.FC<IModalProps> = ({
         <Box className="modal-header space-between">
           <Box>
             <Typography
-              component={TYPOGRAPHY_COMPONENT.H4}
-              variant={TYPOGRAPHY_VARIANT.H6}
+              className={'margin-none'}
+              variant={TYPOGRAPHY_VARIANT.H4}
             >
               {title}
             </Typography>
           </Box>
           <Box>
-            <Button onClick={onClose} className={'circle-medium center'}>
+            <Button
+              onClick={onClose}
+              className={'circle-medium center'}
+              aria-label={'Closes the modal'}
+            >
               <FontAwesomeIcon icon={faTimes} />
             </Button>
           </Box>

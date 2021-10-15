@@ -14,7 +14,7 @@ import {
   COLORS,
   FORM_MODE,
   TYPOGRAPHY_COMPONENT,
-  TYPOGRAPHY_VARIANT
+  TYPOGRAPHY_VARIANT,
 } from '../../constants/settings'
 import useAlert from '../../hooks/useAlert'
 import useLanguage from '../../hooks/useLanguage'
@@ -111,10 +111,15 @@ const MemberForm: React.FC<IMemberForm> = ({
       }
       if (isEditMode) {
         setBusy(true)
-        api({ id: get(setValue, 'id', ''), body: prepareFormData({ form: {
-          ...omit(setValue, ['profile_photo']),
-          ...form,
-        } }) })
+        api({
+          id: get(setValue, 'id', ''),
+          body: prepareFormData({
+            form: {
+              ...omit(setValue, ['profile_photo']),
+              ...form,
+            },
+          }),
+        })
           .then(onSuccess)
           .catch(onError)
       }
@@ -148,7 +153,11 @@ const MemberForm: React.FC<IMemberForm> = ({
     }
   }, [setValue])
 
-  const profile_photo = get(form, 'profile_photo.filename', get(form, 'profile_photo', ''))
+  const profile_photo = get(
+    form,
+    'profile_photo.filename',
+    get(form, 'profile_photo', '')
+  )
 
   return (
     <Form fieldset={true} onSubmit={handleSubmit}>
@@ -258,6 +267,7 @@ const MemberForm: React.FC<IMemberForm> = ({
       </Box>
       <Box className={'form-control'}>
         <Button
+          aria-label={'Creates or updates member'}
           variant={BUTTON_VARIANT.CONTAINED}
           color={COLORS.SUCCESS}
           className={'center'}

@@ -86,11 +86,16 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
       title={t('MEMBERS')}
       right={
         <Box className={'space-between'}>
-          <Button onClick={goToAddMember} className={'circle-medium'}>
+          <Button
+            onClick={goToAddMember}
+            className={'circle-medium'}
+            aria-label={'navigate to add member page'}
+          >
             <FontAwesomeIcon icon={faPlus} />
           </Button>
           {isCard ? (
             <Button
+              aria-label={'Toggle to table view mode'}
               onClick={() => handleViewMode(VIEW_MODE.TABLE)}
               className={'circle-medium margin-left-s'}
             >
@@ -101,6 +106,7 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
           )}
           {isTable ? (
             <Button
+              aria-label={'Toggle to card view mode'}
               onClick={() => handleViewMode(VIEW_MODE.CARD)}
               className={'circle-medium margin-left-s'}
             >

@@ -11,6 +11,7 @@ interface IDeleteButton<T> {
 const DeleteButton = <T,>({ onClick, row }: IDeleteButton<T>): JSX.Element => {
   return (
     <Button
+      aria-label={'Deletes item'}
       onClick={() => onClick({ row })}
       className={'circle-medium margin-right-s'}
       variant={BUTTON_VARIANT.CONTAINED}

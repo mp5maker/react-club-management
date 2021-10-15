@@ -32,10 +32,18 @@ const DeleteModal: React.FC<IDeleteModalProps> = ({
       onClose={onClose}
       footer={
         <Box className={'grid-two'} style={{ rowGap: '20px' }}>
-          <Button color={COLORS.SUCCESS} onClick={onConfirm}>
+          <Button
+            color={COLORS.SUCCESS}
+            onClick={onConfirm}
+            aria-label={'Confirms Deletion'}
+          >
             <Typography className={'margin-none'}>{t('CONFIRM')}</Typography>
           </Button>
-          <Button color={COLORS.ERROR} onClick={onCancel}>
+          <Button
+            color={COLORS.ERROR}
+            onClick={onCancel}
+            aria-label={'Cancel Deletion'}
+          >
             <Typography className={'margin-none'}>{t('CANCEL')}</Typography>
           </Button>
         </Box>

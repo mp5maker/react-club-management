@@ -36,6 +36,7 @@ const Header: React.FC<IHeaderProps> = ({
         <Box className={'header-left-content'}>
           <Box className={'space-between'}>
             <Button
+              aria-label={'Opens the sidebar for smaller device'}
               onClick={openSidebar}
               className={'selective-visible'}
               style={{ marginRight: 12 }}
@@ -43,7 +44,8 @@ const Header: React.FC<IHeaderProps> = ({
               <FontAwesomeIcon icon={faBars} />
             </Button>
             <Typography
-              component={TYPOGRAPHY_COMPONENT.H2}
+              className={'margin-none'}
+              component={TYPOGRAPHY_COMPONENT.H1}
               variant={TYPOGRAPHY_VARIANT.H2}
             >
               {title}

@@ -24,7 +24,11 @@ const AddMember: React.FC<IAddMemberProps> = (): JSX.Element => {
         title={t('ADD_MEMBER')}
         right={
           <Box className={'space-between'}>
-            <Button onClick={goBack} className={'circle-medium'}>
+            <Button
+              onClick={goBack}
+              className={'circle-medium'}
+              aria-label={'Go back to home page'}
+            >
               <FontAwesomeIcon icon={faChevronLeft} />
             </Button>
           </Box>

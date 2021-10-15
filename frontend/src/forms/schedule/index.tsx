@@ -29,10 +29,7 @@ export interface IScheduleFormForwardRef {
   clear: () => void
 }
 
-const SchedulesForm = React.forwardRef<
-  IScheduleFormForwardRef,
-  ISchedulesForm
->(
+const SchedulesForm = React.forwardRef<IScheduleFormForwardRef, ISchedulesForm>(
   (
     { buttonLabel, setValue, mode, api, afterSuccess, afterError },
     ref
@@ -212,6 +209,7 @@ const SchedulesForm = React.forwardRef<
         </Box>
         <Box className={'form-control'}>
           <Button
+            aria-label={'Create or updates schedule'}
             variant={BUTTON_VARIANT.CONTAINED}
             color={COLORS.SUCCESS}
             className={'center'}
