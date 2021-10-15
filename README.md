@@ -35,3 +35,4 @@ yarn start
 - Avoided using paginations/scroll-to-more, search and filter using the mock database (json-server)
 - Schedules can be added in the overlapping time of the same date
 - Code could have been optimized and refactored
+- Only one member can schedule for club management at a time
