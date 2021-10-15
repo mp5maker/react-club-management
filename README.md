@@ -42,3 +42,4 @@ yarn start
 - Added very small amount of tests
 - Avoided in details work of accessibility
 - Image ratio might not be perfect, the dummy images have been taken from lorem picsum with different sizes
+- Added very minimal tests for frontend and tests for backend have been ignored
