@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install": "concurrently --kill-others \"yarn --cwd ./frontend install\" \"yarn --cwd ./backend install\"",
+    "install": "concurrently --kill-others \"yarn install\" \"yarn --cwd ./frontend install\" \"yarn --cwd ./backend install\"",
     "start": "concurrently --kill-others \"yarn --cwd ./frontend run start\" \"yarn --cwd ./backend run start\" \"yarn --cwd ./backend run json:server\""
   },
   "repository": {

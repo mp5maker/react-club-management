@@ -1,4 +1,3 @@
-import { AxiosError, AxiosResponse } from 'axios'
 import format from 'date-fns/format'
 import get from 'lodash/get'
 import * as React from 'react'
@@ -14,13 +13,12 @@ import Header from '../../components/header'
 import DeleteModal from '../../components/modal/common/delete'
 import {
   CARD_SIZE,
-  COLORS,
   DATE_TIME_FORMAT,
-  FORM_MODE
+  FORM_MODE,
 } from '../../constants/settings'
 import SchedulesForm from '../../forms/schedule'
-import useAlert from '../../hooks/useAlert'
 import useChosenDate from '../../hooks/useChosenDate'
+import useDeleteModal from '../../hooks/useDeleteModal'
 import useLanguage from '../../hooks/useLanguage'
 import useSchedules from '../../hooks/useSchedules'
 import './schedule.scss'
@@ -33,46 +31,22 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
   const { t } = useLanguage()
   const { schedules, getAllSchedules } = useSchedules()
   const { chosenDate, changeChosenDate } = useChosenDate()
-  const [deleteObj, setDeleteObj] = React.useState<ISchedules | null>(null)
-  const { setAlert } = useAlert()
+  const {
+    deleteObj,
+    openDeleteConfirmation,
+    closeDeleteConfirmation,
+    removeItem,
+  } = useDeleteModal<ISchedules>({
+    afterRemoveSuccess: getAllSchedules,
+    successMessage: t('SCHEDULE_SUCCESSFULLY_DELETED'),
+    errorMessage: t('SCHEDULE_CANNOT_BE_DELETED'),
+    deleteApi: apiHelper.schedules.remove,
+  })
   const dateParsed = Number(chosenDate)
 
   const afterScheduleCreation = () => getAllSchedules()
 
   const editSchedule = () => {}
-  const closeDeleteConfirmation = () => setDeleteObj(null)
-  const openDeleteConfirmation = ({ row }: { row: ISchedules }) => {
-    setDeleteObj(row)
-  }
-  const removeSchedule = () => {
-    const onSuccess = (response: AxiosResponse) => {
-      console.debug(response)
-      setAlert({
-        message: t('MEMBER_SUCCESSFULLY_DELETED'),
-        color: COLORS.SUCCESS,
-        show: true,
-      })
-      setDeleteObj(null)
-      getAllSchedules()
-    }
-
-    const onError = (error: AxiosError) => {
-      console.debug(error)
-      setAlert({
-        message: t('MEMBER_CANNOT_BE_DELETED'),
-        color: COLORS.ERROR,
-        show: true,
-      })
-    }
-
-    if (deleteObj) {
-      apiHelper.schedules
-        .remove({ id: get(deleteObj, 'id', '') as string })
-        .then(onSuccess)
-        .catch(onError)
-    }
-  }
-
   const handleChosenDate = (value: Date) => {
     changeChosenDate(
       String(Date.parse(format(value, DATE_TIME_FORMAT.DATE_ONLY)))
@@ -93,7 +67,7 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
       title={t('REMOVE_SCHEDULE')}
       isVisible={deleteObj ? true : false}
       onClose={closeDeleteConfirmation}
-      onConfirm={removeSchedule}
+      onConfirm={removeItem}
       onCancel={closeDeleteConfirmation}
       deleteText={get(deleteObj, 'title', '')}
     />
@@ -158,19 +132,13 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
       <Box className={'schedule-page-container'}>
         <Box>
           <Box style={{ display: 'flex' }} className={'schedule-splitter'}>
-            <Box
-              className={
-                'padding-left-m padding-right-m'
-              }
-              >
-              { HeaderContent }
-              { ScheduleListContent }
+            <Box className={'padding-left-m padding-right-m'}>
+              {HeaderContent}
+              {ScheduleListContent}
             </Box>
             <Box className={'padding-m margin-left-auto'}>
-              { CalendarContent }
-              <Box className={'margin-top-m'}>
-                { ScheduleFormContent}
-              </Box>
+              {CalendarContent}
+              <Box className={'margin-top-m'}>{ScheduleFormContent}</Box>
             </Box>
           </Box>
         </Box>

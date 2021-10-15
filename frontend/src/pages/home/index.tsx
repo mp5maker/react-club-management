@@ -1,6 +1,5 @@
 import { faIdCard, faPlus, faTable } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { AxiosError, AxiosResponse } from 'axios'
 import get from 'lodash/get'
 import * as React from 'react'
 import { useHistory } from 'react-router'
@@ -17,8 +16,8 @@ import DeleteModal from '../../components/modal/common/delete'
 import Table from '../../components/table'
 import Typography from '../../components/typography'
 import routes from '../../constants/routes'
-import { CARD_SIZE, COLORS, VIEW_MODE } from '../../constants/settings'
-import useAlert from '../../hooks/useAlert'
+import { CARD_SIZE, VIEW_MODE } from '../../constants/settings'
+import useDeleteModal from '../../hooks/useDeleteModal'
 import useLanguage from '../../hooks/useLanguage'
 import useMembers from '../../hooks/useMembers'
 import useViewMode from '../../hooks/useViewMode'
@@ -29,10 +28,19 @@ const generatedID = v4()
 const Home: React.FC<IHomeProps> = (): JSX.Element => {
   const { members, getAllMembers } = useMembers()
   const { t } = useLanguage()
-  const { setAlert } = useAlert()
   const history = useHistory()
   const { viewMode, changeViewMode } = useViewMode()
-  const [deleteObj, setDeleteObj] = React.useState<IMembers | null>(null)
+  const {
+    deleteObj,
+    openDeleteConfirmation,
+    closeDeleteConfirmation,
+    removeItem,
+  } = useDeleteModal<IMembers>({
+    afterRemoveSuccess: getAllMembers,
+    successMessage: t('MEMBER_SUCCESSFULLY_DELETED'),
+    errorMessage: t('MEMBER_CANNOT_BE_DELETED'),
+    deleteApi: apiHelper.members.remove,
+  })
   const isTable = viewMode === VIEW_MODE.TABLE
   const isCard = viewMode === VIEW_MODE.CARD
 
@@ -47,39 +55,6 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
   const editMember = ({ row }: { row: IMembers }) => {
     const id = get(row, 'id', '')
     history.push(`${routes.editMember.rawPath}/${id}`)
-  }
-
-  const removeMember = () => {
-    const onSuccess = (response: AxiosResponse) => {
-      console.debug(response)
-      setAlert({
-        message: t('MEMBER_SUCCESSFULLY_DELETED'),
-        color: COLORS.SUCCESS,
-        show: true,
-      })
-      setDeleteObj(null)
-      getAllMembers()
-    }
-
-    const onError = (error: AxiosError) => {
-      console.debug(error)
-      setAlert({
-        message: t('MEMBER_CANNOT_BE_DELETED'),
-        color: COLORS.ERROR,
-        show: true,
-      })
-    }
-
-    if (deleteObj) {
-      apiHelper.members
-        .remove({ id: get(deleteObj, 'id', '') as string })
-        .then(onSuccess)
-        .catch(onError)
-    }
-  }
-  const closeDeleteConfirmation = () => setDeleteObj(null)
-  const openDeleteConfirmation = ({ row }: { row: IMembers }) => {
-    setDeleteObj(row)
   }
 
   const memberHeaders = {
@@ -98,7 +73,7 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
       title={t('REMOVE_MEMBER')}
       isVisible={deleteObj ? true : false}
       onClose={closeDeleteConfirmation}
-      onConfirm={removeMember}
+      onConfirm={removeItem}
       onCancel={closeDeleteConfirmation}
       deleteText={get(deleteObj, 'name', '')}
     />
