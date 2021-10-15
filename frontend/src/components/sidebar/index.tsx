@@ -1,12 +1,11 @@
 import {
   faClock,
-  faSignOutAlt,
   faLightbulb,
   faMoon,
+  faSignOutAlt,
   faUsers,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import get from 'lodash/get'
 import * as React from 'react'
 import { NavLink } from 'react-router-dom'
 import routes from '../../constants/routes'
@@ -34,12 +33,8 @@ const Sidebar: React.FC<ISidebarProps> = (): JSX.Element => {
   const { theme, changeTheme } = useTheme()
   const { sidebar, changeSidebar } = useSidebar()
 
-  const handleLanguage = (event: React.MouseEvent<HTMLButtonElement>) =>
-    changeLanguage(get(event, 'target.value', LANGUAGE.ENGLISH))
-
-  const handleTheme = (event: React.MouseEvent<HTMLButtonElement>) =>
-    changeTheme(get(event, 'target.value', THEME.DARK))
-
+  const handleLanguage = (newLanguage: LANGUAGE) => changeLanguage(newLanguage)
+  const handleTheme = (newTheme: THEME) => changeTheme(newTheme)
   const closeSidebar = () => changeSidebar(SIDEBAR.CLOSE)
 
   return (
@@ -55,7 +50,10 @@ const Sidebar: React.FC<ISidebarProps> = (): JSX.Element => {
           >
             {t('WORK_SOBER')}
           </Typography>
-          <Button onClick={closeSidebar} className={'circle-small selective-visible'}>
+          <Button
+            onClick={closeSidebar}
+            className={'circle-small selective-visible'}
+          >
             <FontAwesomeIcon
               icon={faSignOutAlt}
               style={{ transform: 'scale(-1)' }}
@@ -89,8 +87,7 @@ const Sidebar: React.FC<ISidebarProps> = (): JSX.Element => {
             </Box>
             <Box className={'sidebar-item-option space-between'}>
               <Button
-                value={THEME.LIGHT}
-                onClick={handleTheme}
+                onClick={() => handleTheme(THEME.LIGHT)}
                 className={'sidebar-icon circle-medium'}
                 variant={
                   theme === THEME.LIGHT
@@ -102,8 +99,7 @@ const Sidebar: React.FC<ISidebarProps> = (): JSX.Element => {
                 <FontAwesomeIcon icon={faLightbulb} />
               </Button>
               <Button
-                value={THEME.DARK}
-                onClick={handleTheme}
+                onClick={() => handleTheme(THEME.DARK)}
                 className={'sidebar-icon circle-medium'}
                 variant={
                   theme === THEME.DARK
@@ -122,8 +118,7 @@ const Sidebar: React.FC<ISidebarProps> = (): JSX.Element => {
             </Box>
             <Box className={'sidebar-item-option space-between'}>
               <Button
-                value={LANGUAGE.ENGLISH}
-                onClick={handleLanguage}
+                onClick={() => handleLanguage(LANGUAGE.ENGLISH)}
                 className={'sidebar-icon circle-medium'}
                 variant={
                   language === LANGUAGE.ENGLISH
@@ -139,8 +134,7 @@ const Sidebar: React.FC<ISidebarProps> = (): JSX.Element => {
                 {t('ENGLISH').substring(0, 2)}
               </Button>
               <Button
-                value={LANGUAGE.LITHUANIAN}
-                onClick={handleLanguage}
+                onClick={() => handleLanguage(LANGUAGE.LITHUANIAN)}
                 className={'sidebar-icon circle-medium'}
                 variant={
                   language === LANGUAGE.LITHUANIAN

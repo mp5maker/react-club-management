@@ -102,7 +102,7 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
   const HeaderContent = <Header title={t('SCHEDULE')} />
 
   const ScheduleListContent = (
-    <>
+    <Box className={'card-collection-container'}>
       {dateWiseSchedules ? (
         <>
           {dateWiseSchedules.map((schedule, index) => {
@@ -133,7 +133,7 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
       ) : (
         <></>
       )}
-    </>
+    </Box>
   )
 
   const CalendarContent = (
@@ -157,13 +157,13 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
       {DeleteModalContent}
       <Box className={'schedule-page-container'}>
         <Box>
-          { HeaderContent }
           <Box style={{ display: 'flex' }} className={'schedule-splitter'}>
             <Box
               className={
-                'padding-left-m padding-right-m card-collection-container'
+                'padding-left-m padding-right-m'
               }
-            >
+              >
+              { HeaderContent }
               { ScheduleListContent }
             </Box>
             <Box className={'padding-m margin-left-auto'}>

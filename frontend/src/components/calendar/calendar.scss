@@ -55,5 +55,16 @@
         border: 1px solid var(--secondary);
       }
     }
+    .react-calendar__year-view__months {
+      .react-calendar__tile {
+        abbr {
+          color: var(--text1);
+        }
+      }
+      .react-calendar__tile--now {
+        background-color: var(--background1);
+        boxShadow: var(--boxShadow);
+      }
+    }
   }
 }
