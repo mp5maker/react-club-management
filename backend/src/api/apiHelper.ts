@@ -13,6 +13,9 @@ const apiHelper = {
       axios.patch(`/members/${id}`, body),
   },
   schedules: {
+    getAll: () => axios.get('/schedules'),
+    get: ({ id }: { id: string }) => axios.get(`/schedules/${id}`),
+    remove: ({ id }: { id: string }) => axios.delete(`/schedules/${id}`),
     create: ({ body }: { body: Partial<ISchedules> }) =>
       axios.post(`/api/v1/schedules`, body),
     update: ({ id, body }: { id: string; body: Partial<ISchedules> }) =>

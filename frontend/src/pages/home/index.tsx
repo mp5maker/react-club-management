@@ -15,12 +15,13 @@ import apiHelper from '../../api/apiHelper'
 import Box from '../../components/box'
 import Button from '../../components/button'
 import Card from '../../components/card'
+import MemberCard from '../../components/card/common/member'
 import Header from '../../components/header'
 import Modal from '../../components/modal'
 import Table from '../../components/table'
 import Typography from '../../components/typography'
 import routes from '../../constants/routes'
-import { BUTTON_VARIANT, COLORS, VIEW_MODE } from '../../constants/settings'
+import { BUTTON_VARIANT, CARD_SIZE, COLORS, VIEW_MODE } from '../../constants/settings'
 import useAlert from '../../hooks/useAlert'
 import useLanguage from '../../hooks/useLanguage'
 import useMembers from '../../hooks/useMembers'
@@ -212,7 +213,7 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
       {members.map((item: IMembers, index: number) => {
         return (
           <Card
-            item={item}
+            size={CARD_SIZE.MEDIUM}
             key={`${generatedID}-${index}`}
             overlay={
               <Box
@@ -239,7 +240,9 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
                 </Box>
               </Box>
             }
-          />
+          >
+            <MemberCard item={item} />
+          </Card>
         )
       })}
     </Box>

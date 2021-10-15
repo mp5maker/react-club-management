@@ -1,4 +1,24 @@
 {
+  "schedules": [
+    {
+      "id": 1,
+      "title": "Tea Session",
+      "description": "Banking Proposals",
+      "start_time": "14:03",
+      "end_time": "16:05",
+      "date": "1634666400000",
+      "member_id": "2"
+    },
+    {
+      "id": 2,
+      "title": "Therapy Session",
+      "description": "Yoga From Heart",
+      "start_time": "16:03",
+      "end_time": "18:10",
+      "date": "1634752800000",
+      "member_id": "4"
+    }
+  ],
   "members": [
     {
       "id": 1,

@@ -99,3 +99,8 @@ export enum VIEW_MODE {
   TABLE = 'TABLE',
   CARD = 'CARD',
 }
+
+export enum CARD_SIZE {
+  SMALL = 'small',
+  MEDIUM = 'medium'
+}

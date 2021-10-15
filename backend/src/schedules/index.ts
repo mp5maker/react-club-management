@@ -1,3 +1,7 @@
+import { Request, Response } from 'express'
+import get from 'lodash/get'
+import apiHelper from '../api/apiHelper'
+
 export interface ISchedules {
   id: string
   date: string
@@ -7,3 +11,11 @@ export interface ISchedules {
   title?: string
   description?: string
 }
+
+const getSchedules = async (_req: Request, res: Response) => {
+  const schedules = await apiHelper.schedules.getAll()
+  const data: Array<ISchedules> = get(schedules, 'data', [])
+  return res.status(200).json(data)
+}
+
+export { getSchedules }
