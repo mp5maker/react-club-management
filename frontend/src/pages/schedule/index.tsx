@@ -12,6 +12,7 @@ import ScheduleCard from '../../components/card/common/schedule'
 import Fab from '../../components/fab'
 import Header from '../../components/header'
 import DeleteModal from '../../components/modal/common/delete'
+import NoDataFound from '../../components/no-data-found'
 import Typography from '../../components/typography'
 import {
   CARD_SIZE,
@@ -88,7 +89,7 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
 
   const HeaderContent = <Header title={t('SCHEDULE')} />
 
-  const ScheduleListContent = (
+  const ScheduleListContent = dateWiseSchedules.length ? (
     <Box className={'card-collection-container'}>
       {dateWiseSchedules ? (
         <>
@@ -120,6 +121,10 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
       ) : (
         <></>
       )}
+    </Box>
+  ) : (
+    <Box className={'center'} style={{ width: '100%' }}>
+      <NoDataFound />
     </Box>
   )
 
@@ -162,7 +167,7 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
       <Box className={'schedule-page-container'}>
         <Box>
           <Box style={{ display: 'flex' }} className={'schedule-splitter'}>
-            <Box>
+            <Box style={{ width: '100%' }}>
               {HeaderContent}
               <Box className={'padding-left-m padding-right-m'}>
                 {ScheduleListContent}

@@ -1,10 +1,12 @@
 import * as React from 'react'
 import { v4 } from 'uuid'
 import Box from '../box'
+import NoDataFound from '../no-data-found'
 import Typography from '../typography'
 import './table.scss'
 
 interface ITableProps<T> {
+  loading?: boolean
   autoSerial?: boolean
   properties: Array<keyof T>
   children?: React.ReactNode
@@ -35,6 +37,7 @@ const generatedID = v4()
 const anotherGeneratedID = v4()
 
 const Table = <T,>({
+  loading = false,
   properties,
   customDataHeader,
   customHeader,
@@ -43,78 +46,94 @@ const Table = <T,>({
   autoSerial = true,
   rowOptions,
 }: ITableProps<T>): JSX.Element => {
-  return (
-    <Box className={'table-container'}>
-      <table>
-        <thead>
-          <tr>
-            {autoSerial ? (
-              <th key={`${generatedID}-id`}>
-                {customHeader ? (
-                  customHeader({ column: 'serial', index: 0 })
-                ) : (
-                  <></>
-                )}
-              </th>
+  const colSpan = properties.length + (autoSerial ? 1 : 0)
+
+  const TheadContent = (
+    <thead>
+      <tr>
+        {autoSerial ? (
+          <th key={`${generatedID}-id`}>
+            {customHeader ? (
+              customHeader({ column: 'serial', index: 0 })
             ) : (
               <></>
             )}
-            {properties.map((column, index) => {
+          </th>
+        ) : (
+          <></>
+        )}
+        {properties.map((column, index) => {
+          return (
+            <th key={`${generatedID}-${index}`}>
+              {customHeader ? customHeader({ column, index }) : <></>}
+            </th>
+          )
+        })}
+      </tr>
+    </thead>
+  )
+
+  const NoDataContent = !loading ? (
+    <tbody>
+      <tr>
+        <td colSpan={colSpan}>
+          <NoDataFound />
+        </td>
+      </tr>
+    </tbody>
+  ) : <></>
+
+  const TBodyContent = (
+    <tbody>
+      {list.map((row, rowIndex) => {
+        return (
+          <tr key={`${anotherGeneratedID}-row-${rowIndex}`}>
+            {autoSerial ? (
+              <td
+                key={`${generatedID}-id`}
+                data-header={
+                  customDataHeader ? customDataHeader({ column: 'serial' }) : ''
+                }
+              >
+                <Box>
+                  <Typography>{rowIndex + 1}</Typography>
+                </Box>
+              </td>
+            ) : (
+              <></>
+            )}
+            {properties.map((column, columnIndex) => {
               return (
-                <th key={`${generatedID}-${index}`}>
-                  {customHeader ? customHeader({ column, index }) : <></>}
-                </th>
+                <td
+                  data-header={
+                    customDataHeader ? customDataHeader({ column }) : ''
+                  }
+                  key={`${anotherGeneratedID}-row-${rowIndex}-column-${columnIndex}`}
+                >
+                  {customBody ? (
+                    customBody({ row, column, columnIndex, rowIndex })
+                  ) : (
+                    <></>
+                  )}
+                  {rowOptions && columnIndex === properties.length - 1 ? (
+                    <Box className={'row-options'}>{rowOptions({ row })}</Box>
+                  ) : (
+                    <></>
+                  )}
+                </td>
               )
             })}
           </tr>
-        </thead>
-        <tbody>
-          {list.map((row, rowIndex) => {
-            return (
-              <tr key={`${anotherGeneratedID}-row-${rowIndex}`}>
-                {autoSerial ? (
-                  <td
-                    key={`${generatedID}-id`}
-                    data-header={
-                      customDataHeader
-                        ? customDataHeader({ column: 'serial' })
-                        : ''
-                    }
-                  >
-                    <Box>
-                      <Typography>{rowIndex + 1}</Typography>
-                    </Box>
-                  </td>
-                ) : (
-                  <></>
-                )}
-                {properties.map((column, columnIndex) => {
-                  return (
-                    <td
-                      data-header={
-                        customDataHeader ? customDataHeader({ column }) : ''
-                      }
-                      key={`${anotherGeneratedID}-row-${rowIndex}-column-${columnIndex}`}
-                    >
-                      {customBody ? (
-                        customBody({ row, column, columnIndex, rowIndex })
-                      ) : (
-                        <></>
-                      )}
-                      {rowOptions && columnIndex === properties.length - 1 ? (
-                        <Box className={'row-options'}>
-                          {rowOptions({ row })}
-                        </Box>
-                      ) : (
-                        <></>
-                      )}
-                    </td>
-                  )
-                })}
-              </tr>
-            )
-          })}
-        </tbody>
+        )
+      })}
+    </tbody>
+  )
+
+  return (
+    <Box className={'table-container'}>
+      <table>
+        {TheadContent}
+        {list.length ? TBodyContent : NoDataContent}
       </table>
     </Box>
   )

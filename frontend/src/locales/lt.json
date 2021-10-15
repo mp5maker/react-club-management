@@ -46,5 +46,7 @@
   "SCHEDULE_SUCCESSFULLY_CREATED": "tvarkaraštis sėkmingai sukurtas",
   "SCHEDULE_CREATION_WAS_DENIED": "tvarkaraščio kūrimas atmestas",
   "SCHEDULE_SUCCESSFULLY_UPDATED": "tvarkaraštis sėkmingai atnaujintas",
-  "SCHEDULE_UPDATE_WAS_DENIED": "tvarkaraščio atnaujinimas buvo atmestas"
+  "SCHEDULE_UPDATE_WAS_DENIED": "tvarkaraščio atnaujinimas buvo atmestas",
+  "NO_DATA_FOUND": "duomenų nerasta",
+  "LOADING": "įkeliama ..."
 }

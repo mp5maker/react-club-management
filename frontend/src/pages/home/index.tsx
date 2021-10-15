@@ -13,6 +13,7 @@ import Card from '../../components/card'
 import MemberCard from '../../components/card/common/member'
 import Header from '../../components/header'
 import DeleteModal from '../../components/modal/common/delete'
+import NoDataFound from '../../components/no-data-found'
 import Table from '../../components/table'
 import Typography from '../../components/typography'
 import routes from '../../constants/routes'
@@ -156,29 +157,38 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
   )
 
   const CardContent = (
-    <Box className={'card-collection-container'}>
-      {members.map((item: IMembers, index: number) => {
-        return (
-          <Card
-            size={CARD_SIZE.MEDIUM}
-            key={`${generatedID}-${index}`}
-            overlay={
-              <Box
-                className={'center margin-top-m'}
-                style={{ height: '100%', alignItems: 'flex-end' }}
+    <>
+      {members.length ? (
+        <Box className={'card-collection-container'}>
+          {members.map((item: IMembers, index: number) => {
+            return (
+              <Card
+                size={CARD_SIZE.MEDIUM}
+                key={`${generatedID}-${index}`}
+                overlay={
+                  <Box
+                    className={'center margin-top-m'}
+                    style={{ height: '100%', alignItems: 'flex-end' }}
+                  >
+                    <Box className={'space-between'}>
+                      <EditButton row={item} onClick={editMember} />
+                      <DeleteButton
+                        row={item}
+                        onClick={openDeleteConfirmation}
+                      />
+                    </Box>
+                  </Box>
+                }
               >
-                <Box className={'space-between'}>
-                  <EditButton row={item} onClick={editMember} />
-                  <DeleteButton row={item} onClick={openDeleteConfirmation} />
-                </Box>
-              </Box>
-            }
-          >
-            <MemberCard item={item} />
-          </Card>
-        )
-      })}
-    </Box>
+                <MemberCard item={item} />
+              </Card>
+            )
+          })}
+        </Box>
+      ) : (
+        <NoDataFound />
+      )}
+    </>
   )
 
   return (

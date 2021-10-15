@@ -48,5 +48,7 @@
   "SCHEDULE_SUCCESSFULLY_CREATED": "Schedule successfully created",
   "SCHEDULE_CREATION_WAS_DENIED": "Schedule creation was denied",
   "SCHEDULE_SUCCESSFULLY_UPDATED": "Schedule successfully updated",
-  "SCHEDULE_UPDATE_WAS_DENIED": "Schedule update was denied"
+  "SCHEDULE_UPDATE_WAS_DENIED": "Schedule update was denied",
+  "NO_DATA_FOUND": "No data found",
+  "LOADING": "Loading..."
 }
