@@ -19,6 +19,7 @@ import SchedulesForm from '../../forms/schedule'
 import useChosenDate from '../../hooks/useChosenDate'
 import useLanguage from '../../hooks/useLanguage'
 import useSchedules from '../../hooks/useSchedules'
+import './schedule.scss'
 
 interface IScheduleProps {}
 
@@ -54,7 +55,7 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
     <Box className={'schedule-page-container'}>
       <Box>
         <Header title={t('SCHEDULE')} />
-        <Box style={{ display: 'flex' }}>
+        <Box style={{ display: 'flex' }} className={'schedule-splitter'}>
           <Box
             className={
               'padding-left-m padding-right-m card-collection-container'

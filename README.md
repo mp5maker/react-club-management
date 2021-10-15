@@ -38,3 +38,5 @@ yarn start
 - Only one member can schedule for club management at a time
 - Some server status code might be missing
 - ORM or Raw SQL has been avoided
+- React Storybook has been ignored
+- Added very small amount of tests

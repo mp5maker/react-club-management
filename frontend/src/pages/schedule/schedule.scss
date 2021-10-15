@@ -1,0 +1,7 @@
+.schedule-page-container {
+  .schedule-splitter {
+    @media only screen and (max-width: 767px) {
+      display: block !important;
+    }
+  }
+}
