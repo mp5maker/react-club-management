@@ -16,10 +16,10 @@ export const schema = ({ t }: { t: (val: string) => string })  =>
     username: yup.string().required(t('THIS_FIELD_IS_REQUIRED')),
     email: yup
       .string()
-      .email('INVALID_EMAIL_ADDRESS')
+      .email(t('INVALID_EMAIL_ADDRESS'))
       .required(t('THIS_FIELD_IS_REQUIRED')),
     address: yup.string(),
-    phone: yup.string().required('THIS_FIELD_IS_REQUIRED'),
-    website: yup.string().url('INVALID_URL'),
+    phone: yup.string().required(t('THIS_FIELD_IS_REQUIRED')),
+    website: yup.string().url(t('INVALID_URL')),
     occupation: yup.string(),
   })

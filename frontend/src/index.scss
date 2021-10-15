@@ -176,6 +176,49 @@ $colors: (
   }
 }
 
+$spaces: (
+  'none': 0,
+  'xs': var(--extraSmall),
+  's': var(--small),
+  'm': var(--medium),
+  'l': var(--large),
+  'xl': var(--extraLarge),
+  'auto': auto
+);
+
+@each $name, $space in $spaces {
+  .padding-top-#{$name} {
+    padding-top: $space;
+  }
+  .padding-left-#{$name} {
+    padding-left: $space;
+  }
+  .paddng-right-#{$name} {
+    padding-right: $space;
+  }
+  .padding-bottom-#{$name} {
+    padding-bottom: $space;
+  }
+  .padding-#{$name} {
+    padding: $space;
+  }
+  .margin-top-#{$name} {
+    margin-top: $space;
+  }
+  .margin-left-#{$name} {
+    margin-left: $space;
+  }
+  .margin-right-#{$name} {
+    margin-right: $space;
+  }
+  .margin-bottom-#{$name} {
+    margin-bottom: $space;
+  }
+  .margin-#{$name} {
+    margin: $space;
+  }
+}
+
 html,
 body {
   margin: 0;

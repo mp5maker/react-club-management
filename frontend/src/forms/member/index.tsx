@@ -263,7 +263,7 @@ const MemberForm: React.FC<IMemberForm> = ({
           className={'center'}
           fullWidth={true}
         >
-          <Typography style={{ marginTop: 0, marginBottom: 0 }}>
+          <Typography className={'margin-top-none margin-bottom-none'}>
             {buttonLabel ? buttonLabel : ''}
           </Typography>
         </Button>

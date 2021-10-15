@@ -1,4 +1,5 @@
 import { IMembers } from '../members'
+import { ISchedules } from '../schedules'
 import axios from './axios'
 
 const apiHelper = {
@@ -10,6 +11,12 @@ const apiHelper = {
       axios.post(`/members`, body),
     update: ({ id, body }: { id: string; body: Partial<IMembers> }) =>
       axios.patch(`/members/${id}`, body),
+  },
+  schedules: {
+    create: ({ body }: { body: Partial<ISchedules> }) =>
+      axios.post(`/api/v1/schedules`, body),
+    update: ({ id, body }: { id: string; body: Partial<ISchedules> }) =>
+      axios.patch(`/api/v1/schedules/${id}`, body),
   },
 }
 

@@ -104,10 +104,10 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
       footer={
         <Box className={'grid-two'} style={{ rowGap: '20px' }}>
           <Button color={COLORS.SUCCESS} onClick={removeMember}>
-            <Typography style={{ margin: 0 }}>{t('CONFIRM')}</Typography>
+            <Typography className={'margin-none'}>{t('CONFIRM')}</Typography>
           </Button>
           <Button color={COLORS.ERROR} onClick={closeDeleteConfirmation}>
-            <Typography style={{ margin: 0 }}>{t('CANCEL')}</Typography>
+            <Typography className={'margin-none'}>{t('CANCEL')}</Typography>
           </Button>
         </Box>
       }
@@ -130,8 +130,7 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
           {isCard ? (
             <Button
               onClick={() => handleViewMode(VIEW_MODE.TABLE)}
-              className={'circle-medium'}
-              style={{ marginLeft: 'var(--small)' }}
+              className={'circle-medium margin-left-s'}
             >
               <FontAwesomeIcon icon={faTable} />
             </Button>
@@ -141,8 +140,7 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
           {isTable ? (
             <Button
               onClick={() => handleViewMode(VIEW_MODE.CARD)}
-              className={'circle-medium'}
-              style={{ marginLeft: 'var(--small)' }}
+              className={'circle-medium margin-left-s'}
             >
               <FontAwesomeIcon icon={faIdCard} />
             </Button>
@@ -163,19 +161,17 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
             <Box className={'space-between'}>
               <Button
                 onClick={() => editMember({ row })}
-                className={'circle-medium'}
+                className={'circle-medium margin-right-s'}
                 variant={BUTTON_VARIANT.CONTAINED}
                 color={COLORS.SECONDARY}
-                style={{ marginRight: 'var(--small)' }}
               >
                 <FontAwesomeIcon icon={faPencilAlt} />
               </Button>
               <Button
                 onClick={() => openDeleteConfirmation({ row })}
-                className={'circle-medium'}
+                className={'circle-medium margin-right-s'}
                 variant={BUTTON_VARIANT.CONTAINED}
                 color={COLORS.SECONDARY}
-                style={{ marginRight: 'var(--small)' }}
               >
                 <FontAwesomeIcon icon={faTrash} />
               </Button>
@@ -219,23 +215,24 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
             item={item}
             key={`${generatedID}-${index}`}
             overlay={
-              <Box className={'center'} style={{ height: '100%', alignItems: 'flex-end', marginTop: 'var(--medium)'}}>
+              <Box
+                className={'center margin-top-m'}
+                style={{ height: '100%', alignItems: 'flex-end' }}
+              >
                 <Box className={'space-between'}>
                   <Button
                     onClick={() => editMember({ row: item })}
-                    className={'circle-medium'}
+                    className={'circle-medium margin-right-s'}
                     variant={BUTTON_VARIANT.CONTAINED}
                     color={COLORS.SECONDARY}
-                    style={{ marginRight: 'var(--small)' }}
                   >
                     <FontAwesomeIcon icon={faPencilAlt} />
                   </Button>
                   <Button
                     onClick={() => openDeleteConfirmation({ row: item })}
-                    className={'circle-medium'}
+                    className={'circle-medium margin-right-s'}
                     variant={BUTTON_VARIANT.CONTAINED}
                     color={COLORS.SECONDARY}
-                    style={{ marginRight: 'var(--small)' }}
                   >
                     <FontAwesomeIcon icon={faTrash} />
                   </Button>
