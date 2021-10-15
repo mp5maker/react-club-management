@@ -8,7 +8,7 @@ import {
   getMembers,
   updateMember
 } from './members'
-import { createSchedule, getSchedules } from './schedules'
+import { createSchedule, deleteSchedule, getSchedules } from './schedules'
 
 const storage = multer.diskStorage({
   destination: function (_req, _file, cb) {
@@ -44,5 +44,6 @@ router.patch('/members/:id', upload.single('profile_photo'), updateMember)
 // Members
 router.get('/schedules', getSchedules)
 router.post('/schedules', createSchedule)
+router.delete('/schedules/:id', deleteSchedule)
 
 export default router

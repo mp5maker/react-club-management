@@ -30,4 +30,15 @@ const createSchedule= async (req: Request, res: Response) => {
   })
 }
 
-export { getSchedules, createSchedule }
+const deleteSchedule = async (req: Request, res: Response) => {
+  const id = get(req, 'params.id', '')
+  if (id) {
+    await apiHelper.schedules.remove({ id })
+    return res.status(200).json({ message: 'SUCCESSFULLY_DELETED' })
+  } else {
+    return res.status(400).json({ message: 'MEMBER_CANNOT_BE_DELETED' })
+  }
+}
+
+
+export { getSchedules, createSchedule, deleteSchedule }

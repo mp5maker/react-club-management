@@ -1,10 +1,4 @@
-import {
-  faIdCard,
-  faPencilAlt,
-  faPlus,
-  faTable,
-  faTrash,
-} from '@fortawesome/free-solid-svg-icons'
+import { faIdCard, faPlus, faTable } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { AxiosError, AxiosResponse } from 'axios'
 import get from 'lodash/get'
@@ -14,6 +8,8 @@ import { v4 } from 'uuid'
 import apiHelper from '../../api/apiHelper'
 import Box from '../../components/box'
 import Button from '../../components/button'
+import DeleteButton from '../../components/button/common/delete'
+import EditButton from '../../components/button/common/edit'
 import Card from '../../components/card'
 import MemberCard from '../../components/card/common/member'
 import Header from '../../components/header'
@@ -21,7 +17,7 @@ import Modal from '../../components/modal'
 import Table from '../../components/table'
 import Typography from '../../components/typography'
 import routes from '../../constants/routes'
-import { BUTTON_VARIANT, CARD_SIZE, COLORS, VIEW_MODE } from '../../constants/settings'
+import { CARD_SIZE, COLORS, VIEW_MODE } from '../../constants/settings'
 import useAlert from '../../hooks/useAlert'
 import useLanguage from '../../hooks/useLanguage'
 import useMembers from '../../hooks/useMembers'
@@ -160,22 +156,8 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
         return (
           <Box className={'center'} style={{ height: '100%' }}>
             <Box className={'space-between'}>
-              <Button
-                onClick={() => editMember({ row })}
-                className={'circle-medium margin-right-s'}
-                variant={BUTTON_VARIANT.CONTAINED}
-                color={COLORS.SECONDARY}
-              >
-                <FontAwesomeIcon icon={faPencilAlt} />
-              </Button>
-              <Button
-                onClick={() => openDeleteConfirmation({ row })}
-                className={'circle-medium margin-right-s'}
-                variant={BUTTON_VARIANT.CONTAINED}
-                color={COLORS.SECONDARY}
-              >
-                <FontAwesomeIcon icon={faTrash} />
-              </Button>
+              <EditButton row={row} onClick={editMember} />
+              <DeleteButton row={row} onClick={openDeleteConfirmation} />
             </Box>
           </Box>
         )
@@ -221,22 +203,8 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
                 style={{ height: '100%', alignItems: 'flex-end' }}
               >
                 <Box className={'space-between'}>
-                  <Button
-                    onClick={() => editMember({ row: item })}
-                    className={'circle-medium margin-right-s'}
-                    variant={BUTTON_VARIANT.CONTAINED}
-                    color={COLORS.SECONDARY}
-                  >
-                    <FontAwesomeIcon icon={faPencilAlt} />
-                  </Button>
-                  <Button
-                    onClick={() => openDeleteConfirmation({ row: item })}
-                    className={'circle-medium margin-right-s'}
-                    variant={BUTTON_VARIANT.CONTAINED}
-                    color={COLORS.SECONDARY}
-                  >
-                    <FontAwesomeIcon icon={faTrash} />
-                  </Button>
+                  <EditButton row={item} onClick={editMember} />
+                  <DeleteButton row={item} onClick={openDeleteConfirmation} />
                 </Box>
               </Box>
             }

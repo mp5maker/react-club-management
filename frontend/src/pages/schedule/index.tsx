@@ -4,6 +4,8 @@ import * as React from 'react'
 import { v4 } from 'uuid'
 import apiHelper from '../../api/apiHelper'
 import Box from '../../components/box'
+import DeleteButton from '../../components/button/common/delete'
+import EditButton from '../../components/button/common/edit'
 import Calendar from '../../components/calendar'
 import Card from '../../components/card'
 import ScheduleCard from '../../components/card/common/schedule'
@@ -30,6 +32,9 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
 
   const afterScheduleCreation = () => getAllSchedules()
 
+  const editSchedule = () => {}
+  const openDeleteConfirmation = () => {}
+
   const handleChosenDate = (value: Date) => {
     changeChosenDate(
       String(Date.parse(format(value, DATE_TIME_FORMAT.DATE_ONLY)))
@@ -50,7 +55,11 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
       <Box>
         <Header title={t('SCHEDULE')} />
         <Box style={{ display: 'flex' }}>
-          <Box className={'padding-left-m padding-right-m'}>
+          <Box
+            className={
+              'padding-left-m padding-right-m card-collection-container'
+            }
+          >
             {dateWiseSchedules ? (
               <>
                 {dateWiseSchedules.map((schedule, index) => {
@@ -58,6 +67,20 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
                     <Card
                       key={`${generatedID}-${index}`}
                       size={CARD_SIZE.SMALL}
+                      overlay={
+                        <Box
+                          className={'center margin-top-m'}
+                          style={{ height: '100%', alignItems: 'flex-end' }}
+                        >
+                          <Box className={'space-between'}>
+                            <EditButton row={schedule} onClick={editSchedule} />
+                            <DeleteButton
+                              row={schedule}
+                              onClick={openDeleteConfirmation}
+                            />
+                          </Box>
+                        </Box>
+                      }
                     >
                       <ScheduleCard item={schedule} />
                     </Card>
