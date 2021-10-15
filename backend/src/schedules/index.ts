@@ -50,7 +50,6 @@ const deleteSchedule = async (req: Request, res: Response) => {
 const updateSchedule = async (req: Request, res: Response) => {
   const body = get(req, 'body', {})
   const id = get(body, 'id', '')
-  console.log('body', body)
 
   await apiHelper.schedules.update({
     id,

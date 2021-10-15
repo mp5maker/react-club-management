@@ -1,0 +1,29 @@
+.fab-container {
+  position: fixed;
+  &.bottom-left {
+    left: var(--large);
+    bottom: var(--large);
+  }
+  &.bottom-center {
+    left: 50%;
+    transform: translateY(-50%);
+    bottom: var(--large);
+  }
+  &.bottom-right {
+    right: var(--large);
+    bottom: var(--large);
+  }
+  &.top-left {
+    left: var(--large);
+    top: var(--large);
+  }
+  &.top-center {
+    left: 50%;
+    transform: translateY(-50%);
+    top: var(--large);
+  }
+  &.top-right {
+    right: var(--large);
+    top: var(--large);
+  }
+}

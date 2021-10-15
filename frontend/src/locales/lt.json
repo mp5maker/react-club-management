@@ -41,5 +41,10 @@
   "SCHEDULE_SUCCESSFULLY_DELETED": "tvarkaraštis sėkmingai ištrintas",
   "SCHEDULE_CANNOT_BE_DELETED": "tvarkaraščio ištrinti negalima",
   "EDIT": "Redaguoti",
-  "ADD": "papildyti"
+  "ADD": "papildyti",
+  "CANCEL_EDIT_SCHEDULE": "atšaukti redagavimo tvarkaraštį",
+  "SCHEDULE_SUCCESSFULLY_CREATED": "tvarkaraštis sėkmingai sukurtas",
+  "SCHEDULE_CREATION_WAS_DENIED": "tvarkaraščio kūrimas atmestas",
+  "SCHEDULE_SUCCESSFULLY_UPDATED": "tvarkaraštis sėkmingai atnaujintas",
+  "SCHEDULE_UPDATE_WAS_DENIED": "tvarkaraščio atnaujinimas buvo atmestas"
 }

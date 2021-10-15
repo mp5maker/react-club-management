@@ -9,14 +9,18 @@ import EditButton from '../../components/button/common/edit'
 import Calendar from '../../components/calendar'
 import Card from '../../components/card'
 import ScheduleCard from '../../components/card/common/schedule'
+import Fab from '../../components/fab'
 import Header from '../../components/header'
 import DeleteModal from '../../components/modal/common/delete'
+import Typography from '../../components/typography'
 import {
   CARD_SIZE,
+  COLORS,
   DATE_TIME_FORMAT,
+  FAB_LOCATION,
   FORM_MODE,
 } from '../../constants/settings'
-import SchedulesForm from '../../forms/schedule'
+import SchedulesForm, { IScheduleFormForwardRef } from '../../forms/schedule'
 import useChosenDate from '../../hooks/useChosenDate'
 import useDeleteModal from '../../hooks/useDeleteModal'
 import useLanguage from '../../hooks/useLanguage'
@@ -43,6 +47,7 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
     deleteApi: apiHelper.schedules.remove,
   })
   const [editObj, setEditObj] = React.useState<ISchedules | null>(null)
+  const scheduleFormRef = React.useRef<IScheduleFormForwardRef|null>(null)
   const dateParsed = Number(chosenDate)
 
   const afterScheduleCreation = () => {
@@ -50,6 +55,10 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
     getAllSchedules()
   }
 
+  const closeEdit = () => {
+    setEditObj(null)
+    if (scheduleFormRef.current) scheduleFormRef.current.clear()
+  }
   const editSchedule = ({ row }: { row: ISchedules }) => setEditObj(row)
   const handleChosenDate = (value: Date) => {
     changeChosenDate(
@@ -120,6 +129,7 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
 
   const ScheduleFormContent = (
     <SchedulesForm
+      ref={scheduleFormRef}
       mode={editObj ? FORM_MODE.EDIT : FORM_MODE.ADD}
       buttonLabel={editObj ? t('EDIT') : t('ADD')}
       afterSuccess={afterScheduleCreation}
@@ -131,8 +141,19 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
     />
   )
 
+  const FabCloseEdit = editObj ? (
+    <Fab
+      color={COLORS.ERROR}
+      location={FAB_LOCATION.BOTTOM_CENTER}
+      onClick={closeEdit}
+    >
+      <Typography className={'margin-none'}>{t('CANCEL_EDIT_SCHEDULE')}</Typography>
+    </Fab>
+  ) : <></>
+
   return (
     <>
+      {FabCloseEdit}
       {DeleteModalContent}
       <Box className={'schedule-page-container'}>
         <Box>

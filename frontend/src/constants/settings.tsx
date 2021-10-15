@@ -7,7 +7,7 @@ export enum PERSIST {
   LANGUAGE = 'language',
   SIDEBAR = 'sidebar',
   VIEW_MODE = 'viewMode',
-  CHOSEN_DATE = 'chosenDate'
+  CHOSEN_DATE = 'chosenDate',
 }
 
 export enum THEME {
@@ -103,9 +103,18 @@ export enum VIEW_MODE {
 
 export enum CARD_SIZE {
   SMALL = 'small',
-  MEDIUM = 'medium'
+  MEDIUM = 'medium',
 }
 
 export enum DATE_TIME_FORMAT {
-  DATE_ONLY = 'yyyy/MM/dd'
+  DATE_ONLY = 'yyyy/MM/dd',
+}
+
+export enum FAB_LOCATION {
+  TOP_LEFT = 'top-left',
+  TOP_CENTER = 'top-center',
+  TOP_RIGHT = 'top-right',
+  BOTTOM_LEFT = 'bottom-left',
+  BOTTOM_CENTER = 'bottom-center',
+  BOTTOM_RIGHT = 'bottom-right',
 }

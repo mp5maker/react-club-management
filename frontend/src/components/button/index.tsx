@@ -3,7 +3,7 @@ import { BUTTON_VARIANT, COLORS } from '../../constants/settings'
 import useBusy from '../../hooks/useBusy'
 import './button.scss'
 
-interface IButtonProps extends Partial<React.HTMLProps<HTMLButtonElement>> {
+export interface IButtonProps extends Partial<React.HTMLProps<HTMLButtonElement>> {
   color?: COLORS
   variant?: BUTTON_VARIANT
   fullWidth?: boolean
