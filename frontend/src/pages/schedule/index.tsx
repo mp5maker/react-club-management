@@ -11,6 +11,7 @@ import Card from '../../components/card'
 import ScheduleCard from '../../components/card/common/schedule'
 import Fab from '../../components/fab'
 import Header from '../../components/header'
+import Loading from '../../components/loading'
 import DeleteModal from '../../components/modal/common/delete'
 import NoDataFound from '../../components/no-data-found'
 import Typography from '../../components/typography'
@@ -19,7 +20,7 @@ import {
   COLORS,
   DATE_TIME_FORMAT,
   FAB_LOCATION,
-  FORM_MODE,
+  FORM_MODE
 } from '../../constants/settings'
 import SchedulesForm, { IScheduleFormForwardRef } from '../../forms/schedule'
 import useChosenDate from '../../hooks/useChosenDate'
@@ -34,7 +35,7 @@ const generatedID = v4()
 
 const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
   const { t } = useLanguage()
-  const { schedules, getAllSchedules } = useSchedules()
+  const { loading, schedules, getAllSchedules } = useSchedules()
   const { chosenDate, changeChosenDate } = useChosenDate()
   const {
     deleteObj,
@@ -124,7 +125,7 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
     </Box>
   ) : (
     <Box className={'center'} style={{ width: '100%' }}>
-      <NoDataFound />
+      {loading ? <Loading /> : <NoDataFound />}
     </Box>
   )
 

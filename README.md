@@ -41,3 +41,4 @@ yarn start
 - React Storybook has been ignored
 - Added very small amount of tests
 - Avoided in details work of accessibility
+- Image ratio might not be perfect, the dummy images have been taken from lorem picsum with different sizes

@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { v4 } from 'uuid'
 import Box from '../box'
+import Loading from '../loading'
 import NoDataFound from '../no-data-found'
 import Typography from '../typography'
 import './table.scss'
@@ -81,7 +82,15 @@ const Table = <T,>({
         </td>
       </tr>
     </tbody>
-  ) : <></>
+  ) : (
+    <tbody>
+      <tr>
+        <td colSpan={colSpan}>
+          <Loading />
+        </td>
+      </tr>
+    </tbody>
+  )
 
   const TBodyContent = (
     <tbody>

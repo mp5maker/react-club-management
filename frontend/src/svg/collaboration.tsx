@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-interface ICollaborationSVG {
+export interface ICollaborationSVG {
   width?: number
   height?: number
 }

@@ -12,6 +12,7 @@ import EditButton from '../../components/button/common/edit'
 import Card from '../../components/card'
 import MemberCard from '../../components/card/common/member'
 import Header from '../../components/header'
+import Loading from '../../components/loading'
 import DeleteModal from '../../components/modal/common/delete'
 import NoDataFound from '../../components/no-data-found'
 import Table from '../../components/table'
@@ -27,7 +28,7 @@ interface IHomeProps {}
 const generatedID = v4()
 
 const Home: React.FC<IHomeProps> = (): JSX.Element => {
-  const { members, getAllMembers } = useMembers()
+  const { members, getAllMembers, loading } = useMembers()
   const { t } = useLanguage()
   const history = useHistory()
   const { viewMode, changeViewMode } = useViewMode()
@@ -122,6 +123,7 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
 
   const TableContent = (
     <Table
+      loading={loading}
       autoSerial={false}
       rowOptions={({ row }) => {
         return (
@@ -192,7 +194,7 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
           })}
         </Box>
       ) : (
-        <NoDataFound />
+        <>{!loading ? <NoDataFound /> : <Loading />}</>
       )}
     </>
   )
