@@ -40,3 +40,4 @@ yarn start
 - ORM or Raw SQL has been avoided
 - React Storybook has been ignored
 - Added very small amount of tests
+- Avoided in details work of accessibility
