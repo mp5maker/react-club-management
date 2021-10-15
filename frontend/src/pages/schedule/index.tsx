@@ -10,7 +10,9 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
 
   return (
     <Box className={'schedule-page-container'}>
-      <Header title={t('SCHEDULE')} />
+      <Box>
+        <Header title={t('SCHEDULE')} />
+      </Box>
     </Box>
   )
 }

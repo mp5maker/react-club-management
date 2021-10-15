@@ -61,7 +61,7 @@
   }
 }
 .sidebar-footer {
-  border-top: 1px solid var(--secondary);
+  box-shadow: var(--boxShadow);
   margin-top: auto;
   .sidebar-item {
     > div {
