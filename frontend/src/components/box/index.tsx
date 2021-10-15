@@ -31,7 +31,7 @@ const Box: React.FC<IBoxProps> = ({
     },
   }
 
-  switch(component) {
+  switch (component) {
     case BOX_COMPONENTS.DIV:
       return <div {...props} />
     case BOX_COMPONENTS.SPAN:
@@ -46,7 +46,8 @@ const Box: React.FC<IBoxProps> = ({
       return <article {...props} />
     case BOX_COMPONENTS.SECTION:
       return <section {...props} />
-    default: return <div {...props} />
+    default:
+      return <div {...props} />
   }
 }
 
