@@ -38,8 +38,7 @@ const Header: React.FC<IHeaderProps> = ({
             <Button
               aria-label={'Opens the sidebar for smaller device'}
               onClick={openSidebar}
-              className={'selective-visible'}
-              style={{ marginRight: 12 }}
+              className={'selective-visible margin-right-m'}
             >
               <FontAwesomeIcon icon={faBars} />
             </Button>

@@ -31,7 +31,7 @@ const DeleteModal: React.FC<IDeleteModalProps> = ({
       isVisible={isVisible}
       onClose={onClose}
       footer={
-        <Box className={'grid-two'} style={{ rowGap: '20px' }}>
+        <Box className={'grid-two'}>
           <Button
             color={COLORS.SUCCESS}
             onClick={onConfirm}

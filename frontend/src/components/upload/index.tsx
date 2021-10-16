@@ -27,7 +27,7 @@ const Upload: React.FC<IUploadProps> = ({
       accept={'image/*'}
       type={'file'}
       capture={'environment'}
-      style={{ display: 'none' }}
+      className={'d-none'}
       label={
         <>
           {src ? (

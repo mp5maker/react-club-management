@@ -26,7 +26,7 @@ yarn start
 
 ## Some Considerations [Due to time limitations]
 
-- Avoided using Material-UI or styled components (styling has been done using scss)
+- Avoided using Material-UI or styled-components (styling has been done using scss)
 - Avoided using raw webpack, instead create-react-app was used
 - Apologize if there are any wrong translations for Lithuanian word
 - External Libraries used for calendar, didn't had the time to make it
@@ -46,3 +46,4 @@ yarn start
 - Same user with same information can be added multiple times
 - No relationship in backend has been established between members and the schedule
 - The app has only been tested through localhost and not tested through production build
+- There are few inline stylings in the app

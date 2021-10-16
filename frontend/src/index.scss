@@ -60,6 +60,7 @@ $columns: (
   .grid-#{$name} {
     display: grid;
     gap: var(--small);
+    row-gap: 20px;
     grid-template-columns: repeat($column, 1fr);
   }
 }
@@ -167,6 +168,7 @@ $colors: (
   'info': var(--info),
   'success': var(--success),
   'error': var(--error),
+  'modal-overlay': var(--modalBackground)
 );
 @each $name, $color in $colors {
   .background-#{$name} {
@@ -226,6 +228,14 @@ $spaces: (
 
 .rounded-border-radius {
   border-radius: var(--commonRoundedBorderRadius);
+}
+
+.mirror {
+  transform: scale(-1);
+}
+
+.d-none {
+  display: none;
 }
 
 html,

@@ -55,10 +55,7 @@ const Sidebar: React.FC<ISidebarProps> = (): JSX.Element => {
             onClick={closeSidebar}
             className={'circle-small selective-visible'}
           >
-            <FontAwesomeIcon
-              icon={faSignOutAlt}
-              style={{ transform: 'scale(-1)' }}
-            />
+            <FontAwesomeIcon icon={faSignOutAlt} className={'mirror'} />
           </Button>
         </Box>
         <Box className="sidebar-content">

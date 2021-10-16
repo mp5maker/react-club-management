@@ -55,7 +55,7 @@ const MemberForm: React.FC<IMemberForm> = ({
     const image = head(get(event, 'target.files', []))
     setError({
       ...error,
-      [event.target.name]: ''
+      [event.target.name]: '',
     })
     setForm({
       ...form,
@@ -188,6 +188,16 @@ const MemberForm: React.FC<IMemberForm> = ({
           >
             {t('PLEASE_CLICK_THE_AVATAR_TO_UPLOAD')}
           </Typography>
+        </Box>
+        <Box
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 'calc(50% + 20px)',
+            transform: 'translateX(-50%)',
+          }}
+        >
+          <Typography color={COLORS.ERROR}>*</Typography>
         </Box>
       </Box>
       <Box className={'form-control'}>

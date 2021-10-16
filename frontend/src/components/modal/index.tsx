@@ -23,8 +23,9 @@ const Modal: React.FC<IModalProps> = ({
 }): JSX.Element => {
   return (
     <Box
-      className={`modal-container ${isVisible ? 'open zindex-modal' : 'close'}`}
-      style={{ backgroundColor: 'var(--modalBackground)' }}
+      className={`modal-container background-modal-overlay ${
+        isVisible ? 'open zindex-modal' : 'close'
+      }`}
     >
       <Box className="modal-main" color={COLORS.BACKGROUND_2}>
         <Box className="modal-header space-between">
