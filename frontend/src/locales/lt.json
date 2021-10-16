@@ -48,5 +48,7 @@
   "SCHEDULE_SUCCESSFULLY_UPDATED": "tvarkaraštis sėkmingai atnaujintas",
   "SCHEDULE_UPDATE_WAS_DENIED": "tvarkaraščio atnaujinimas buvo atmestas",
   "NO_DATA_FOUND": "duomenų nerasta",
-  "LOADING": "įkeliama ..."
+  "LOADING": "įkeliama ...",
+  "404_PAGE_NOT_FOUND": "404 puslapis nerastas",
+  "PAGE_DO_NOT_EXIST": "Atsiprašome, bet jūsų ieškomo puslapio nėra"
 }

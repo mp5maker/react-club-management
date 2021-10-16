@@ -202,7 +202,7 @@ const Home: React.FC<IHomeProps> = (): JSX.Element => {
   return (
     <>
       {DeleteModalContent}
-      <Box className={'home-page-container'}>
+      <Box className={'home-page-container'} data-testid="home-page">
         <Box>
           {HeaderContent}
           {isTable ? TableContent : <></>}

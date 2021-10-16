@@ -10,9 +10,34 @@ import useTheme from './hooks/useTheme'
 import AddMember from './pages/add-member'
 import EditMember from './pages/edit-member'
 import Home from './pages/home'
+import NotFound from './pages/not-found'
 import Schedule from './pages/schedule'
 
 const history = createBrowserHistory()
+
+export const Routes = () => {
+  return (
+    <Router history={history}>
+      <Sidebar />
+      <Switch>
+        <Route path={routes.root.path} component={Home} exact={true} />
+        <Route path={routes.home.path} component={Home} exact={true} />
+        <Route path={routes.schedule.path} component={Schedule} exact={true} />
+        <Route
+          path={routes.addMember.path}
+          component={AddMember}
+          exact={true}
+        />
+        <Route
+          path={routes.editMember.path}
+          component={EditMember}
+          exact={true}
+        />
+        <Route path={routes.notFound.path} component={NotFound} />
+      </Switch>
+    </Router>
+  )
+}
 
 const App = () => {
   useTheme()
@@ -21,28 +46,7 @@ const App = () => {
   return (
     <Body>
       <Alert />
-      <Router history={history}>
-        <Sidebar />
-        <Switch>
-          <Route path={routes.root.path} component={Home} exact={true} />
-          <Route path={routes.home.path} component={Home} exact={true} />
-          <Route
-            path={routes.schedule.path}
-            component={Schedule}
-            exact={true}
-          />
-          <Route
-            path={routes.addMember.path}
-            component={AddMember}
-            exact={true}
-          />
-          <Route
-            path={routes.editMember.path}
-            component={EditMember}
-            exact={true}
-          />
-        </Switch>
-      </Router>
+      <Routes />
     </Body>
   )
 }

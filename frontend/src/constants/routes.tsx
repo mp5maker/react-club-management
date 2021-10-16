@@ -19,6 +19,10 @@ const routes = {
     rawPath: '/edit-member',
     path: '/edit-member/:id',
     label: 'EDIT_MEMBER'
+  },
+  notFound: {
+    path: '*',
+    label: "NOT_FOUND"
   }
 }
 

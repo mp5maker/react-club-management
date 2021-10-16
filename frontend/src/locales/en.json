@@ -50,5 +50,7 @@
   "SCHEDULE_SUCCESSFULLY_UPDATED": "Schedule successfully updated",
   "SCHEDULE_UPDATE_WAS_DENIED": "Schedule update was denied",
   "NO_DATA_FOUND": "No data found",
-  "LOADING": "Loading..."
+  "LOADING": "Loading...",
+  "404_PAGE_NOT_FOUND": "404 page not found",
+  "PAGE_DO_NOT_EXIST": "We are sorry but the page you are looking for does not exist."
 }
