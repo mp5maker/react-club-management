@@ -12,9 +12,10 @@ import Typography from '../../../typography'
 
 interface ISchedulesCard {
   item: ISchedules
+  member?: IMembers
 }
 
-const ScheduleCard: React.FC<ISchedulesCard> = ({ item }) => {
+const ScheduleCard: React.FC<ISchedulesCard> = ({ item, member }) => {
   const title = get(item, 'title', '')
   const description = get(item, 'description', '')
   const start_time = get(item, 'start_time', '')
@@ -26,12 +27,20 @@ const ScheduleCard: React.FC<ISchedulesCard> = ({ item }) => {
 
   return (
     <>
-      <Box className={'card-info'}>
+      <Box
+        className={'card-info'}
+        style={{ display: 'flex', flexDirection: 'column' }}
+      >
         <Box>
-          <Typography variant={TYPOGRAPHY_VARIANT.H5} color={COLORS.SECONDARY}>{title}</Typography>
+          <Typography variant={TYPOGRAPHY_VARIANT.H5} color={COLORS.SECONDARY}>
+            {title}
+          </Typography>
         </Box>
         <Box>
-          <Typography variant={TYPOGRAPHY_VARIANT.BODY} component={TYPOGRAPHY_COMPONENT.SMALL}>
+          <Typography
+            variant={TYPOGRAPHY_VARIANT.BODY}
+            component={TYPOGRAPHY_COMPONENT.SMALL}
+          >
             {format(startTime, 'yyyy-MMM-dd')}
           </Typography>
         </Box>
@@ -43,7 +52,7 @@ const ScheduleCard: React.FC<ISchedulesCard> = ({ item }) => {
             {format(startTime, 'hh:mm a')} {`->`} {format(endTime, 'hh:mm a')}
           </Typography>
         </Box>
-        <Box>
+        <Box style={{ flexGrow: 0 }}>
           <Typography
             variant={TYPOGRAPHY_VARIANT.SUBTITLE_1}
             component={TYPOGRAPHY_COMPONENT.SMALL}
@@ -51,6 +60,18 @@ const ScheduleCard: React.FC<ISchedulesCard> = ({ item }) => {
             {description}
           </Typography>
         </Box>
+        {member ? (
+          <Box
+            color={COLORS.SECONDARY}
+            className={'padding-s center margin-top-auto rounded-border-radius'}
+          >
+            <Typography className={'margin-none'}>
+              {get(member, 'name', '')}
+            </Typography>
+          </Box>
+        ) : (
+          <></>
+        )}
       </Box>
     </>
   )

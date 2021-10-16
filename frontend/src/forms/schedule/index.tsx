@@ -146,7 +146,15 @@ const SchedulesForm = React.forwardRef<IScheduleFormForwardRef, ISchedulesForm>(
     }, [setValue])
 
     return (
-      <Form fieldset={true} onSubmit={handleSubmit}>
+      <Form
+        fieldset={true}
+        onSubmit={handleSubmit}
+        className={
+          isEditMode
+            ? 'border-secondary common-border-radius'
+            : 'common-border-radius'
+        }
+      >
         <Box className={'form-control'}>
           <TextField
             id={'schedules-form-title'}

@@ -16,6 +16,7 @@ import DeleteModal from '../../components/modal/common/delete'
 import NoDataFound from '../../components/no-data-found'
 import Typography from '../../components/typography'
 import {
+  BUTTON_VARIANT,
   CARD_SIZE,
   COLORS,
   DATE_TIME_FORMAT,
@@ -26,6 +27,7 @@ import SchedulesForm, { IScheduleFormForwardRef } from '../../forms/schedule'
 import useChosenDate from '../../hooks/useChosenDate'
 import useDeleteModal from '../../hooks/useDeleteModal'
 import useLanguage from '../../hooks/useLanguage'
+import useMembers from '../../hooks/useMembers'
 import useSchedules from '../../hooks/useSchedules'
 import './schedule.scss'
 
@@ -35,6 +37,7 @@ const generatedID = v4()
 
 const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
   const { t } = useLanguage()
+  const { members } = useMembers()
   const { loading, schedules, getAllSchedules } = useSchedules()
   const { chosenDate, changeChosenDate } = useChosenDate()
   const {
@@ -95,6 +98,9 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
       {dateWiseSchedules ? (
         <>
           {dateWiseSchedules.map((schedule, index) => {
+            const memberId = get(schedule, 'member_id', '')
+            const findMember = members.find((item: IMembers) => memberId === String(get(item, 'id', '')))
+
             return (
               <Card
                 key={`${generatedID}-${index}`}
@@ -114,7 +120,7 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
                   </Box>
                 }
               >
-                <ScheduleCard item={schedule} />
+                <ScheduleCard item={schedule} member={findMember} />
               </Card>
             )
           })}
@@ -149,8 +155,10 @@ const Schedule: React.FC<IScheduleProps> = (): JSX.Element => {
 
   const FabCloseEdit = editObj ? (
     <Fab
+      className={'rounded-border-radius'}
       color={COLORS.ERROR}
-      location={FAB_LOCATION.BOTTOM_CENTER}
+      variant={BUTTON_VARIANT.CONTAINED}
+      location={FAB_LOCATION.TOP_CENTER}
       onClick={closeEdit}
     >
       <Typography className={'margin-none'}>

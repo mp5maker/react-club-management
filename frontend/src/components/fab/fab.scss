@@ -2,28 +2,28 @@
   position: fixed;
   &.bottom-left {
     left: var(--large);
-    bottom: var(--large);
+    bottom: var(--extraLarge);
   }
   &.bottom-center {
     left: 50%;
     transform: translateY(-50%);
-    bottom: var(--large);
+    bottom: var(--extraLarge);
   }
   &.bottom-right {
     right: var(--large);
-    bottom: var(--large);
+    bottom: var(--extraLarge);
   }
   &.top-left {
     left: var(--large);
-    top: var(--large);
+    top: var(--extraLarge);
   }
   &.top-center {
     left: 50%;
     transform: translateY(-50%);
-    top: var(--large);
+    top: var(--extraLarge);
   }
   &.top-right {
     right: var(--large);
-    top: var(--large);
+    top: var(--extraLarge);
   }
 }

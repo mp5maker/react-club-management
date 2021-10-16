@@ -8,8 +8,11 @@
     }
   }
   &.small {
-    height: 200px;
-    width: 200px;
+    height: 250px;
+    width: 250px;
+    .card-info {
+      height: calc(100% - 50px);
+    }
   }
   box-shadow: var(--boxShadow);
   border-radius: var(--commonBorderRadius);

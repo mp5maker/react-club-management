@@ -98,6 +98,7 @@ $columns: (
   --extraLarge: 2rem;
 
   --commonBorderRadius: 3px;
+  --commonRoundedBorderRadius: 20px;
 }
 
 @media (prefers-color-scheme: light) {
@@ -217,6 +218,14 @@ $spaces: (
   .margin-#{$name} {
     margin: $space;
   }
+}
+
+.common-border-radius {
+  border-radius: var(--commonBorderRadius);
+}
+
+.rounded-border-radius {
+  border-radius: var(--commonRoundedBorderRadius);
 }
 
 html,
