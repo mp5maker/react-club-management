@@ -1,6 +1,7 @@
 import { AxiosResponse } from 'axios'
 import get from 'lodash/get'
 import head from 'lodash/head'
+import omit from 'lodash/omit'
 import * as React from 'react'
 import Box from '../../components/box'
 import Button from '../../components/button'
@@ -12,17 +13,17 @@ import {
   BACKEND,
   BUTTON_VARIANT,
   COLORS,
+  ERROR_ALIGNMENT,
   FORM_MODE,
   TYPOGRAPHY_COMPONENT,
   TYPOGRAPHY_VARIANT,
 } from '../../constants/settings'
 import useAlert from '../../hooks/useAlert'
+import useBusy from '../../hooks/useBusy'
 import useLanguage from '../../hooks/useLanguage'
 import prepareFormData from '../../utilties/prepareFormData'
 import prepareValidationSchema from '../../utilties/prepareValidationSchema'
 import { INITIAL_DATA, schema } from './common'
-import omit from 'lodash/omit'
-import useBusy from '../../hooks/useBusy'
 
 interface IMemberForm {
   buttonLabel: string
@@ -46,13 +47,16 @@ const MemberForm: React.FC<IMemberForm> = ({
   const { t } = useLanguage()
   const [form, setForm] =
     React.useState<Omit<IMembers, 'profile_photo' | 'id'>>(INITIAL_DATA)
-  const [error, setError] =
-    React.useState<Omit<IMembers, 'profile_photo' | 'id'>>(INITIAL_DATA)
+  const [error, setError] = React.useState<Omit<IMembers, 'id'>>(INITIAL_DATA)
   const isAddMode = FORM_MODE.ADD === mode
   const isEditMode = FORM_MODE.EDIT === mode
 
   const onChangeImage = (event: React.ChangeEvent<HTMLInputElement>) => {
     const image = head(get(event, 'target.files', []))
+    setError({
+      ...error,
+      [event.target.name]: ''
+    })
     setForm({
       ...form,
       [event.target.name]: image,
@@ -61,6 +65,7 @@ const MemberForm: React.FC<IMemberForm> = ({
 
   const handleSubmit = (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault()
+    console.log(form)
     const onValidationSuccess = () => {
       const onSuccess = () => {
         setBusy(false)
@@ -173,7 +178,8 @@ const MemberForm: React.FC<IMemberForm> = ({
                 : URL.createObjectURL(profile_photo)
               : ''
           }
-          error={t(error.name)}
+          errorAlignment={ERROR_ALIGNMENT.CENTER}
+          error={t(error.profile_photo as any)}
         />
         <Box className={'center'}>
           <Typography

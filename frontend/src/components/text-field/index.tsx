@@ -1,13 +1,19 @@
 import * as React from 'react'
-import { COLORS, TYPOGRAPHY_COMPONENT } from '../../constants/settings'
+import {
+  COLORS,
+  ERROR_ALIGNMENT,
+  TYPOGRAPHY_COMPONENT,
+} from '../../constants/settings'
 import Box from '../box'
 import FieldError from '../field-error'
 import Typography from '../typography'
 import './text-field.scss'
 
-export interface ITextFieldProps extends Partial<React.HTMLProps<HTMLInputElement>> {
+export interface ITextFieldProps
+  extends Partial<React.HTMLProps<HTMLInputElement>> {
   error?: string
   label?: any
+  errorAlignment?: ERROR_ALIGNMENT
 }
 
 const TextField: React.FC<ITextFieldProps> = ({
@@ -15,6 +21,7 @@ const TextField: React.FC<ITextFieldProps> = ({
   error,
   label,
   required,
+  errorAlignment,
   ...otherProps
 }): JSX.Element => {
   const props = {
@@ -29,6 +36,10 @@ const TextField: React.FC<ITextFieldProps> = ({
           htmlFor: id,
         }
       : {}),
+  }
+
+  const errorProps = {
+    ...(errorAlignment ? {errorAlignment} : {}),
   }
 
   return (
@@ -47,7 +58,7 @@ const TextField: React.FC<ITextFieldProps> = ({
         )}
       </label>
       <input {...props} />
-      <FieldError message={error} />
+      <FieldError message={error} {...errorProps} />
     </Box>
   )
 }

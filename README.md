@@ -43,3 +43,4 @@ yarn start
 - Avoided in details work of accessibility
 - Image ratio might not be perfect, the dummy images have been taken from lorem picsum with different sizes
 - Added very minimal tests for frontend and tests for backend have been ignored
+- Same user with same information can be added multiple times

@@ -12,6 +12,7 @@ export const INITIAL_DATA = {
 
 export const schema = ({ t }: { t: (val: string) => string })  =>
   yup.object().shape({
+    profile_photo: yup.mixed().required('THIS_FIELD_IS_REQUIRED'),
     name: yup.string().required(t('THIS_FIELD_IS_REQUIRED')),
     username: yup.string().required(t('THIS_FIELD_IS_REQUIRED')),
     email: yup

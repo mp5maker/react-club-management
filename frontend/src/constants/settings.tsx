@@ -118,3 +118,8 @@ export enum FAB_LOCATION {
   BOTTOM_CENTER = 'bottom-center',
   BOTTOM_RIGHT = 'bottom-right',
 }
+
+export enum ERROR_ALIGNMENT {
+  LEFT = 'left',
+  CENTER = 'center'
+}
