@@ -252,10 +252,12 @@ const MemberForm: React.FC<IMemberForm> = ({
         <TextField
           id={'member-form-phone'}
           label={t('PHONE')}
-          placeholder={t('eg: 444-444-4492')}
+          placeholder={t('eg: 444-444-4492 or 4444444492')}
           onChange={onChange}
           value={form.phone}
           error={t(error.phone)}
+          type="tel"
+          pattern="[0-9]{3}(-)?[0-9]{3}\1[0-9]{4}"
           name={'phone'}
           required
         />
