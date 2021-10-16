@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install": "concurrently --kill-others \"yarn install\" \"yarn --cwd ./frontend install\" \"yarn --cwd ./backend install\"",
+    "postinstall": "(cd backend && yarn install); (cd frontend && yarn install)",
     "start": "concurrently --kill-others \"yarn --cwd ./frontend run start\" \"yarn --cwd ./backend run start\" \"yarn --cwd ./backend run json:server\""
   },
   "repository": {
@@ -22,7 +22,8 @@
   "devDependencies": {
     "concurrently": "^6.3.0",
     "husky": "^7.0.2",
-    "lint-staged": "^11.2.3"
+    "lint-staged": "^11.2.3",
+    "postinstall": "^0.7.3"
   },
   "lint-staged": {
     "frontend/src/*.{js,jsx,ts,tsx}": [
