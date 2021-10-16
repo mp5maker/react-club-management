@@ -65,7 +65,6 @@ const MemberForm: React.FC<IMemberForm> = ({
 
   const handleSubmit = (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault()
-    console.log(form)
     const onValidationSuccess = () => {
       const onSuccess = () => {
         setBusy(false)
@@ -195,6 +194,11 @@ const MemberForm: React.FC<IMemberForm> = ({
             top: 0,
             left: 'calc(50% + 20px)',
             transform: 'translateX(-50%)',
+            ...(profile_photo
+              ? {
+                  display: 'none',
+                }
+              : {}),
           }}
         >
           <Typography color={COLORS.ERROR}>*</Typography>
