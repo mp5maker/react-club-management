@@ -45,3 +45,4 @@ yarn start
 - Added very minimal tests for frontend and tests for backend have been ignored
 - Same user with same information can be added multiple times
 - No relationship in backend has been established between members and the schedule
+- The app has only been tested through localhost and not tested through production build
