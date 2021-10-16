@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "(cd backend && yarn install); (cd frontend && yarn install)",
-    "start": "concurrently --kill-others \"yarn --cwd ./frontend run start\" \"yarn --cwd ./backend run start\" \"yarn --cwd ./backend run json:server\""
+    "start": "concurrently --kill-others \"yarn --cwd ./frontend run start\" \"yarn --cwd ./backend run start\" \"yarn --cwd ./backend run json:server\"",
+    "test": "yarn --cwd ./frontend test"
   },
   "repository": {
     "type": "git",

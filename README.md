@@ -22,6 +22,7 @@
 ```shell
 yarn install
 yarn start
+yarn test
 ```
 
 ## Some Considerations [Due to time limitations]
