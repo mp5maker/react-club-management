@@ -50,5 +50,6 @@
   "NO_DATA_FOUND": "duomenų nerasta",
   "LOADING": "įkeliama ...",
   "404_PAGE_NOT_FOUND": "404 puslapis nerastas",
-  "PAGE_DO_NOT_EXIST": "Atsiprašome, bet jūsų ieškomo puslapio nėra"
+  "PAGE_DO_NOT_EXIST": "Atsiprašome, bet jūsų ieškomo puslapio nėra",
+  "END_TIME_NEEDS_TO_BE_GREATER_THAN_START_TIME": "pradžios laikas negali būti vėlesnis nei pabaigos laikas"
 }

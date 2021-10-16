@@ -52,5 +52,6 @@
   "NO_DATA_FOUND": "No data found",
   "LOADING": "Loading...",
   "404_PAGE_NOT_FOUND": "404 page not found",
-  "PAGE_DO_NOT_EXIST": "We are sorry but the page you are looking for does not exist."
+  "PAGE_DO_NOT_EXIST": "We are sorry but the page you are looking for does not exist.",
+  "END_TIME_NEEDS_TO_BE_GREATER_THAN_START_TIME": "Start time cannot be after the end time"
 }
