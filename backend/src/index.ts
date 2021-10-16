@@ -1,8 +1,9 @@
+import cors from 'cors'
 import express, { Express } from 'express'
 import http from 'http'
-import cors from 'cors'
-import routes from './routes'
 import path from 'path'
+import routes from './routes'
+import responseHelper from './utilties/responseHelper'
 
 const PORT: string | number = process.env.PORT || 4000
 const app: Express = express()
@@ -19,12 +20,8 @@ app.use(express.json())
 app.use('/api/v1/', routes)
 
 // Error Handling
-app.use((_req, res, _next) => {
-    const error = new Error('Not Found');
-    return res.status(404).json({
-        message: error.message
-    });
-});
+app.use(responseHelper.error.logger)
+app.use(responseHelper.error.response)
 
 // Server
 const httpServer = http.createServer(app)
