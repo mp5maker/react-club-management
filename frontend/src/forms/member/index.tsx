@@ -131,7 +131,14 @@ const MemberForm: React.FC<IMemberForm> = ({
 
     const onValidationError = (validationObj: any) => {
       const errorObj = prepareValidationSchema(validationObj)
-      if (errorObj && Object.keys(errorObj)) setError({ ...error, ...errorObj })
+      if (errorObj && Object.keys(errorObj)) {
+        setAlert({
+          color: COLORS.ERROR,
+          message: t('PLEASE_CHECK_THE_FIELD_ERRORS'),
+          show: true,
+        })
+        setError({ ...error, ...errorObj })
+      }
     }
 
     schema({ t })
